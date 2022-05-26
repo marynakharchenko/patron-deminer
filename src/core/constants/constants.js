@@ -11,4 +11,14 @@ export default {
     WALK: 'walk',
     DEMINE: 'demine',
   },
+  MAP: {
+    ENTITIES: {
+      E: 0, // Empty
+      W: 1, // Wall - tree or end of map
+      T: 2, // Teleport - puddle or lake
+      P: 3, // Patron
+      M: 4, // Mine
+      B: 5, // Bush
+    },
+  },
 };
