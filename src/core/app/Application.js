@@ -55,18 +55,20 @@ export default class GameApplication extends Application {
     document.getElementById('miniMap').style.right = `${config.view.left}px`;
     document.getElementById('miniMap').style.width = `${config.view.width / 4}px`;
     let miniMapString = '';
+
     for (let row = 0; row < LEVEL1.length; row++) {
       for (let col = 0; col < LEVEL1[0].length; col++) {
-        miniMapString += `<div id='miniMap-${row}-${col}' class='miniMapTile ${LEVEL1[row][col] === M ? E : LEVEL1[row][col]}'></div>`
+        const isMine = LEVEL1[row][col] === M;
+
+        miniMapString += `<div id='miniMap-${row}-${col}' class='miniMapTile ${isMine ? E : LEVEL1[row][col]}'></div>`;
       }
     }
     document.getElementById('miniMap').innerHTML = miniMapString;
-    document.querySelectorAll('.miniMapTile').forEach(e => {
+    document.querySelectorAll('.miniMapTile').forEach((e) => {
       e.style.width = `${config.view.width / 4 / LEVEL1[0].length}px`;
       e.style.height = `${config.view.height / 4 / LEVEL1.length}px`;
     });
   }
-
 
   /**
      * Initialize the game world viewport.
