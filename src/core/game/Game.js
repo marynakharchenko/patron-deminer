@@ -190,6 +190,10 @@ export default class Game extends Container {
     const targetPos = this._map.coordsFromPos(newPos);
 
     await this._patron.move(targetPos, direction);
+    document.getElementById(`miniMap-${oldPos.row}-${oldPos.col}`).classList.remove(this._map.IDS.PATRON);
+    document.getElementById(`miniMap-${oldPos.row}-${oldPos.col}`).classList.add(this._map.IDS.EMPTY);
+    document.getElementById(`miniMap-${newPos.row}-${newPos.col}`).classList.remove(this._map.IDS.EMPTY);
+    document.getElementById(`miniMap-${newPos.row}-${newPos.col}`).classList.add(this._map.IDS.PATRON);
 
     this._map.setTileOnMap(oldPos, this._map.IDS.EMPTY);
     this._map.setTileOnMap(newPos, this._map.IDS.PATRON);
@@ -199,7 +203,7 @@ export default class Game extends Container {
 
   _patronDemine() {
     // const patronDirection = this._patron.direction;
-    // const patronPos = this._map.posById(this._map.IDS.PATRON)[0];
+    const patronPos = this._map.posById(this._map.IDS.PATRON)[0];
     const targetPos = this._map.posById(this._map.IDS.PATRON)[0]; // this._map.getDestination(patronPos, patronDirection);
 
     const hitMine = this._map.getTileStart(targetPos) === this._map.IDS.MINE;
@@ -225,6 +229,7 @@ export default class Game extends Container {
       mine.deminedCount++;
       mine.anim.visible = true;
       if (mine.deminedCount >= 1) {
+        document.getElementById(`miniMap-${patronPos.row}-${patronPos.col}`).classList.add(this._map.IDS.MINE);
         this._removeMine(mine, () => {
           if (this._mines.length === 0) return this._onEnd();
 
