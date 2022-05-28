@@ -1,5 +1,5 @@
-import { Container } from 'pixi.js';
-import gsap from 'gsap';
+const { Container } = window.PIXI;
+const gsap = window.gsap;
 
 import patronAnimations from '../animations/patronAnimations';
 import mineAnimations from '../animations/mineAnimations';

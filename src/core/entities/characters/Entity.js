@@ -1,5 +1,5 @@
-import { Loader, AnimatedSprite } from 'pixi.js';
-import gsap from 'gsap';
+const { AnimatedSprite, Loader } = window.PIXI;
+const gsap = window.gsap;
 
 import CONSTANTS from '../../constants/constants';
 

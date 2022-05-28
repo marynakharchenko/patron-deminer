@@ -1,4 +1,4 @@
-import { Application } from 'pixi.js';
+const { Application } = window.PIXI;
 
 import config from '../config/config';
 import viewport from '../viewport/viewport';

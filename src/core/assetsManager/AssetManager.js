@@ -1,5 +1,5 @@
-import { Howl } from 'howler';
-import { Loader, Texture } from 'pixi.js';
+const { Loader, Texture } = window.PIXI;
+const Howl = window.Howl;
 
 const contextImage = require.context('../../assets/images', true, /\.(jpg|png)$/im);
 const contextSound = require.context('../../assets/sounds', true, /\.(wav|mp3)$/im);

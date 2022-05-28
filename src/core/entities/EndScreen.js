@@ -1,5 +1,4 @@
-import { Container, Text, TextStyle } from 'pixi.js';
-// const Resources = Loader.shared.resources;
+const { Container, Text, TextStyle } = window.PIXI;
 
 const Texts = {
   YOU_WIN: 'Congratulations you win!',

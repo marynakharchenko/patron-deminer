@@ -1,4 +1,4 @@
-import { Viewport } from 'pixi-viewport';
+const { Viewport } = window.PIXI;
 
 import config from '../config/config';
 

@@ -1,4 +1,4 @@
-import { Text, TextStyle } from 'pixi.js';
+const { Text, TextStyle } = window.PIXI;
 
 export default class Timer {
   constructor() {
