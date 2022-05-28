@@ -1,9 +1,6 @@
 class Config {
   static get view () {
-    const isHorizontal = window.innerWidth > window.innerHeight;
-    const size = isHorizontal ? window.innerHeight : window.innerWidth;
-    const left = (window.innerWidth - size) / 2;
-    const top = (window.innerHeight - size) / 2;
+    const size = document.getElementById('game').offsetWidth;
 
     return {
       width: size,
@@ -11,15 +8,11 @@ class Config {
       backgroundColor: 0x779642,
       worldWidth: size * 6,
       worldHeight: size * 6,
-      isHorizontal,
-      left,
-      top,
     };
   }
 
   static get game () {
-    const isHorizontal = window.innerWidth > window.innerHeight;
-    const size = isHorizontal ? window.innerHeight : window.innerWidth;
+    const size = document.getElementById('game').offsetWidth;
 
     return {
       width: size * 6,

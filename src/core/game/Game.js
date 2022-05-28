@@ -25,17 +25,19 @@ import Assets from '../assetsManager/AssetManager';
 export default class Game extends Container {
   constructor() {
     super();
+    // Set to use zIndex
+    this.sortableChildren = true;
+
     this._pressedKeys = [];
     this._map = new Map();
     this._timer = new Timer();
     this._endScreen = new EndScreen();
+    this._patron = null;
     this._mines = [];
     this._bushes = [];
   }
 
   async start() {
-    // Set to use zIndex
-    this.sortableChildren = true;
     this._attachKeyboardListeners();
 
     this.addChild(this._timer.timerText);
@@ -74,6 +76,7 @@ export default class Game extends Container {
           bush.row = bushPositions.row;
 
           this.addChild(bush.anim);
+          this._bushes.push(bush);
         }
       }
     }

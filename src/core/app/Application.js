@@ -25,6 +25,21 @@ export default class GameApplication extends Application {
 
     this.setupViewport();
 
+    const resize = () => {
+      viewport.screenWidth = config.view.width;
+      viewport.screenHeight = config.view.height;
+      viewport.worldWidth = config.view.worldWidth;
+      viewport.worldHeight = config.view.worldHeight;
+
+      this.setupViewport();
+    };
+
+    let resizeTimeout;
+    window.onresize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(resize, 10);
+    };
+
     this.loadAssets().then(() => this.initGame());
 
     this.initMiniMapAndScoreBoard();
@@ -85,6 +100,7 @@ export default class GameApplication extends Application {
      */
   setupViewport() {
     document.getElementById('game').appendChild(this.view);
+    this.stage.removeChild(viewport);
     this.stage.addChild(viewport);
     this.viewport = viewport;
   }
