@@ -1,4 +1,5 @@
 const { AnimatedSprite, Loader } = window.PIXI;
+const gsap = window.gsap;
 
 import CONSTANTS from '../../constants/constants';
 
@@ -82,7 +83,7 @@ export default class Entity {
     // Play the animation
     this.anim.gotoAndPlay(0);
 
-    await window.gsap.to(this.anim, {
+    await gsap.to(this.anim, {
       duration: 0.5,
       x: target.x,
       y: target.y,

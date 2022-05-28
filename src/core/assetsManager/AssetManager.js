@@ -1,4 +1,5 @@
 const { Loader, Texture } = window.PIXI;
+const Howl = window.Howl;
 
 const contextImage = require.context('../../assets/images', true, /\.(jpg|png)$/im);
 const contextSound = require.context('../../assets/sounds', true, /\.(wav|mp3)$/im);
@@ -134,7 +135,7 @@ class AssetManager {
   }
 
   _loadSound(id, url) {
-    const sound = new window.Howl({ src: [url] });
+    const sound = new Howl({ src: [url] });
 
     this._sounds[id] = sound;
 

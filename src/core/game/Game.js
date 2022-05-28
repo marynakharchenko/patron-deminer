@@ -1,4 +1,5 @@
 const { Container } = window.PIXI;
+const gsap = window.gsap;
 
 import patronAnimations from '../animations/patronAnimations';
 import mineAnimations from '../animations/mineAnimations';
@@ -233,7 +234,7 @@ export default class Game extends Container {
   }
 
   _removeMine(mine, callback) {
-    window.gsap.to(mine.anim, {
+    gsap.to(mine.anim, {
       alpha: 0.4,
       duration: 0.5,
       repeat: 1,
