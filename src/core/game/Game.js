@@ -8,7 +8,6 @@ import Map from '../entities/maps/Map';
 import Patron from '../entities/characters/Patron';
 import Mine from '../entities/characters/Mine';
 import Bush from '../entities/characters/Bush';
-import ScoreBoard from '../entities/ScoreBoard';
 import Timer from '../entities/Timer';
 import EndScreen from '../entities/EndScreen';
 
@@ -28,7 +27,6 @@ export default class Game extends Container {
     super();
     this._pressedKeys = [];
     this._map = new Map();
-    this._scoreBoard = new ScoreBoard();
     this._timer = new Timer();
     this._endScreen = new EndScreen();
     this._mines = [];
@@ -40,13 +38,6 @@ export default class Game extends Container {
     this.sortableChildren = true;
     this._attachKeyboardListeners();
 
-    // const background = Sprite.from('background');
-    //
-    // background.width = config.game.width;
-    // background.height = config.game.height;
-    //
-    // this.addChild(background);
-    this.addChild(this._scoreBoard.score);
     this.addChild(this._timer.timerText);
     this._createFence();
     this._createPatron();
@@ -221,7 +212,8 @@ export default class Game extends Container {
 
     mine.anim.visible = false;
 
-    this._scoreBoard.update(3); // 3 points
+    document.getElementById('scoreBoardMinesCurrent').innerText
+      = String(Number(document.getElementById('scoreBoardMinesCurrent').innerText) - 1);
     // Play the demine sound
     if (!Assets.sounds.demine.playing()) Assets.sounds.demine.play();
 
@@ -276,8 +268,8 @@ export default class Game extends Container {
   }
 
   _onEnd() {
-    const score = this._scoreBoard.scoreValue;
-    const win = this._mines.length === 0;
+    const score = this._mines.length;
+    const win = score === 0;
     // Play Win or Lose sounds
 
     if (win === true) {

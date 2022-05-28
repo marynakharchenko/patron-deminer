@@ -33,3 +33,7 @@ body {
 .miniMapTile.bush {
   background-color: green;
 }
+
+#scoreBoard {
+  position: absolute;
+}

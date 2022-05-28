@@ -29,7 +29,7 @@ export default class GameApplication extends Application {
 
     this.loadAssets().then(() => this.initGame());
 
-    this.initMiniMap();
+    this.initMiniMapAndScoreBoard();
   }
 
   /**
@@ -51,23 +51,38 @@ export default class GameApplication extends Application {
     this.game.start();
   }
 
-  initMiniMap() {
+  initMiniMapAndScoreBoard() {
     document.getElementById('miniMap').style.right = `${config.view.left}px`;
+    document.getElementById('miniMap').style.top = `${config.view.top}px`;
     document.getElementById('miniMap').style.width = `${config.view.width / 4}px`;
+
+    document.getElementById('scoreBoard').style.left = `${config.view.left}px`;
+    document.getElementById('scoreBoard').style.top = `${config.view.top}px`;
+    document.getElementById('scoreBoard').style.width = `${config.view.width / 4}px`;
+
     let miniMapString = '';
+    let minesNumber = 0;
 
     for (let row = 0; row < LEVEL1.length; row++) {
       for (let col = 0; col < LEVEL1[0].length; col++) {
         const isMine = LEVEL1[row][col] === M;
 
+        if (isMine) {
+          minesNumber += 1;
+        }
+
         miniMapString += `<div id='miniMap-${row}-${col}' class='miniMapTile ${isMine ? E : LEVEL1[row][col]}'></div>`;
       }
     }
+
     document.getElementById('miniMap').innerHTML = miniMapString;
     document.querySelectorAll('.miniMapTile').forEach((e) => {
       e.style.width = `${config.view.width / 4 / LEVEL1[0].length}px`;
       e.style.height = `${config.view.height / 4 / LEVEL1.length}px`;
     });
+
+    document.getElementById('scoreBoardMinesCurrent').innerText = String(minesNumber);
+    document.getElementById('scoreBoardMinesAll').innerText = String(minesNumber);
   }
 
   /**
