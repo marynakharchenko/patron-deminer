@@ -1,9 +1,11 @@
+const { Container, Text, TextStyle } = window.PIXI;
+
 const Texts = {
   YOU_WIN: 'Congratulations you win!',
   YOU_LOOSE: 'Game over, you lose!',
 };
 
-export default class EndScreen extends window.PIXI.Container {
+export default class EndScreen extends Container {
   constructor() {
     super();
     this.visible = false;
@@ -32,18 +34,18 @@ export default class EndScreen extends window.PIXI.Container {
   }
 
   _createText() {
-    const style = new window.PIXI.TextStyle({
+    const style = new TextStyle({
       fontFamily: 'Comic Sans MS, sans-serif',
       fontSize: 30,
       fontWeight: 'bold',
       fill: 'white',
     });
 
-    this.label = new window.PIXI.Text(`${Texts.YOU_WIN}`, style);
+    this.label = new Text(`${Texts.YOU_WIN}`, style);
     this.label.x = 350;
     this.label.y = 300;
 
-    this.score = new window.PIXI.Text(`Score: 0`, style);
+    this.score = new Text(`Score: 0`, style);
     this.score.x = 440;
     this.score.y = 350;
 

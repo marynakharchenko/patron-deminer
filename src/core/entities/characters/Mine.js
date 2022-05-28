@@ -1,3 +1,5 @@
+const { AnimatedSprite } = window.PIXI;
+
 import Entity from './Entity';
 import CONSTANTS from '../../constants/constants';
 
@@ -13,7 +15,7 @@ export default class Mine extends Entity {
    * @param height height
    */
   async init(position, width, height) {
-    this.anim = new window.PIXI.AnimatedSprite(this.animations[`${CONSTANTS.ACTIONS.STAND}${this.direction}`]);
+    this.anim = new AnimatedSprite(this.animations[`${CONSTANTS.ACTIONS.STAND}${this.direction}`]);
     this.anim.position = position;
     // Adjust animation speed
     this.anim.animationSpeed = 0.2;

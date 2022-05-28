@@ -1,3 +1,5 @@
+const { AnimatedSprite } = window.PIXI;
+
 import CONSTANTS from '../../constants/constants';
 import bushAnimations from '../../animations/bushAnimations';
 
@@ -17,7 +19,7 @@ export default class Bush extends Entity {
   async init(position, width, height) {
     const animationName = `${CONSTANTS.ACTIONS.STAND}${Math.floor(Math.random() * Object.keys(bushAnimations).length)}`;
 
-    this.anim = new window.PIXI.AnimatedSprite(this.animations[animationName]);
+    this.anim = new AnimatedSprite(this.animations[animationName]);
     this.anim.position = position;
     // Don't loop it at initial state
     this.anim.loop = false;

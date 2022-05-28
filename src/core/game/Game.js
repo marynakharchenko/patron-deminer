@@ -1,3 +1,5 @@
+const { Container } = window.PIXI;
+
 import patronAnimations from '../animations/patronAnimations';
 import mineAnimations from '../animations/mineAnimations';
 import bushAnimations from '../animations/bushAnimations';
@@ -19,7 +21,7 @@ import Assets from '../assetsManager/AssetManager';
  *
  * @extends {PIXI.Container}
  */
-export default class Game extends window.PIXI.Container {
+export default class Game extends Container {
   constructor() {
     super();
     this._pressedKeys = [];

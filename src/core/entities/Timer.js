@@ -1,3 +1,5 @@
+const { Text, TextStyle } = window.PIXI;
+
 export default class Timer {
   constructor() {
     this._minDuration = 75;
@@ -55,9 +57,9 @@ export default class Timer {
       fontFamily: '"Times New Roman", Times, serif',
       fontWeight: 'bold',
     };
-    const style = new window.PIXI.TextStyle(styleData);
+    const style = new TextStyle(styleData);
 
-    this.timerText = new window.PIXI.Text(`${this.minutesLeft}:${this.secondsLeft}`, style);
+    this.timerText = new Text(`${this.minutesLeft}:${this.secondsLeft}`, style);
 
     // Hardcoded values
     const pos = {

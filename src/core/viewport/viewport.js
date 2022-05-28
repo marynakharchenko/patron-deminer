@@ -1,6 +1,8 @@
+const { Viewport } = window.PIXI;
+
 import config from '../config/config';
 
-const viewport = new window.PIXI.Viewport({
+const viewport = new Viewport({
   screenWidth: config.view.width,
   screenHeight: config.view.height,
   worldWidth: config.view.worldWidth,

@@ -1,6 +1,8 @@
+const { AnimatedSprite, Loader } = window.PIXI;
+
 import CONSTANTS from '../../constants/constants';
 
-const Resources = window.PIXI.Loader.shared.resources;
+const Resources = Loader.shared.resources;
 const DIRECTIONS = [
   CONSTANTS.DIRECTIONS.UP,
   CONSTANTS.DIRECTIONS.DOWN,
@@ -43,7 +45,7 @@ export default class Entity {
    * @param height height
    */
   async init(position, width, height) {
-    this.anim = new window.PIXI.AnimatedSprite(this.animations[`${CONSTANTS.ACTIONS.STAND}${this.direction}`]);
+    this.anim = new AnimatedSprite(this.animations[`${CONSTANTS.ACTIONS.STAND}${this.direction}`]);
     this.anim.position = position;
     // Adjust animation speed
     this.anim.animationSpeed = 0.2;

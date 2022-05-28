@@ -1,3 +1,5 @@
+const { Loader, Texture } = window.PIXI;
+
 const contextImage = require.context('../../assets/images', true, /\.(jpg|png)$/im);
 const contextSound = require.context('../../assets/sounds', true, /\.(wav|mp3)$/im);
 
@@ -68,12 +70,12 @@ class AssetManager {
      */
   loadImages(images = {}, progressCallback = () => {}) {
     for (const [img, url] of Object.entries(images)) {
-      window.PIXI.Loader.shared.add(img, url);
+      Loader.shared.add(img, url);
     }
 
-    window.PIXI.Loader.shared.onProgress.add(() => progressCallback(window.PIXI.Loader.shared.progress));
+    Loader.shared.onProgress.add(() => progressCallback(Loader.shared.progress));
 
-    return new Promise(window.PIXI.Loader.shared.load.bind(window.PIXI.Loader.shared));
+    return new Promise(Loader.shared.load.bind(Loader.shared));
   }
 
   /**
@@ -86,7 +88,7 @@ class AssetManager {
     const prepare = renderer.plugins.prepare;
 
     for (const [img] of Object.entries(images)) {
-      prepare.add(window.PIXI.Texture.from(img));
+      prepare.add(Texture.from(img));
     }
 
     return new Promise(prepare.upload.bind(prepare));
