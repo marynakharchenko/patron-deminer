@@ -1,6 +1,3 @@
-import { Container } from 'pixi.js';
-import gsap from 'gsap';
-
 import patronAnimations from '../animations/patronAnimations';
 import mineAnimations from '../animations/mineAnimations';
 import bushAnimations from '../animations/bushAnimations';
@@ -22,7 +19,7 @@ import Assets from '../assetsManager/AssetManager';
  *
  * @extends {PIXI.Container}
  */
-export default class Game extends Container {
+export default class Game extends window.PIXI.Container {
   constructor() {
     super();
     this._pressedKeys = [];
@@ -234,7 +231,7 @@ export default class Game extends Container {
   }
 
   _removeMine(mine, callback) {
-    gsap.to(mine.anim, {
+    window.gsap.to(mine.anim, {
       alpha: 0.4,
       duration: 0.5,
       repeat: 1,

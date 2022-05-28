@@ -1,5 +1,3 @@
-import { Application } from 'pixi.js';
-
 import config from '../config/config';
 import viewport from '../viewport/viewport';
 import Game from '../game/Game';
@@ -15,7 +13,7 @@ const { E, M } = CONSTANTS.MAP.ENTITIES;
  * Game entry point. Holds the game's viewport
  * All configurations are described in src/config/config.js
  */
-export default class GameApplication extends Application {
+export default class GameApplication extends window.PIXI.Application {
   constructor() {
     super(config.view);
 

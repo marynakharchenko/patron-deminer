@@ -1,9 +1,6 @@
-import { Loader, AnimatedSprite } from 'pixi.js';
-import gsap from 'gsap';
-
 import CONSTANTS from '../../constants/constants';
 
-const Resources = Loader.shared.resources;
+const Resources = window.PIXI.Loader.shared.resources;
 const DIRECTIONS = [
   CONSTANTS.DIRECTIONS.UP,
   CONSTANTS.DIRECTIONS.DOWN,
@@ -46,7 +43,7 @@ export default class Entity {
    * @param height height
    */
   async init(position, width, height) {
-    this.anim = new AnimatedSprite(this.animations[`${CONSTANTS.ACTIONS.STAND}${this.direction}`]);
+    this.anim = new window.PIXI.AnimatedSprite(this.animations[`${CONSTANTS.ACTIONS.STAND}${this.direction}`]);
     this.anim.position = position;
     // Adjust animation speed
     this.anim.animationSpeed = 0.2;
@@ -83,7 +80,7 @@ export default class Entity {
     // Play the animation
     this.anim.gotoAndPlay(0);
 
-    await gsap.to(this.anim, {
+    await window.gsap.to(this.anim, {
       duration: 0.5,
       x: target.x,
       y: target.y,

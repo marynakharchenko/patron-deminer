@@ -25,10 +25,5 @@
     "webpack-dev-server": "3.11.3",
     "webpack-merge": "4.2.2"
   },
-  "dependencies": {
-    "gsap": "3.10.4",
-    "howler": "2.2.3",
-    "pixi-viewport": "4.34.4",
-    "pixi.js": "6.3.2"
-  }
+  "dependencies": {}
 }
