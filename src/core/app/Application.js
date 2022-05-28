@@ -17,12 +17,10 @@ const { E, M } = CONSTANTS.MAP.ENTITIES;
  */
 export default class GameApplication extends Application {
   constructor() {
-    super(config.view);
+    super({ ...config.view, resizeTo: document.getElementById('game') });
 
     this.config = config;
-    this.renderer.view.style.position = 'absolute';
-    this.renderer.view.style.top = `${config.view.top}px`;
-    this.renderer.view.style.left = `${config.view.left}px`;
+
     Assets.renderer = this.renderer;
 
     this.setupViewport();
@@ -52,14 +50,6 @@ export default class GameApplication extends Application {
   }
 
   initMiniMapAndScoreBoard() {
-    document.getElementById('miniMap').style.right = `${config.view.left}px`;
-    document.getElementById('miniMap').style.top = `${config.view.top}px`;
-    document.getElementById('miniMap').style.width = `${config.view.width / 4}px`;
-
-    document.getElementById('scoreBoard').style.left = `${config.view.left}px`;
-    document.getElementById('scoreBoard').style.top = `${config.view.top}px`;
-    document.getElementById('scoreBoard').style.width = `${config.view.width / 4}px`;
-
     let miniMapString = '';
     let minesNumber = 0;
 
@@ -75,10 +65,12 @@ export default class GameApplication extends Application {
       }
     }
 
-    document.getElementById('miniMap').innerHTML = miniMapString;
+    const miniMap = document.getElementById('miniMap');
+    miniMap.innerHTML = miniMapString;
+
     document.querySelectorAll('.miniMapTile').forEach((e) => {
-      e.style.width = `${config.view.width / 4 / LEVEL1[0].length}px`;
-      e.style.height = `${config.view.height / 4 / LEVEL1.length}px`;
+      e.style.width = `${miniMap.offsetWidth / LEVEL1[0].length / miniMap.offsetWidth * 100}%`;
+      e.style.height = `${miniMap.offsetHeight / LEVEL1.length / miniMap.offsetHeight * 100}%`;
     });
 
     document.getElementById('scoreBoardMinesCurrent').innerText = String(minesNumber);
