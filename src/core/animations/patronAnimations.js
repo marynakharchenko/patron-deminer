@@ -38,6 +38,7 @@ export default {
     'walkUp9',
     'walkUp10',
     'walkUp11',
+    'walkUp12',
   ],
   [`${CONSTANTS.ACTIONS.WALK}${CONSTANTS.DIRECTIONS.RIGHT}`]: [
     'walkRight1',
@@ -51,6 +52,8 @@ export default {
     'walkRight9',
     'walkRight10',
     'walkRight11',
+    'walkRight12',
+    'walkRight13',
   ],
   [`${CONSTANTS.ACTIONS.WALK}${CONSTANTS.DIRECTIONS.DOWN}`]: [
     'walkDown1',
@@ -63,7 +66,6 @@ export default {
     'walkDown8',
     'walkDown9',
     'walkDown10',
-    'walkDown11',
   ],
   [`${CONSTANTS.ACTIONS.DEMINE}${CONSTANTS.DIRECTIONS.LEFT}`]: [
     'demineDown1',
@@ -71,6 +73,8 @@ export default {
     'demineDown3',
     'demineDown4',
     'demineDown5',
+    'demineDown6',
+    'demineDown7',
   ],
   [`${CONSTANTS.ACTIONS.DEMINE}${CONSTANTS.DIRECTIONS.DOWN}`]: [
     'demineDown1',
@@ -78,6 +82,8 @@ export default {
     'demineDown3',
     'demineDown4',
     'demineDown5',
+    'demineDown6',
+    'demineDown7',
   ],
   [`${CONSTANTS.ACTIONS.DEMINE}${CONSTANTS.DIRECTIONS.RIGHT}`]: [
     'demineDown1',
@@ -85,6 +91,8 @@ export default {
     'demineDown3',
     'demineDown4',
     'demineDown5',
+    'demineDown6',
+    'demineDown7',
   ],
   [`${CONSTANTS.ACTIONS.DEMINE}${CONSTANTS.DIRECTIONS.UP}`]: [
     'demineDown1',
@@ -92,5 +100,7 @@ export default {
     'demineDown3',
     'demineDown4',
     'demineDown5',
+    'demineDown6',
+    'demineDown7',
   ],
 };
