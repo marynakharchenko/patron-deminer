@@ -1,38 +1,42 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Patron deminer</title>
-<link rel="stylesheet" type="text/css" href="style.css" />
-	<meta charset="utf-8">
-	 <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/6.3.2/browser/pixi.min.js"></script>
+  <head>
+    <title>Patron deminer</title>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/6.3.2/browser/pixi.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pixi-viewport@4.34.4/dist/viewport.min.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
   </head>
   <body>
-  <!--  <div class="start-bg" id="background-start">-->
-<!--      <div>-->
-<!--          <img src="src/assets/images&#45;&#45;landing/home-page-bg.png" class="bg-start-phone" />-->
-<!--      </div>-->
+    <!--  <div class="start-bg" id="background-start">-->
+    <!--      <div>-->
+    <!--          <img src="src/assets/images&#45;&#45;landing/home-page-bg.png" class="bg-start-phone" />-->
+    <!--      </div>-->
 
+    <!--      <div class="logo-and-btn-wrap">-->
+    <!--        <img src="src/assets/images&#45;&#45;landing/logo.png" class="logo-start" />-->
+    <!--        <button class="btn-home btn-start loading"></button>-->
+    <!--        <button class="btn-home btn-about-game  loading"></button>-->
+    <!--		<button class="btn-home btn-donate loading"></button>-->
+    <!--        <button class="btn-home btn-collection loading"></button>-->
+    <!--      </div>-->
 
-<!--      <div class="logo-and-btn-wrap">-->
-<!--        <img src="src/assets/images&#45;&#45;landing/logo.png" class="logo-start" />-->
-<!--        <button class="btn-home btn-start loading"></button>-->
-<!--        <button class="btn-home btn-about-game  loading"></button>-->
-<!--		<button class="btn-home btn-donate loading"></button>-->
-<!--        <button class="btn-home btn-collection loading"></button>-->
-<!--      </div>-->
+    <!--  </div>-->
+    <!--<div class="about-game">-->
 
-<!--  </div>-->
-<!--<div class="about-game">-->
-
-<!--</div>-->
+    <!--</div>-->
     <div id="game">
       <div id="miniMap"></div>
       <div id="scoreBoard">
-        <span id="scoreBoardTimer"><span id="scoreBoardTimerMinutes"></span>:<span id="scoreBoardTimerSeconds"></span></span>
-        <span id="scoreBoardMinesCurrent"></span>/<span id="scoreBoardMinesAll"></span>
+        <span id="scoreBoardTimer"
+          ><span id="scoreBoardTimerMinutes"></span>:<span
+            id="scoreBoardTimerSeconds"
+          ></span
+        ></span>
+        <span id="scoreBoardMinesCurrent"></span>/<span
+          id="scoreBoardMinesAll"
+        ></span>
       </div>
     </div>
   </body>

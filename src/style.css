@@ -2,6 +2,7 @@ body {
   margin: 0;
   overflow: hidden;
   padding: 0;
+  height: 100vh;
 }
 
 #game {
@@ -51,7 +52,7 @@ body {
 }
 
 .miniMapTile.patron {
-    background-color: orange;
+  background-color: orange;
 }
 
 .miniMapTile.bush {
@@ -61,4 +62,62 @@ body {
 #scoreBoard {
   left: 0;
   position: absolute;
+}
+
+.bg-start-phone {
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+  background-color: #008fd0;
+  background-size: cover;
+}
+#background-start {
+  height: 100%;
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  z-index: 1;
+  background-color: #008fd0;
+}
+.logo-and-btn-wrap {
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+.logo-start {
+  width: 250px;
+}
+.btn-home {
+  width: 200px;
+  height: 65px;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  transform: translateY(-1px);
+  transition: all 0.1s;
+  cursor: pointer;
+}
+.btn-start {
+  background-image: url("../src/assets/images--landing/btn-start.png");
+}
+.btn-about-game {
+  background-image: url("../src/assets/images--landing/btn-about-game.png");
+}
+.btn-donate {
+  background-image: url("../src/assets/images--landing/btn-donate.png");
+}
+.btn-collection {
+  background-image: url("../src/assets/images--landing/btn-collections.png");
+}
+.btn-home:hover {
+  transition-duration: 200ms;
+  transition: all 0.4s;
+  transform: scaleX(1.1) scaleY(1.1);
 }
