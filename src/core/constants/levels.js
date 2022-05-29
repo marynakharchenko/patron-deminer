@@ -28,6 +28,9 @@ const LEVEL1 = [
   [E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E, E],
 ];
 
+const LEVEL_SECONDS = 100;
+
 export default {
   LEVEL1,
+  LEVEL_SECONDS,
 };

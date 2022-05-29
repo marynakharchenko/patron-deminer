@@ -40,7 +40,6 @@ export default class Game extends Container {
   async start() {
     this._attachKeyboardListeners();
 
-    this.addChild(this._timer.timerText);
     this._createFence();
     this._createPatron();
     this._createMines();
@@ -226,7 +225,11 @@ export default class Game extends Container {
       if (mine.deminedCount >= 1) {
         document.getElementById(`miniMap-${patronPos.row}-${patronPos.col}`).classList.add(this._map.IDS.MINE);
         this._removeMine(mine, () => {
-          if (this._mines.length === 0) return this._onEnd();
+          if (this._mines.length === 0) {
+            this._timer.stop();
+
+            return this._onEnd();
+          }
 
           return this._mines;
         });
@@ -282,6 +285,6 @@ export default class Game extends Container {
     }
     // Fade out the background sound
     Assets.sounds.background.fade(1, 0, 200);
-    this._endScreen.show(score, win);
+    this._endScreen.show(score, win, this._timer._levelSeconds);
   }
 }

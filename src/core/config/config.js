@@ -1,5 +1,5 @@
 class Config {
-  static get view () {
+  static get view() {
     const size = document.getElementById('game').offsetWidth;
 
     return {
@@ -8,10 +8,11 @@ class Config {
       backgroundColor: 0x779642,
       worldWidth: size * 6,
       worldHeight: size * 6,
+      resizeTo: document.getElementById('game'),
     };
   }
 
-  static get game () {
+  static get game() {
     const size = document.getElementById('game').offsetWidth;
 
     return {

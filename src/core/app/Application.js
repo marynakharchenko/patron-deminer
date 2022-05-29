@@ -17,7 +17,7 @@ const { E, M } = CONSTANTS.MAP.ENTITIES;
  */
 export default class GameApplication extends Application {
   constructor() {
-    super({ ...config.view, resizeTo: document.getElementById('game') });
+    super(config.view);
 
     this.config = config;
 
@@ -35,6 +35,7 @@ export default class GameApplication extends Application {
     };
 
     let resizeTimeout;
+
     window.onresize = () => {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(resize, 10);
@@ -81,6 +82,7 @@ export default class GameApplication extends Application {
     }
 
     const miniMap = document.getElementById('miniMap');
+
     miniMap.innerHTML = miniMapString;
 
     document.querySelectorAll('.miniMapTile').forEach((e) => {
