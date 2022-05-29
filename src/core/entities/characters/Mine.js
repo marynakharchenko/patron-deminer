@@ -1,4 +1,4 @@
-import { AnimatedSprite } from 'pixi.js';
+const { AnimatedSprite } = window.PIXI;
 
 import Entity from './Entity';
 import CONSTANTS from '../../constants/constants';

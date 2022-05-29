@@ -1,9 +1,15 @@
-import { Application } from 'pixi.js';
+const { Application } = window.PIXI;
 
 import config from '../config/config';
 import viewport from '../viewport/viewport';
 import Game from '../game/Game';
 import Assets from '../assetsManager/AssetManager';
+import CONSTANTS from '../constants/constants';
+import LEVELS from '../constants/levels';
+
+const LEVEL1 = LEVELS.LEVEL1;
+
+const { E, M } = CONSTANTS.MAP.ENTITIES;
 
 /**
  * Game entry point. Holds the game's viewport
@@ -14,14 +20,30 @@ export default class GameApplication extends Application {
     super(config.view);
 
     this.config = config;
-    this.renderer.view.style.position = 'absolute';
-    this.renderer.view.style.top = `${config.view.top}px`;
-    this.renderer.view.style.left = `${config.view.left}px`;
+
     Assets.renderer = this.renderer;
 
     this.setupViewport();
 
+    const resize = () => {
+      viewport.screenWidth = config.view.width;
+      viewport.screenHeight = config.view.height;
+      viewport.worldWidth = config.view.worldWidth;
+      viewport.worldHeight = config.view.worldHeight;
+
+      this.setupViewport();
+    };
+
+    let resizeTimeout;
+
+    window.onresize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(resize, 10);
+    };
+
     this.loadAssets().then(() => this.initGame());
+
+    this.initMiniMapAndScoreBoard();
   }
 
   /**
@@ -43,6 +65,35 @@ export default class GameApplication extends Application {
     this.game.start();
   }
 
+  initMiniMapAndScoreBoard() {
+    let miniMapString = '';
+    let minesNumber = 0;
+
+    for (let row = 0; row < LEVEL1.length; row++) {
+      for (let col = 0; col < LEVEL1[0].length; col++) {
+        const isMine = LEVEL1[row][col] === M;
+
+        if (isMine) {
+          minesNumber += 1;
+        }
+
+        miniMapString += `<div id='miniMap-${row}-${col}' class='miniMapTile ${isMine ? E : LEVEL1[row][col]}'></div>`;
+      }
+    }
+
+    const miniMap = document.getElementById('miniMap');
+
+    miniMap.innerHTML = miniMapString;
+
+    document.querySelectorAll('.miniMapTile').forEach((e) => {
+      e.style.width = `${miniMap.offsetWidth / LEVEL1[0].length / miniMap.offsetWidth * 100}%`;
+      e.style.height = `${miniMap.offsetHeight / LEVEL1.length / miniMap.offsetHeight * 100}%`;
+    });
+
+    document.getElementById('scoreBoardMinesCurrent').innerText = String(minesNumber);
+    document.getElementById('scoreBoardMinesAll').innerText = String(minesNumber);
+  }
+
   /**
      * Initialize the game world viewport.
      * Supports handly functions like dragging and panning on the main game stage
@@ -50,7 +101,8 @@ export default class GameApplication extends Application {
      * @return {PIXI.Application}
      */
   setupViewport() {
-    document.body.appendChild(this.view);
+    document.getElementById('game').appendChild(this.view);
+    this.stage.removeChild(viewport);
     this.stage.addChild(viewport);
     this.viewport = viewport;
   }

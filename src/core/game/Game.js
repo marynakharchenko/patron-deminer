@@ -1,14 +1,13 @@
-import { Container } from 'pixi.js';
-import gsap from 'gsap';
+const { Container } = window.PIXI;
+const gsap = window.gsap;
 
 import patronAnimations from '../animations/patronAnimations';
 import mineAnimations from '../animations/mineAnimations';
 import bushAnimations from '../animations/bushAnimations';
-import Map from '../entities/Map';
+import Map from '../entities/maps/Map';
 import Patron from '../entities/characters/Patron';
 import Mine from '../entities/characters/Mine';
 import Bush from '../entities/characters/Bush';
-import ScoreBoard from '../entities/ScoreBoard';
 import Timer from '../entities/Timer';
 import EndScreen from '../entities/EndScreen';
 
@@ -26,28 +25,21 @@ import Assets from '../assetsManager/AssetManager';
 export default class Game extends Container {
   constructor() {
     super();
+    // Set to use zIndex
+    this.sortableChildren = true;
+
     this._pressedKeys = [];
     this._map = new Map();
-    this._scoreBoard = new ScoreBoard();
     this._timer = new Timer();
     this._endScreen = new EndScreen();
+    this._patron = null;
     this._mines = [];
     this._bushes = [];
   }
 
   async start() {
-    // Set to use zIndex
-    this.sortableChildren = true;
     this._attachKeyboardListeners();
 
-    // const background = Sprite.from('background');
-    //
-    // background.width = config.game.width;
-    // background.height = config.game.height;
-    //
-    // this.addChild(background);
-    this.addChild(this._scoreBoard.score);
-    this.addChild(this._timer.timerText);
     this._createFence();
     this._createPatron();
     this._createMines();
@@ -83,6 +75,7 @@ export default class Game extends Container {
           bush.row = bushPositions.row;
 
           this.addChild(bush.anim);
+          this._bushes.push(bush);
         }
       }
     }
@@ -190,6 +183,10 @@ export default class Game extends Container {
     const targetPos = this._map.coordsFromPos(newPos);
 
     await this._patron.move(targetPos, direction);
+    document.getElementById(`miniMap-${oldPos.row}-${oldPos.col}`).classList.remove(this._map.IDS.PATRON);
+    document.getElementById(`miniMap-${oldPos.row}-${oldPos.col}`).classList.add(this._map.IDS.EMPTY);
+    document.getElementById(`miniMap-${newPos.row}-${newPos.col}`).classList.remove(this._map.IDS.EMPTY);
+    document.getElementById(`miniMap-${newPos.row}-${newPos.col}`).classList.add(this._map.IDS.PATRON);
 
     this._map.setTileOnMap(oldPos, this._map.IDS.EMPTY);
     this._map.setTileOnMap(newPos, this._map.IDS.PATRON);
@@ -199,7 +196,7 @@ export default class Game extends Container {
 
   _patronDemine() {
     // const patronDirection = this._patron.direction;
-    // const patronPos = this._map.posById(this._map.IDS.PATRON)[0];
+    const patronPos = this._map.posById(this._map.IDS.PATRON)[0];
     const targetPos = this._map.posById(this._map.IDS.PATRON)[0]; // this._map.getDestination(patronPos, patronDirection);
 
     const hitMine = this._map.getTileStart(targetPos) === this._map.IDS.MINE;
@@ -217,7 +214,8 @@ export default class Game extends Container {
 
     mine.anim.visible = false;
 
-    this._scoreBoard.update(3); // 3 points
+    document.getElementById('scoreBoardMinesCurrent').innerText
+      = String(Number(document.getElementById('scoreBoardMinesCurrent').innerText) - 1);
     // Play the demine sound
     if (!Assets.sounds.demine.playing()) Assets.sounds.demine.play();
 
@@ -225,8 +223,13 @@ export default class Game extends Container {
       mine.deminedCount++;
       mine.anim.visible = true;
       if (mine.deminedCount >= 1) {
+        document.getElementById(`miniMap-${patronPos.row}-${patronPos.col}`).classList.add(this._map.IDS.MINE);
         this._removeMine(mine, () => {
-          if (this._mines.length === 0) return this._onEnd();
+          if (this._mines.length === 0) {
+            this._timer.stop();
+
+            return this._onEnd();
+          }
 
           return this._mines;
         });
@@ -271,8 +274,8 @@ export default class Game extends Container {
   }
 
   _onEnd() {
-    const score = this._scoreBoard.scoreValue;
-    const win = this._mines.length === 0;
+    const score = this._mines.length;
+    const win = score === 0;
     // Play Win or Lose sounds
 
     if (win === true) {
@@ -282,6 +285,6 @@ export default class Game extends Container {
     }
     // Fade out the background sound
     Assets.sounds.background.fade(1, 0, 200);
-    this._endScreen.show(score, win);
+    this._endScreen.show(score, win, this._timer._levelSeconds);
   }
 }

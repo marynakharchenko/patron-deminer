@@ -1,11 +1,10 @@
-import { Text, TextStyle } from 'pixi.js';
+import LEVELS from '../constants/levels';
+
+const LEVEL_SECONDS = LEVELS.LEVEL_SECONDS;
 
 export default class Timer {
   constructor() {
-    this._minDuration = 75;
-    this._maxDuration = 145;
-    // Get random level duration
-    this._levelSeconds = this._getRandomInt(this._minDuration, this._maxDuration);
+    this._levelSeconds = LEVEL_SECONDS;
     this._createText();
   }
 
@@ -30,8 +29,10 @@ export default class Timer {
         return this.stop();
       }
 
-      this._levelSeconds--;
-      this.timerText.text = `${this.minutesLeft}:${this.secondsLeft}`;
+      this._levelSeconds -= 1;
+
+      document.getElementById('scoreBoardTimerMinutes').innerText = String(this.minutesLeft);
+      document.getElementById('scoreBoardTimerSeconds').innerText = String(this.secondsLeft);
 
       return this._levelSeconds;
     }, 1000);
@@ -45,33 +46,12 @@ export default class Timer {
   restart() {
     // Restart the timer
     this.stop();
-    this._levelSeconds = this._getRandomInt(this._minDuration, this.__maxDuration);
+    this._levelSeconds = LEVEL_SECONDS;
     this.start();
   }
 
   _createText() {
-    // Styles to be used for the font
-    const styleData = {
-      fill: '#a21631',
-      fontSize: 20,
-      fontFamily: '"Times New Roman", Times, serif',
-      fontWeight: 'bold',
-    };
-    const style = new TextStyle(styleData);
-
-    this.timerText = new Text(`${this.minutesLeft}:${this.secondsLeft}`, style);
-
-    // Hardcoded values
-    const pos = {
-      x: 42,
-      y: 38,
-    };
-
-    this.timerText.x = pos.x;
-    this.timerText.y = pos.y;
-  }
-
-  _getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
+    document.getElementById('scoreBoardTimerMinutes').innerText = String(this.minutesLeft);
+    document.getElementById('scoreBoardTimerSeconds').innerText = String(this.secondsLeft);
   }
 }

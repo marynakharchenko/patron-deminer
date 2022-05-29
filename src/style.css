@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+#game {
+  position: absolute;
+}
+
+@media (orientation: landscape) {
+  #game {
+    width: 100vh;
+    height: 100vh;
+    left: calc((100vw - 100vh) / 2);
+  }
+}
+
+@media (orientation: portrait) {
+  #game {
+    width: 100vw;
+    height: 100vw;
+    top: calc((100vh - 100vw) / 2);
+  }
+}
+
+#miniMap {
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 25%;
+  height: 25%;
+}
+
+.miniMapTile.empty {
+  background-color: gray;
+}
+
+.miniMapTile.wall {
+  background-color: white;
+}
+
+.miniMapTile.teleport {
+  background-color: blue;
+}
+
+.miniMapTile.mine {
+  background-color: red;
+}
+
+.miniMapTile.patron {
+    background-color: orange;
+}
+
+.miniMapTile.bush {
+  background-color: green;
+}
+
+#scoreBoard {
+  left: 0;
+  position: absolute;
+}

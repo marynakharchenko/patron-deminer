@@ -1,4 +1,5 @@
-import { AnimatedSprite } from 'pixi.js';
+const { AnimatedSprite } = window.PIXI;
+
 import CONSTANTS from '../../constants/constants';
 import bushAnimations from '../../animations/bushAnimations';
 
