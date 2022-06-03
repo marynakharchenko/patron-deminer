@@ -11,7 +11,7 @@ const DIRECTIONS = [
   CONSTANTS.DIRECTIONS.RIGHT,
 ];
 
-const ANIMATION_DURATION_DEFAULT = 0.078;
+const ANIMATION_DURATION_DEFAULT = 0.038;
 
 export default class Entity {
   constructor(animations) {
@@ -51,7 +51,9 @@ export default class Entity {
     this.anim = new AnimatedSprite(this.animations[`${CONSTANTS.ACTIONS.STAND}${this.direction}`]);
     this.anim.position = position;
     // Adjust animation speed
-    this.anim.animationSpeed = 0.2;
+    const animationNumber = this.animations[`${CONSTANTS.ACTIONS.WALK}${this.direction}`].length;
+
+    this.anim.animationSpeed = ANIMATION_DURATION_DEFAULT * animationNumber;
     // Don't loop it at initial state
     this.anim.loop = false;
     // Set with and height

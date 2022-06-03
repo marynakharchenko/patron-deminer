@@ -7,36 +7,101 @@
     <script src="https://cdn.jsdelivr.net/npm/pixi-viewport@4.34.4/dist/viewport.min.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap');
+     </style>
   </head>
   <body>
-    <!--  <div class="start-bg" id="background-start">-->
-    <!--      <div>-->
-    <!--          <img src="src/assets/images&#45;&#45;landing/home-page-bg.png" class="bg-start-phone" />-->
-    <!--      </div>-->
+      <div class="start-bg" id="background-start" style="display: none">
+          <div>
+              <img src="src/assets/images--landing/home-page-bg.png" class="bg-start-phone" />
+          </div>
+          <div class="logo-and-btn-wrap">
+            <img src="src/assets/images--landing/logo_1.png" class="logo-start" />
+            <button class="btn-home btn-start loading"></button>
+            <button class="btn-home btn-about-game  loading"></button>
+    		<button class="btn-home btn-donate loading"></button>
+            <button class="btn-home btn-collection loading"></button>
+          </div>
+      </div>
+       <div class="collections">
+           <div class="collections-wrap">
+ <div class="collections-bg">
+      <img src="src/assets/images--landing/btn-collection.png" class="btn-collection-wrap" />
+                <div >
+                    <p >
+Знайдено 5 із 25 об’єктів                    </p>
+                </div>
+     <div class="mines-wrap">
+         <div class="mine-item">
+             <div class="mine mine-1"></div>
+         <div>
+             <p>МОН-200</p>
+             <span>i</span>
+         </div>
+         </div>
 
-    <!--      <div class="logo-and-btn-wrap">-->
-    <!--        <img src="src/assets/images&#45;&#45;landing/logo.png" class="logo-start" />-->
-    <!--        <button class="btn-home btn-start loading"></button>-->
-    <!--        <button class="btn-home btn-about-game  loading"></button>-->
-    <!--		<button class="btn-home btn-donate loading"></button>-->
-    <!--        <button class="btn-home btn-collection loading"></button>-->
-    <!--      </div>-->
+     </div>
+        </div>
+           </div>
+        </div>
+    </div>
+   <div style="display: none">
+    <div class="about-game">
+        <div id="about">
+            <img src="src/assets/images--landing/logo-about-game.svg" class="logo-about-game" />
+        <div>
+        <div class="aboutTextWrap">
+             <img src="src/assets/images--landing/mine-icon.png" class="mine-wrap" />
+                <div class="about-game-text-wrap">
+                    <p class="about-game-text">
+                    Не дай рашистам та техніці окупантів пройти поряд: бойовий качур допоможе тобі в цьому. Тебе очікує 5 різних локацій для знешкодження загарбників, та фінішний рівень в бункері, де твоя ціль - путін.
+                    </p>
+                </div>
+        </div>
+    </div>
+    <div class="rulesWrap">
+        <img src="src/assets/images--landing/btn-how-to-play.png" class="how-to-play-wrap" />
+        <div class="about-game-text-wrap">
+            <p class="about-game-text">
+                Не дай рашистам та техніці окупантів пройти поряд: бойовий качур допоможе тобі в цьому. Тебе очікує 5 різних локацій для знешкодження загарбників, та фінішний рівень в бункері, де твоя ціль - путін.
+            </p>
+        </div>
+    </div>
+    <div class="rulesWrap">
+        <img src="src/assets/images--landing/btn-how-to-play.png" class="how-to-play-wrap" />
+        <div class="about-game-text-wrap">
+            <p class="about-game-text">
+                Не дай рашистам та техніці окупантів пройти поряд: бойовий качур допоможе тобі в цьому. Тебе очікує 5 різних локацій для знешкодження загарбників, та фінішний рівень в бункері, де твоя ціль - путін.
+             </p>
+        </div>
+    </div>
+    <p class="disclaimer">
+          <b>Дисклеймер</b><br />
+          Даний ресурс носить розважальний характер. Всі персонажі та описані події є вигаданими, будь-який збіг з реальними людьми або подіями, є
+          випадковістю.<br />
+          Жодний качур не постраждав під час створення гри.
+    </p>
+ </div>
 
-    <!--  </div>-->
-    <!--<div class="about-game">-->
 
-    <!--</div>-->
-    <div id="game">
+    <div id="game" style="display: none">
       <div id="miniMap"></div>
       <div id="scoreBoard">
-        <span id="scoreBoardTimer"
-          ><span id="scoreBoardTimerMinutes"></span>:<span
-            id="scoreBoardTimerSeconds"
-          ></span
-        ></span>
-        <span id="scoreBoardMinesCurrent"></span>/<span
-          id="scoreBoardMinesAll"
-        ></span>
+        <span id="scoreBoardTimer">
+         <span class="timerIcon"></span>
+            <span class="timer">
+              <span id="scoreBoardTimerMinutes"></span><span class="minutesSecondsСolon">:</span><span id="scoreBoardTimerSeconds"></span>
+             </span>
+        </span>
+        <span class="scoreMines">
+           <span class="minesIcon"></span>
+          <span class="mines">
+          <span id="scoreBoardMinesCurrent"></span><span class="scoreMinesСolon"> /</span>
+        <span id="scoreBoardMinesAll"></span>
+          </span>
+        </span>
+
       </div>
     </div>
   </body>
