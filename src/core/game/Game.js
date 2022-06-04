@@ -5,10 +5,10 @@ import mineAnimations from '../animations/mineAnimations';
 import flagAnimations from '../animations/flagAnimations';
 import bushAnimations from '../animations/bushAnimations';
 import Map from '../entities/maps/Map';
-import Patron from '../entities/characters/Patron';
-import Mine from '../entities/characters/Mine';
-import Bush from '../entities/characters/Bush';
-import Flag from '../entities/characters/Flag';
+import Patron from '../entities/models/Patron';
+import Mine from '../entities/models/Mine';
+import Bush from '../entities/models/Bush';
+import Flag from '../entities/models/Flag';
 import Timer from '../entities/Timer';
 import EndScreen from '../entities/EndScreen';
 
