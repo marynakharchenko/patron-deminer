@@ -11,8 +11,6 @@ const DIRECTIONS = [
   CONSTANTS.DIRECTIONS.RIGHT,
 ];
 
-const ANIMATION_DURATION_DEFAULT = 0.038;
-
 export default class Entity {
   constructor(animations) {
     this.animations = [];
@@ -53,7 +51,7 @@ export default class Entity {
     // Adjust animation speed
     const animationNumber = this.animations[`${CONSTANTS.ACTIONS.WALK}${this.direction}`].length;
 
-    this.anim.animationSpeed = ANIMATION_DURATION_DEFAULT * animationNumber;
+    this.anim.animationSpeed = CONSTANTS.ANIMATION_DURATION_DEFAULT * animationNumber;
     // Don't loop it at initial state
     this.anim.loop = false;
     // Set with and height
@@ -90,7 +88,7 @@ export default class Entity {
     const animationNumber = this.animations[`${CONSTANTS.ACTIONS.WALK}${direction}`].length;
 
     await gsap.to(this.anim, {
-      duration: animationNumber * ANIMATION_DURATION_DEFAULT,
+      duration: animationNumber * CONSTANTS.ANIMATION_DURATION_DEFAULT,
       x: target.x,
       y: target.y,
       ease: 'none',

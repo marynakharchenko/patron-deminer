@@ -71,13 +71,13 @@ export default class GameApplication extends Application {
 
     for (let row = 0; row < LEVEL1.length; row++) {
       for (let col = 0; col < LEVEL1[0].length; col++) {
-        const isMine = LEVEL1[row][col] === M;
+        const isMine = LEVEL1[row][col].includes(M);
 
         if (isMine) {
           minesNumber += 1;
         }
 
-        miniMapString += `<div id='miniMap-${row}-${col}' class='miniMapTile ${isMine ? E : LEVEL1[row][col]}'></div>`;
+        miniMapString += `<div id='miniMap-${row}-${col}' class='miniMapTile ${isMine ? E : LEVEL1[row][col][0]}'></div>`;
       }
     }
 

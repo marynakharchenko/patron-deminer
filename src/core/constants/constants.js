@@ -6,7 +6,6 @@ export default {
     DOWN: 'Down',
   },
   ACTIONS: {
-    DISAPPEAR: 'disappear',
     STAND: 'stand',
     WALK: 'walk',
     DEMINE: 'demine',
@@ -18,7 +17,9 @@ export default {
       T: 'teleport', // Teleport - puddle or lake
       P: 'patron', // Patron
       M: 'mine', // Mine
+      F: 'flag', // Flag
       B: 'bush', // Bush
     },
   },
+  ANIMATION_DURATION_DEFAULT: 0.038,
 };

@@ -2,7 +2,7 @@ import config from '../../config/config';
 import CONSTANTS from '../../constants/constants';
 import LEVELS from '../../constants/levels';
 
-const { E, W, T, P, M, B } = CONSTANTS.MAP.ENTITIES;
+const { E, W, T, P, M, F, B } = CONSTANTS.MAP.ENTITIES;
 
 const LEVEL1 = LEVELS.LEVEL1;
 
@@ -23,21 +23,12 @@ export default class Map {
       TELEPORT: T,
       PATRON: P,
       MINE: M,
+      FLAG: F,
       BUSH: B,
     };
 
     this._mapStart = JSON.parse(JSON.stringify(LEVEL1));
     this._map = LEVEL1;
-  }
-
-  /**
-     * returns the tileId on a given position
-     * @returns int
-     * @param {int} pos.row
-     * @param {int} pos.col
-     */
-  getTile({ row, col }) {
-    return this._map[row][col];
   }
 
   /**
@@ -84,8 +75,20 @@ export default class Map {
      * @param {int} col
      * @param {int} id
      */
-  setTileOnMap({ row, col }, id) {
-    this._map[row][col] = id;
+  addModelToTileOnMap({ row, col }, id) {
+    this._map[row][col].push(id);
+  }
+
+  /**
+     * sets tileId to a given position in the map
+     * @param {int} row
+     * @param {int} col
+     * @param {int} id
+     */
+  removeModelFromTileOnMap({ row, col }, id) {
+    const index = this._map[row][col].indexOf(id);
+
+    if (index !== -1) this._map[row][col].splice(index, 1);
   }
 
   posById(id) {
@@ -93,7 +96,9 @@ export default class Map {
 
     for (let row = 0; row < this._map.length; row++) {
       for (let col = 0; col < this._map[row].length; col++) {
-        if (this._map[row][col] === id) result.push({ row, col });
+        if (this._map[row][col].includes(id)) {
+          result.push({ row, col });
+        }
       }
     }
 
@@ -119,6 +124,6 @@ export default class Map {
   }
 
   collide({ row, col }) {
-    return ![E, M].includes(this._map[row][col]);
+    return !this._map[row][col].includes(E) && !this._map[row][col].includes(M);
   }
 }
