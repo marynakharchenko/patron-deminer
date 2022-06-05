@@ -49,7 +49,7 @@ body {
   background-color: blue;
 }
 
-.miniMapTile.mine {
+.miniMapTile.flag {
   background-color: red;
 }
 

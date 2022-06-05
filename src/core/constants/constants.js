@@ -9,6 +9,7 @@ export default {
     STAND: 'stand',
     WALK: 'walk',
     DEMINE: 'demine',
+    MINE: 'mine',
   },
   MAP: {
     ENTITIES: {
@@ -19,6 +20,7 @@ export default {
       M: 'mine', // Mine
       F: 'flag', // Flag
       B: 'bush', // Bush
+      U: 'bear', // Bear (Ursus)
     },
   },
   ANIMATION_DURATION_DEFAULT: 0.038,

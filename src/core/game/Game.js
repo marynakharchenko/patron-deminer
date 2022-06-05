@@ -1,11 +1,13 @@
 const { Container } = window.PIXI;
 
 import patronAnimations from '../animations/patronAnimations';
+import bearAnimations from '../animations/bearAnimations';
 import mineAnimations from '../animations/mineAnimations';
 import flagAnimations from '../animations/flagAnimations';
 import bushAnimations from '../animations/bushAnimations';
 import Map from '../entities/maps/Map';
 import Patron from '../entities/models/Patron';
+import Bear from '../entities/models/Bear';
 import Mine from '../entities/models/Mine';
 import Bush from '../entities/models/Bush';
 import Flag from '../entities/models/Flag';
@@ -16,6 +18,8 @@ import config from '../config/config';
 import viewport from '../viewport/viewport';
 // Import the sounds
 import Assets from '../assetsManager/AssetManager';
+
+import CONSTANTS from '../constants/levels';
 
 /**
  * Main game stage, manages scenes/levels.
@@ -33,8 +37,12 @@ export default class Game extends Container {
     this._timer = new Timer();
     this._endScreen = new EndScreen();
     this._patron = null;
+    this._bear = null;
     this._mines = [];
+    this._flags = [];
     this._bushes = [];
+
+    this._bearIntervalId = null;
   }
 
   async start() {
@@ -42,6 +50,7 @@ export default class Game extends Container {
 
     this._createFence();
     this._createPatron();
+    this._createBear();
     this._createMines();
     this._createBushes();
     this.addChild(this._endScreen);
@@ -93,6 +102,82 @@ export default class Game extends Container {
     viewport.follow(this._patron.anim);
 
     this.addChild(this._patron.anim);
+  }
+
+  _createBear() {
+    const bearMapPos = this._map.posById(this._map.IDS.BEAR)[0];
+    const bearCoords = this._map.coordsFromPos(bearMapPos);
+
+    this._bear = new Bear(bearAnimations);
+
+    bearCoords.x = bearCoords.x - (config.game.tileWidth / 2);
+    bearCoords.y = bearCoords.y - (config.game.tileHeight / 2);
+
+    this._bear.init(bearCoords, config.game.tileWidth, config.game.tileHeight);
+
+    this.addChild(this._bear.anim);
+
+    this._bearMove();
+  }
+
+  _bearMove() {
+    let counter = 0;
+
+    this._bearIntervalId = setInterval(async () => {
+      const oldPos = this._map.posById(this._map.IDS.BEAR)[0];
+
+      const hitMine = this._map.getTileStart(oldPos).includes(this._map.IDS.MINE);
+
+      if (hitMine) {
+        const mine = this._mines.find((s) => s.row === oldPos.row && s.col === oldPos.col);
+
+        if (mine.deminedCount >= 1) {
+          return this._bearMine(mine, oldPos);
+        }
+      }
+
+      const bearSteps = CONSTANTS.BEAR_STEPS[counter];
+
+      const newPos = { row: bearSteps.row, col: bearSteps.col };
+
+      const targetPos = this._map.coordsFromPos(newPos);
+
+      targetPos.x = targetPos.x - (config.game.tileWidth / 2);
+      targetPos.y = targetPos.y - (config.game.tileHeight / 2);
+
+      await this._bear.move(targetPos, bearSteps.direction);
+
+      this._map.removeModelFromTileOnMap(oldPos, this._map.IDS.BEAR);
+      this._map.addModelToTileOnMap(newPos, this._map.IDS.BEAR);
+      counter++;
+
+      return counter;
+    }, CONSTANTS.BEAR_SPEED * 1000);
+  }
+
+  _bearMine(mine, bearPos) {
+    mine.deminedCount--;
+    if (mine.deminedCount < 1) {
+      document.getElementById('scoreBoardMinesCurrent').innerText
+        = String(Number(document.getElementById('scoreBoardMinesCurrent').innerText) + 1);
+
+      document.getElementById(`miniMap-${bearPos.row}-${bearPos.col}`).classList.remove(this._map.IDS.FLAG);
+
+      // bear on mine
+      this._map.removeModelFromTileOnMap({ row: mine.row, col: mine.col }, this._map.IDS.FLAG);
+
+      this._flags = this._flags.filter((flag) => {
+        const isCurrentFlag = flag.row === mine.row && flag.col === mine.col;
+
+        if (isCurrentFlag) {
+          this.removeChild(flag.anim);
+        }
+
+        return !isCurrentFlag;
+      });
+    }
+
+    return this._bear.mine();
   }
 
   _createMines() {
@@ -195,15 +280,13 @@ export default class Game extends Container {
   }
 
   _patronDemine() {
-    // const patronDirection = this._patron.direction;
     const patronPos = this._map.posById(this._map.IDS.PATRON)[0];
-    const targetPos = this._map.posById(this._map.IDS.PATRON)[0]; // this._map.getDestination(patronPos, patronDirection);
 
-    const hitMine = this._map.getTileStart(targetPos).includes(this._map.IDS.MINE);
+    const hitMine = this._map.getTileStart(patronPos).includes(this._map.IDS.MINE);
 
     if (!hitMine) return this._patron.standStill();
 
-    const mine = this._mines.find((s) => s.row === targetPos.row && s.col === targetPos.col);
+    const mine = this._mines.find((s) => s.row === patronPos.row && s.col === patronPos.col);
 
     if (mine.deminedCount >= 1) return this._patron.standStill();
 
@@ -215,11 +298,7 @@ export default class Game extends Container {
     this._patron.demine(() => {
       mine.deminedCount++;
       if (mine.deminedCount >= 1) {
-        document.getElementById(`miniMap-${patronPos.row}-${patronPos.col}`).classList.add(this._map.IDS.MINE);
-
-        const mineIndex = this._mines.indexOf(mine);
-
-        this._mines.splice(mineIndex, 1);
+        document.getElementById(`miniMap-${patronPos.row}-${patronPos.col}`).classList.add(this._map.IDS.FLAG);
 
         // patron on mine
         this._map.addModelToTileOnMap({ row: mine.row, col: mine.col }, this._map.IDS.FLAG);
@@ -235,22 +314,25 @@ export default class Game extends Container {
         flag.row = patronPos.row;
 
         this.addChild(flag.anim);
+        this._flags.push(flag);
 
-        if (this._mines.length === 0) {
+        if (this._mines.length === this._flags.length) {
           this._timer.stop();
 
           return this._onEnd();
         }
       }
 
-      return this._mines;
+      return this._flags;
     });
 
     return mine.deminedCount;
   }
 
   _onEnd() {
-    const score = this._mines.length;
+    clearInterval(this._bearIntervalId);
+
+    const score = this._flags.length;
     const win = score === 0;
     // Play Win or Lose sounds
 

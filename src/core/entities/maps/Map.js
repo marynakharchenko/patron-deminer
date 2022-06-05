@@ -2,7 +2,7 @@ import config from '../../config/config';
 import CONSTANTS from '../../constants/constants';
 import LEVELS from '../../constants/levels';
 
-const { E, W, T, P, M, F, B } = CONSTANTS.MAP.ENTITIES;
+const { E, W, T, P, M, F, B, U } = CONSTANTS.MAP.ENTITIES;
 
 const LEVEL1 = LEVELS.LEVEL1;
 
@@ -25,6 +25,7 @@ export default class Map {
       MINE: M,
       FLAG: F,
       BUSH: B,
+      BEAR: U,
     };
 
     this._mapStart = JSON.parse(JSON.stringify(LEVEL1));
@@ -88,7 +89,12 @@ export default class Map {
   removeModelFromTileOnMap({ row, col }, id) {
     const index = this._map[row][col].indexOf(id);
 
-    if (index !== -1) this._map[row][col].splice(index, 1);
+    if (index !== -1) {
+      this._map[row][col].splice(index, 1);
+    }
+    if (this._map[row][col].length === 0) {
+      this._map[row][col].push(E);
+    }
   }
 
   posById(id) {

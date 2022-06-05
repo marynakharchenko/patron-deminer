@@ -4,7 +4,7 @@ import CONSTANTS from '../../constants/constants';
 
 import Entity from './Entity';
 
-export default class Bush extends Entity {
+export default class Flag extends Entity {
   constructor(animations) {
     super(animations);
   }
