@@ -67,7 +67,7 @@ export default {
     'walkDown9',
     'walkDown10',
   ],
-  [CONSTANTS.ACTIONS.DEMINE]: [
+  [CONSTANTS.ACTIONS.MINE]: [
     'demineDown1',
     'demineDown2',
     'demineDown3',

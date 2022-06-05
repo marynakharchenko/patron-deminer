@@ -6,10 +6,10 @@ export default {
     DOWN: 'Down',
   },
   ACTIONS: {
-    DISAPPEAR: 'disappear',
     STAND: 'stand',
     WALK: 'walk',
     DEMINE: 'demine',
+    MINE: 'mine',
   },
   MAP: {
     ENTITIES: {
@@ -18,7 +18,10 @@ export default {
       T: 'teleport', // Teleport - puddle or lake
       P: 'patron', // Patron
       M: 'mine', // Mine
+      F: 'flag', // Flag
       B: 'bush', // Bush
+      U: 'bear', // Bear (Ursus)
     },
   },
+  ANIMATION_DURATION_DEFAULT: 0.038,
 };

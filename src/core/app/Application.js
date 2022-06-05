@@ -9,7 +9,7 @@ import LEVELS from '../constants/levels';
 
 const LEVEL1 = LEVELS.LEVEL1;
 
-const { E, M } = CONSTANTS.MAP.ENTITIES;
+const { E, M, U } = CONSTANTS.MAP.ENTITIES;
 
 /**
  * Game entry point. Holds the game's viewport
@@ -71,13 +71,15 @@ export default class GameApplication extends Application {
 
     for (let row = 0; row < LEVEL1.length; row++) {
       for (let col = 0; col < LEVEL1[0].length; col++) {
-        const isMine = LEVEL1[row][col] === M;
+        const isMine = LEVEL1[row][col].includes(M);
+        const isBear = LEVEL1[row][col].includes(U);
 
         if (isMine) {
           minesNumber += 1;
         }
 
-        miniMapString += `<div id='miniMap-${row}-${col}' class='miniMapTile ${isMine ? E : LEVEL1[row][col]}'></div>`;
+        miniMapString
+          += `<div id='miniMap-${row}-${col}' class='miniMapTile ${isMine || isBear ? E : LEVEL1[row][col][0]}'></div>`;
       }
     }
 

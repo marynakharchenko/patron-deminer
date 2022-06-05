@@ -1,8 +1,10 @@
 body {
   margin: 0;
-  overflow: hidden;
+  /*overflow: hidden;*/
   padding: 0;
   height: 100vh;
+  font-family: 'Comfortaa', 'Tahoma', 'Arial Black', sans-serif;
+
 }
 
 #game {
@@ -36,7 +38,7 @@ body {
 }
 
 .miniMapTile.empty {
-  background-color: gray;
+ background-color: rgba(0, 0, 0, 0.56);
 }
 
 .miniMapTile.wall {
@@ -47,7 +49,7 @@ body {
   background-color: blue;
 }
 
-.miniMapTile.mine {
+.miniMapTile.flag {
   background-color: red;
 }
 
@@ -60,7 +62,8 @@ body {
 }
 
 #scoreBoard {
-  left: 0;
+  left: 10px;
+  top: 10px;
   position: absolute;
 }
 
@@ -120,4 +123,206 @@ body {
   transition-duration: 200ms;
   transition: all 0.4s;
   transform: scaleX(1.1) scaleY(1.1);
+}
+
+.timer{
+  position: absolute;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.56);
+  padding: 5px 10px 5px 20px;
+  top: 15px;
+  left: 35px;
+}
+.mines{
+  position: absolute;
+  border-radius: 4px;
+  background-color: rgba(0, 0, 0, 0.56);
+  padding: 5px 10px 5px 40px;
+  top: 15px;
+  left: 165px;
+  width: 40px;
+}
+#scoreBoardTimerMinutes,
+#scoreBoardTimerSeconds,
+.minutesSecondsСolon{
+  font-weight: 900;
+  font-size: 20px;
+  color: #1ecbca;
+  font-family: sans-serif;
+}
+
+.timerIcon{
+  position: absolute;
+  z-index: 99;
+  background-image: url(assets/images/time-icon.png);
+  width: 70px;
+  height: 70px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.minesIcon{
+  position: absolute;
+  left: 130px;
+  z-index: 99;
+  background-image: url(assets/images/mine-icon.png);
+  width: 70px;
+  height: 70px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.scoreMines{
+  font-weight: 900;
+  font-size: 20px;
+  color: #f4960f;
+  font-family: sans-serif;
+}
+
+.scoreMinesСolon,
+#scoreBoardMinesAll{
+  font-weight: 600;
+  font-size: 14px;
+  color: #f4e2a3;
+  font-family: sans-serif;
+}
+.about-game{
+  padding: 0;
+  margin: 0;
+  background: rgb(222,254,207);
+  background: linear-gradient(0deg, rgba(222,254,207,1) 0%, rgba(148,212,240,1) 50%, rgba(76,120,197,1) 100%);
+}
+
+#about{
+  background: url(assets/images--landing/footer-about-us-page.svg) rgba(35,13,9,0.7)  center bottom no-repeat;
+  background-size: contain;
+  background-blend-mode: multiply;
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+}
+
+.logo-about-game{
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.aboutTextWrap{
+  position: relative;
+  max-width: 700px;
+  width: inherit;
+  margin-top: 40px;
+  margin-right: auto;
+  margin-left: auto;
+  background-image: url(assets/images--landing/about-game-block1.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+.collections-bg{
+
+}
+.mines-wrap{
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.mine-item{
+  display: flex;
+  flex-direction: column;
+}
+.mine{
+  width: 120px;
+  height: 200px;
+}
+.mine-1{
+   background: url(assets/images--landing/mine-1.svg)   center bottom no-repeat;
+  background-size: contain;
+filter: grayscale(100%)
+  opacity(0.2);
+}
+.about-game-text{
+  width: inherit;
+  font-size: 16px;
+  color: black;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 50px;
+  text-align: center;
+  overflow: auto;
+  height: inherit;
+
+}
+.about-game-text-wrap{
+  padding: 15%;
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+  .about-game-text{
+  padding: 20px;
+}
+  .about-game-text{
+  font-size: 14px;
+}
+}
+.rulesWrap{
+  position: relative;
+  max-width: 700px;
+  width: inherit;
+  margin-top: 40px;
+  margin-right: auto;
+  margin-left: auto;
+  background-image: url(assets/images--landing/about-game-block1.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+.how-to-play-wrap{
+  position: absolute;
+  max-width: 300px;
+  height: 100px;
+  top: 20px;
+  left: -20px;
+  transform: rotate(-30deg);
+}
+.btn-collection-wrap{
+
+  max-width: 400px;
+  height: 100px;
+
+
+}
+.mine-wrap{
+   position: absolute;
+  max-width: 130px;
+  height: 100px;
+  bottom: 30px;
+  right: 40px;
+
+}
+.disclaimer{
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  font-size: 14px;
+  padding: 0 10%;
+  line-height: 1.6;
+}
+.collections{
+   padding: 0;
+  margin: 0;
+  /*height: 100vh;*/
+  background: rgb(222,254,207);
+  background: linear-gradient(0deg, rgba(222,254,207,1) 0%, rgba(148,212,240,1) 50%, rgba(76,120,197,1) 100%);
+}
+.collections-wrap{
+   background:  rgba(35,13,9,0.7)  center bottom no-repeat;
+  background-size: contain;
+  background-blend-mode: multiply;
+  display: flex;
+  flex-direction: column;
+min-height: 100vh;
 }

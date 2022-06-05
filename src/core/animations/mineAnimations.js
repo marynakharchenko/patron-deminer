@@ -13,20 +13,4 @@ export default {
   [`${CONSTANTS.ACTIONS.STAND}${CONSTANTS.DIRECTIONS.DOWN}`]: [
     'mineDown',
   ],
-  [CONSTANTS.ACTIONS.DISAPPEAR]: [
-    'mineDisappear1',
-    'mineDisappear2',
-    'mineDisappear3',
-    'mineDisappear4',
-    'mineDisappear5',
-    'mineDisappear6',
-    'mineDisappear7',
-    'mineDisappear8',
-    'mineDisappear9',
-    'mineDisappear10',
-    'mineDisappear11',
-    'mineDisappear12',
-    'mineDisappear13',
-    'mineDisappear14',
-  ],
 };
