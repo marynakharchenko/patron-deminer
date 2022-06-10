@@ -28,7 +28,7 @@ const LEVEL1 = [
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
 ];
 
-const BEAR_SPEED = 2;
+const BEAR_SPEED = 1;
 const BEAR_STEPS = [
   // { row: 19, col: 9 },
   { row: 19, col: 10, direction: 'Right' },
