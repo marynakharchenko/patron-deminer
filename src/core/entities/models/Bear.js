@@ -1,8 +1,8 @@
-const { AnimatedSprite, Loader } = window.PIXI;
+const { AnimatedSprite } = window.PIXI;
 const gsap = window.gsap;
 
-import Entity from "./Entity";
-import CONSTANTS from "../../constants/constants";
+import Entity from './Entity';
+import CONSTANTS from '../../constants/constants';
 
 export default class Bear extends Entity {
   constructor(config, animations) {
@@ -59,7 +59,7 @@ export default class Bear extends Entity {
       duration: animationNumber * 0.05,
       x: target.x,
       y: target.y,
-      ease: "none",
+      ease: 'none',
     });
 
     this.moving = false;
