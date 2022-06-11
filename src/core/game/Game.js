@@ -49,10 +49,10 @@ export default class Game extends Container {
     this._attachKeyboardListeners();
 
     this._createFence();
-    this._createPatron();
-    this._createBear();
     this._createMines();
     this._createBushes();
+    this._createBear();
+    this._createPatron();
     this.addChild(this._endScreen);
     this._timer.start(() => this._onEnd());
 
@@ -72,16 +72,15 @@ export default class Game extends Container {
             || row < config.game.fenceSize
             || row >= fenceHeight - config.game.fenceSize
         ) {
-          const bushPositions = { row: row - config.game.fenceSize, col: col - config.game.fenceSize };
-          const bushCoords = this._map.coordsFromPos(bushPositions);
+          const bushPosition = { row: row - config.game.fenceSize, col: col - config.game.fenceSize };
+          const bushCoords = this._map.coordsFromPos(bushPosition);
           const bush = new Bush(bushAnimations);
 
           bushCoords.x = bushCoords.x - (config.game.tileWidth / 2);
           bushCoords.y = bushCoords.y - (config.game.tileHeight / 2);
-          bush.init(bushCoords, config.game.tileWidth, config.game.tileHeight);
 
-          bush.col = bushPositions.col;
-          bush.row = bushPositions.row;
+          bush.init(bushCoords, config.game.tileWidth, config.game.tileHeight);
+          bush.position = bushPosition;
 
           this.addChild(bush.anim);
           this._bushes.push(bush);
@@ -96,7 +95,9 @@ export default class Game extends Container {
 
     this._patron = new Patron(patronAnimations);
 
+
     this._patron.init(patronCoords, config.game.tileWidth, config.game.tileHeight);
+    this._patron.position = patronMapPos;
 
     this._patron.anim.anchor.set(0.5);
     viewport.follow(this._patron.anim);
@@ -111,9 +112,10 @@ export default class Game extends Container {
     this._bear = new Bear(bearAnimations);
 
     bearCoords.x = bearCoords.x - (config.game.tileWidth / 2);
-    bearCoords.y = bearCoords.y - (config.game.tileHeight / 2);
+    bearCoords.y = bearCoords.y - config.game.tileHeight;
 
-    this._bear.init(bearCoords, config.game.tileWidth, config.game.tileHeight);
+    this._bear.init(bearCoords, config.game.tileWidth, config.game.tileHeight * 1.5);
+    this._bear.position = bearMapPos;
 
     this.addChild(this._bear.anim);
 
@@ -136,6 +138,8 @@ export default class Game extends Container {
         }
       }
 
+      if (counter >= CONSTANTS.BEAR_STEPS.length) counter = 0;
+
       const bearSteps = CONSTANTS.BEAR_STEPS[counter];
 
       const newPos = { row: bearSteps.row, col: bearSteps.col };
@@ -143,8 +147,9 @@ export default class Game extends Container {
       const targetPos = this._map.coordsFromPos(newPos);
 
       targetPos.x = targetPos.x - (config.game.tileWidth / 2);
-      targetPos.y = targetPos.y - (config.game.tileHeight / 2);
+      targetPos.y = targetPos.y - config.game.tileHeight;
 
+      this._bear.position = newPos;
       await this._bear.move(targetPos, bearSteps.direction);
 
       this._map.removeModelFromTileOnMap(oldPos, this._map.IDS.BEAR);
@@ -190,11 +195,10 @@ export default class Game extends Container {
       // this._patron.anim.anchor.set(0.5);
       mineCoords.x = mineCoords.x - (config.game.tileWidth / 6);
       // mineCoords.y = mineCoords.y - (config.game.tileHeight / 6);
-      mine.init(mineCoords, config.game.tileWidth / 3, config.game.tileHeight / 3);
 
-      mine.col = minePosition.col;
-      mine.row = minePosition.row;
       mine.deminedCount = 0;
+      mine.init(mineCoords, config.game.tileWidth / 3, config.game.tileHeight / 3);
+      mine.position = minePosition;
 
       this.addChild(mine.anim);
       this._mines.push(mine);
@@ -204,17 +208,16 @@ export default class Game extends Container {
   _createBushes() {
     const bushesPositions = this._map.posById(this._map.IDS.BUSH);
 
-    bushesPositions.forEach((bushPositions) => {
-      const bushCoords = this._map.coordsFromPos(bushPositions);
+    bushesPositions.forEach((bushPosition) => {
+      const bushCoords = this._map.coordsFromPos(bushPosition);
       const bush = new Bush(bushAnimations);
 
       // this._patron.anim.anchor.set(0.5);
       bushCoords.x = bushCoords.x - (config.game.tileWidth / 2);
       bushCoords.y = bushCoords.y - (config.game.tileHeight / 2);
-      bush.init(bushCoords, config.game.tileWidth, config.game.tileHeight);
 
-      bush.col = bushPositions.col;
-      bush.row = bushPositions.row;
+      bush.init(bushCoords, config.game.tileWidth, config.game.tileHeight);
+      bush.position = bushPosition;
 
       this.addChild(bush.anim);
       this._bushes.push(bush);
@@ -263,10 +266,13 @@ export default class Game extends Container {
     const oldPos = this._map.posById(this._map.IDS.PATRON)[0];
     const newPos = this._map.getDestination(oldPos, direction);
 
-    if (this._map.outOfBounds(newPos) || this._map.collide(newPos)) return this._patron.standStill(direction);
+    if (this._map.outOfBounds(newPos) || this._map.collide(newPos) || this._map.isEnemyPosition(newPos)) {
+      return this._patron.standStill(direction);
+    }
 
     const targetPos = this._map.coordsFromPos(newPos);
 
+    this._patron.position = newPos;
     await this._patron.move(targetPos, direction);
     document.getElementById(`miniMap-${oldPos.row}-${oldPos.col}`).classList.remove(this._map.IDS.PATRON);
     document.getElementById(`miniMap-${oldPos.row}-${oldPos.col}`).classList.add(this._map.IDS.EMPTY);
@@ -308,10 +314,9 @@ export default class Game extends Container {
 
         flagCoords.x = flagCoords.x - (config.game.tileWidth / 2);
         flagCoords.y = flagCoords.y - (config.game.tileHeight / 2);
-        flag.init(flagCoords, config.game.tileWidth, config.game.tileHeight);
 
-        flag.col = patronPos.col;
-        flag.row = patronPos.row;
+        flag.init(flagCoords, config.game.tileWidth, config.game.tileHeight);
+        flag.position = patronPos;
 
         this.addChild(flag.anim);
         this._flags.push(flag);

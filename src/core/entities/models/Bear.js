@@ -22,16 +22,19 @@ export default class Bear extends Entity {
     );
     this.anim.position = position;
     // Adjust animation speed
-    const animationNumber = this.animations[
-      `${CONSTANTS.ACTIONS.WALK}${this.direction}`
-    ].length;
+    const animationNumber = this.animations[`${CONSTANTS.ACTIONS.WALK}${this.direction}`].length;
 
-    this.anim.animationSpeed = 0.038 * animationNumber;
+    this.anim.animationSpeed = CONSTANTS.ANIMATION_DURATION_DEFAULT * animationNumber;
     // Don't loop it at initial state
     this.anim.loop = false;
     // Set with and height
     if (width) this.anim.width = width;
     if (height) this.anim.height = height;
+  }
+
+  setZIndex () {
+    // 10 - default multiplier, 2 index for tile
+    this.anim.zIndex = (this.row * 10) + 2;
   }
 
   /**

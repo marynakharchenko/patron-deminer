@@ -19,6 +19,8 @@ export default class Entity {
 
     this.direction = DIRECTIONS[randomIndex];
 
+    this.col = 0;
+    this.row = 0;
     this.moving = false;
 
     this.prepareAnimations(animations);
@@ -57,6 +59,17 @@ export default class Entity {
     // Set with and height
     if (width) this.anim.width = width;
     if (height) this.anim.height = height;
+  }
+
+  setZIndex () {
+    // 10 - default multiplier
+    this.anim.zIndex = this.row * 10;
+  }
+
+  set position ({ col, row }) {
+    this.col = col;
+    this.row = row;
+    this.setZIndex();
   }
 
   /**

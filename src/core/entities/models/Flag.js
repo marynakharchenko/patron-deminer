@@ -23,6 +23,10 @@ export default class Flag extends Entity {
     // Set with and height
     if (width) this.anim.width = width;
     if (height) this.anim.height = height;
-    this.anim.zIndex = -1;
+  }
+
+  setZIndex () {
+    // 10 - default multiplier, 1 index for tile
+    this.anim.zIndex = (this.row * 10) + 1;
   }
 }
