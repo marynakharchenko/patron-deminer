@@ -84,6 +84,7 @@ const BEAR_STEPS = [
 ];
 
 let MINES_NUMBER = 0;
+
 for (let row = 0; row < LEVEL1.length; row++) {
   for (let col = 0; col < LEVEL1[0].length; col++) {
     if (LEVEL1[row][col].includes(M)) MINES_NUMBER++;

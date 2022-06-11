@@ -61,12 +61,12 @@ export default class Entity {
     if (height) this.anim.height = height;
   }
 
-  setZIndex () {
+  setZIndex() {
     // 10 - default multiplier
     this.anim.zIndex = this.row * 10;
   }
 
-  set position ({ col, row }) {
+  set position({ col, row }) {
     this.col = col;
     this.row = row;
     this.setZIndex();

@@ -95,7 +95,6 @@ export default class Game extends Container {
 
     this._patron = new Patron(patronAnimations);
 
-
     this._patron.init(patronCoords, config.game.tileWidth, config.game.tileHeight);
     this._patron.position = patronMapPos;
 
