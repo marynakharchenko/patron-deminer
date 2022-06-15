@@ -242,7 +242,6 @@ body {
 .mine {
   width: 120px;
   height: 200px;
-  background-size: contain;
   transition-duration: 0.1s;
 }
 .name-title-wrap {
@@ -252,6 +251,9 @@ body {
   align-items: center;
 
   justify-content: center;
+}
+.mine-name {
+  text-align: center;
 }
 .mine-name:hover,
 .mine-name:focus {
@@ -267,7 +269,6 @@ body {
 .info-icon {
   position: absolute;
   top: -20px;
-  left: 70px;
   margin-left: 5px;
   width: 20px;
   height: 20px;
@@ -298,87 +299,7 @@ body {
   transition-timing-function: ease-in;
   transform: translateY(-10px) scale(1.1);
 }
-.mine-1 {
-  background: url(assets/images--landing/mine-1.svg) center bottom no-repeat;
-}
-.mine-2 {
-  background: url(assets/images--landing/mine-2.svg) center bottom no-repeat;
-}
-.mine-3 {
-  background: url(assets/images--landing/mine-3.svg) center bottom no-repeat;
-}
-.mine-4 {
-  background: url(assets/images--landing/mine-4.svg) center bottom no-repeat;
-}
-.mine-5 {
-  background: url(assets/images--landing/mine-5.svg) center bottom no-repeat;
-}
-.mine-6 {
-  background: url(assets/images--landing/mine-6.svg) center bottom no-repeat;
-}
-.mine-7 {
-  background: url(assets/images--landing/mine-7.svg) center bottom no-repeat;
-}
-.mine-8 {
-  background: url(assets/images--landing/mine-8.svg) center bottom no-repeat;
-}
-.mine-9 {
-  background: url(assets/images--landing/mine-9.svg) center bottom no-repeat;
-}
-.mine-10 {
-  background: url(assets/images--landing/mine-10.svg) center bottom no-repeat;
-}
-.mine-11 {
-  background: url(assets/images--landing/mine-11.svg) center bottom no-repeat;
-}
-.mine-12 {
-  background: url(assets/images--landing/mine-12.svg) center bottom no-repeat;
-}
-.mine-13 {
-  background: url(assets/images--landing/mine-13.svg) center bottom no-repeat;
-}
-.mine-14 {
-  background: url(assets/images--landing/mine-14.svg) center bottom no-repeat;
-}
-.mine-15 {
-  background: url(assets/images--landing/mine-15.svg) center bottom no-repeat;
-}
-.mine-16 {
-  background: url(assets/images--landing/mine-16.svg) center bottom no-repeat;
-}
-.mine-17 {
-  background: url(assets/images--landing/mine-17.svg) center bottom no-repeat;
-}
-.mine-18 {
-  background: url(assets/images--landing/mine-18.svg) center bottom no-repeat;
-}
-.mine-19 {
-  background: url(assets/images--landing/mine-19.svg) center bottom no-repeat;
-}
-.mine-20 {
-  background: url(assets/images--landing/mine-20.svg) center bottom no-repeat;
-}
-.mine-21 {
-  background: url(assets/images--landing/mine-21.svg) center bottom no-repeat;
-}
-.mine-22 {
-  background: url(assets/images--landing/mine-22.svg) center bottom no-repeat;
-}
-.mine-23 {
-  background: url(assets/images--landing/mine-23.svg) center bottom no-repeat;
-}
-.mine-24 {
-  background: url(assets/images--landing/mine-24.svg) center bottom no-repeat;
-}
-.mine-25 {
-  background: url(assets/images--landing/mine-25.svg) center bottom no-repeat;
-}
-.mine-26 {
-  background: url(assets/images--landing/mine-26.svg) center bottom no-repeat;
-}
-.mine-27 {
-  background: url(assets/images--landing/mine-27.svg) center bottom no-repeat;
-}
+
 .about-game-text {
   width: inherit;
   font-size: 16px;
@@ -396,7 +317,6 @@ body {
 .attention-bg {
   background-color: #d31818;
   border-radius: 15px;
-  height: 170px;
   width: 500px;
   margin-left: auto;
   margin-right: auto;
@@ -463,6 +383,7 @@ body {
   line-height: 1.6;
 }
 .collections {
+  position: relative;
   padding: 0;
   margin: 0;
   background: rgb(222, 254, 207);
@@ -510,8 +431,156 @@ body {
 }
 
 .attention-description {
-  text-align: center;
+  text-align: left;
+  line-height: 1.6;
 }
 .attention-title {
   text-align: center;
+  -webkit-text-stroke: 1px black;
+  text-transform: uppercase;
+}
+#mine-popup {
+  position: absolute;
+  z-index: auto;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+}
+.popUpMineWrapp {
+  position: relative;
+  height: inherit;
+}
+.mine-pop-up-wrap {
+  width: 450px;
+  height: 550px;
+  position: fixed;
+  background-color: transparent;
+  border-radius: 8px;
+  background-image: url(assets/images--landing/collection-bg.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  z-index: 999;
+  top: 15%;
+  margin-right: -50%;
+  animation: scale-in-center 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) both;
+  animation-fill-mode: forwards;
+}
+
+@keyframes scale-in-center {
+  0% {
+    transform: rotateX(-100deg) translate(-50%, -50%);
+    transform-origin: top;
+    filter: blur(50px);
+    opacity: 0;
+    left: 50%;
+    top: 5%;
+  }
+  100% {
+    transform: rotateX(0deg) translate(-50%, -50%);
+    filter: blur(0);
+    transform-origin: top;
+    opacity: 1;
+    left: 50%;
+    top: 50%;
+  }
+}
+@keyframes scale-back {
+  0% {
+    transform: rotateX(0deg) translate(-50%, -50%);
+    filter: blur(0);
+    transform-origin: top;
+    opacity: 1;
+    left: 50%;
+    top: 15%;
+  }
+  100% {
+    transform: rotateX(-100deg) translate(-50%, -50%);
+    transform-origin: top;
+    filter: blur(50px);
+    opacity: 0;
+    left: 50%;
+    top: 5%;
+  }
+}
+.close-pop-up {
+  position: absolute;
+  right: 0;
+  top: -10px;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+  border: none;
+  width: 35px;
+  height: 35px;
+  background-image: url(assets/images--landing/close-icon.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+  transition-duration: 0.2s;
+}
+.close-pop-up:hover {
+  transform: rotate(90deg);
+  transition-timing-function: ease-in;
+  transition-duration: 0.2s;
+}
+.pop-up-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 60px;
+}
+.mine-full-name {
+  margin: 15px 0 10px 0;
+  font-size: 14px;
+  color: black;
+  -webkit-text-stroke: 1px black;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.5;
+}
+.weight-mine,
+.distance-mine {
+  margin: 0;
+  margin-bottom: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: black;
+}
+.description-mine {
+  margin-top: 10px;
+  font-size: 11px;
+  color: black;
+  text-align: center;
+  line-height: 2;
+}
+.mine-photo {
+  height: 160px;
+  width: 250px;
+  background-image: url(assets/images--landing/mon-200.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(78, 81, 71, 0.7);
+  z-index: auto;
+}
+.overlay.animate {
+  transition: all;
+  transition-duration: 0.6s;
+  background: linear-gradient(
+    0deg,
+    rgba(78, 81, 71, 0.6) 0%,
+    rgba(57, 75, 78, 0.6) 49%,
+    rgba(44, 56, 72, 0.8) 100%
+  );
+}
+.popUpMine1 {
+  display: none;
 }
