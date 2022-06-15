@@ -26,6 +26,5 @@ export default class Bush extends Entity {
     // Set with and height
     if (width) this.anim.width = width;
     if (height) this.anim.height = height;
-    this.anim.zIndex = 2;
   }
 }

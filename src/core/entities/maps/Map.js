@@ -132,4 +132,8 @@ export default class Map {
   collide({ row, col }) {
     return !this._map[row][col].includes(E) && !this._map[row][col].includes(M);
   }
+
+  isEnemyPosition({ row, col }) {
+    return this._map[row][col].includes(U);
+  }
 }

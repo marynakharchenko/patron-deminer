@@ -55,32 +55,43 @@ const BEAR_STEPS = [
   { row: 9, col: 11, direction: 'Left' },
   { row: 9, col: 10, direction: 'Left' },
   { row: 9, col: 9, direction: 'Left' },
+  { row: 9, col: 8, direction: 'Left' },
+  { row: 9, col: 9, direction: 'Right' },
   { row: 9, col: 10, direction: 'Right' },
   { row: 9, col: 11, direction: 'Right' },
   { row: 9, col: 12, direction: 'Right' },
-  { row: 9, col: 13, direction: 'Down' },
+  { row: 9, col: 13, direction: 'Right' },
   { row: 10, col: 13, direction: 'Down' },
   { row: 11, col: 13, direction: 'Down' },
   { row: 12, col: 13, direction: 'Down' },
   { row: 13, col: 13, direction: 'Down' },
   { row: 14, col: 13, direction: 'Down' },
-  { row: 15, col: 13, direction: 'Right' },
+  { row: 15, col: 13, direction: 'Down' },
   { row: 15, col: 14, direction: 'Right' },
   { row: 15, col: 15, direction: 'Right' },
-  { row: 15, col: 16, direction: 'Down' },
+  { row: 15, col: 16, direction: 'Right' },
   { row: 16, col: 16, direction: 'Down' },
-  { row: 17, col: 16, direction: 'Left' },
+  { row: 17, col: 16, direction: 'Down' },
   { row: 17, col: 15, direction: 'Left' },
-  { row: 17, col: 14, direction: 'Down' },
+  { row: 17, col: 14, direction: 'Left' },
   { row: 18, col: 14, direction: 'Down' },
-  { row: 19, col: 14, direction: 'Left' },
+  { row: 19, col: 14, direction: 'Down' },
   { row: 19, col: 13, direction: 'Left' },
   { row: 19, col: 12, direction: 'Left' },
   { row: 19, col: 11, direction: 'Left' },
   { row: 19, col: 10, direction: 'Left' },
+  { row: 19, col: 9, direction: 'Left' },
 ];
 
-const LEVEL_SECONDS = BEAR_STEPS.length * BEAR_SPEED;
+let MINES_NUMBER = 0;
+
+for (let row = 0; row < LEVEL1.length; row++) {
+  for (let col = 0; col < LEVEL1[0].length; col++) {
+    if (LEVEL1[row][col].includes(M)) MINES_NUMBER++;
+  }
+}
+
+const LEVEL_SECONDS = (BEAR_STEPS.length + (MINES_NUMBER * 2)) * BEAR_SPEED;
 
 export default {
   LEVEL1,

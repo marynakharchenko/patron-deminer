@@ -6,6 +6,8 @@ import CONSTANTS from '../../constants/constants';
 export default class Mine extends Entity {
   constructor(animations) {
     super(animations);
+
+    this.deminedCount = 0;
   }
 
   /**
@@ -24,6 +26,5 @@ export default class Mine extends Entity {
     // Set with and height
     if (width) this.anim.width = width;
     if (height) this.anim.height = height;
-    this.anim.zIndex = -2;
   }
 }

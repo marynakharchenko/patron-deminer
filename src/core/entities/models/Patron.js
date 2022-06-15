@@ -7,6 +7,11 @@ export default class Patron extends Entity {
     // this.isDemining = false;
   }
 
+  setZIndex() {
+    // 10 - default multiplier
+    this.anim.zIndex = (this.row * 10) + 2;
+  }
+
   demine(callback) {
     // this.isDemining = true;
     this.anim.textures = this.animations[CONSTANTS.ACTIONS.DEMINE];
