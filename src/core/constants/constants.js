@@ -24,4 +24,5 @@ export default {
     },
   },
   ANIMATION_DURATION_DEFAULT: 0.038,
+  LOCAL_STORAGE_KEY: 'deminer-dog:available-mines-list',
 };

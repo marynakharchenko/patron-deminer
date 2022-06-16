@@ -1,5 +1,8 @@
+import CONSTANTS from './constants';
+
 const MINES = {
   MON_200: {
+    MINE_ID: 'MON_200',
     MINE_PHOTO_SRC: './src/assets/images--landing/mon-200.png',
     MINE_ICON: './src/assets/images--landing/mine-1.svg',
     MINE_NAME: 'МОН–200',
@@ -10,8 +13,10 @@ const MINES = {
     DESCRIPTION_MINE:
       'Встановлюється на ґрунт чи кріпиться до предметів, маскується рослинністю. '
         + 'Вибух відбувається завдяки пульта управління чи при зачіпленні підривного датчика.',
+    MINE_AVAILABLE: false,
   },
   TM_62: {
+    MINE_ID: 'TM_62',
     MINE_PHOTO_SRC: './src/assets/images--landing/TM_62.png',
     MINE_ICON: './src/assets/images--landing/mine-2.svg',
     MINE_NAME: 'ТМ-62',
@@ -23,8 +28,10 @@ const MINES = {
       'Частіше закопана у ґрунт та замаскована рослинністю, може бути '
         + 'розміщена на поверхні ґрунту. Поряд можуть бути встановлені міни-пастки. '
         + 'Вибух відбувається при наїзді на верхню кришку міни.',
+    MINE_AVAILABLE: false,
   },
   PFM_1: {
+    MINE_ID: 'PFM_1',
     MINE_PHOTO_SRC: './src/assets/images--landing/PFM_1.png',
     MINE_ICON: './src/assets/images--landing/mine-3.svg',
     MINE_NAME: 'ПФМ-1',
@@ -36,8 +43,10 @@ const MINES = {
       'Буває зеленого та коричневого кольору. Для мінування застосовують '
         + 'як наземні, так і повітряні засоби. Вибух проводиться в момент наступання ногою на датчик цілі.'
         + ' Має механізм самоліквідації. ',
+    MINE_AVAILABLE: false,
   },
   MON_50: {
+    MINE_ID: 'MON_50',
     MINE_PHOTO_SRC: './src/assets/images--landing/MON_50.png',
     MINE_ICON: './src/assets/images--landing/mine-4.svg',
     MINE_NAME: 'МОН-50',
@@ -49,8 +58,10 @@ const MINES = {
       'Міну встановлюють на ґрунт або  кріплять до різних предметів '
         + 'або поверхонь. Маскують рослинністю. Вибух здійснюється оператором з пульта керування або'
         + ' при зачіпанні датчика (у вигляді розтяжки).',
+    MINE_AVAILABLE: false,
   },
   PMN_2: {
+    MINE_ID: 'PMN_2',
     MINE_PHOTO_SRC: './src/assets/images--landing/PMN_2.png',
     MINE_ICON: './src/assets/images--landing/mine-5.svg',
     MINE_NAME: 'ПМН-2',
@@ -61,8 +72,10 @@ const MINES = {
     DESCRIPTION_MINE:
       'Міна може встановлюватися в ґрунт або на поверхню землі.  '
         + 'Маскують рослинністю. Має датчик у вигляді хреста.',
+    MINE_AVAILABLE: false,
   },
   OZM_72: {
+    MINE_ID: 'OZM_72',
     MINE_PHOTO_SRC: './src/assets/images--landing/OZM_72.png',
     MINE_ICON: './src/assets/images--landing/mine-6.svg',
     MINE_NAME: 'ОЗМ-72',
@@ -73,8 +86,10 @@ const MINES = {
     DESCRIPTION_MINE:
       'Міна встановлюється у ґрунт. Має датчик цілі у вигляді розтяжки. '
         + 'При спрацьовуванні міни бойова частина виштовхується на висоту 0,6-0,8 м після чого відбувається вибух.',
+    MINE_AVAILABLE: false,
   },
   PTM_3: {
+    MINE_ID: 'PTM_3',
     MINE_PHOTO_SRC: './src/assets/images--landing/PTM_3.png',
     MINE_ICON: './src/assets/images--landing/mine-7.svg',
     MINE_NAME: 'ПТМ-3',
@@ -86,8 +101,10 @@ const MINES = {
       'Встановлюється на ґрунт, засобами дистанційного мінування. '
         + 'Може зреагувати на метал. Заборонено використовувати засоби зв`язку поряд. '
         + 'Самоліквідовується через 8-24 год.',
+    MINE_AVAILABLE: false,
   },
   POM_3: {
+    MINE_ID: 'POM_3',
     MINE_PHOTO_SRC: './src/assets/images--landing/POM_3.png',
     MINE_ICON: './src/assets/images--landing/mine-8.svg',
     MINE_NAME: 'ПОМ-3',
@@ -98,8 +115,10 @@ const MINES = {
     DESCRIPTION_MINE:
       'Встановлюється на ґрунт, засобами дистанційного встановлення. '
         + 'Має сейсмічний датчик цілі, який спрацьовує на вагу людини й амплітуду її кроків.',
+    MINE_AVAILABLE: false,
   },
   RGD_5: {
+    MINE_ID: 'RGD_5',
     MINE_PHOTO_SRC: './src/assets/images--landing/RGD_5.png',
     MINE_ICON: './src/assets/images--landing/mine-9.svg',
     MINE_NAME: 'РГД-5',
@@ -110,8 +129,10 @@ const MINES = {
     DESCRIPTION_MINE:
       'Основне призначення - ураження особового складу супротивника '
         + 'уламками корпусу. Зустрічаються випадки встановлення гранати на розтяжку.',
+    MINE_AVAILABLE: false,
   },
   F_1: {
+    MINE_ID: 'F_1',
     MINE_PHOTO_SRC: './src/assets/images--landing/F_1.png',
     MINE_ICON: './src/assets/images--landing/mine-10.svg',
     MINE_NAME: 'Ф-1',
@@ -122,8 +143,10 @@ const MINES = {
     DESCRIPTION_MINE:
       'Граната оборонної дії (радіус ураження перевищує радіус кидка). '
         + 'Можна виявити у місцях ведення бойових дій. Зустрічаються випадку встановлення гранати на розтяжку.',
+    MINE_AVAILABLE: false,
   },
   RGO: {
+    MINE_ID: 'RGO',
     MINE_PHOTO_SRC: './src/assets/images--landing/RGO.png',
     MINE_ICON: './src/assets/images--landing/mine-11.svg',
     MINE_NAME: 'РГО',
@@ -135,8 +158,10 @@ const MINES = {
     DESCRIPTION_MINE:
       'Можна виявити у місцях ведення бойових дій та на покинутих військових '
         + 'позиціях. Зустрічаються випадку встановлення гранати на розтяжку.',
+    MINE_AVAILABLE: false,
   },
   TMK_2: {
+    MINE_ID: 'TMK_2',
     MINE_PHOTO_SRC: './src/assets/images--landing/TMK_2.png',
     MINE_ICON: './src/assets/images--landing/mine-12.svg',
     MINE_NAME: 'ТМК-2',
@@ -147,8 +172,10 @@ const MINES = {
     DESCRIPTION_MINE:
       'Встановлюється вручну  шляхом закопування в ґрунт, маскується рослинністю.'
         + ' Можна виявити біля доріг у місцях ведення бойових дій та на покинутих військових позиціях.',
+    MINE_AVAILABLE: false,
   },
   PTM_1: {
+    MINE_ID: 'PTM_1',
     MINE_PHOTO_SRC: './src/assets/images--landing/PTM_1.png',
     MINE_ICON: './src/assets/images--landing/mine-13.svg',
     MINE_NAME: 'ПТМ-1',
@@ -160,8 +187,10 @@ const MINES = {
       'Мінування проводиться за допомогою реактивних систем залпового вогню. '
         + 'Складається із поліетиленового корпусу всередині якого знаходиться вибухова рідина. '
         + 'Самоліквідовується через 3 - 40 год.',
+    MINE_AVAILABLE: false,
   },
   POMZ_2M: {
+    MINE_ID: 'POMZ_2M',
     MINE_PHOTO_SRC: './src/assets/images--landing/POMZ_2M.png',
     MINE_ICON: './src/assets/images--landing/mine-14.svg',
     MINE_NAME: 'ПОМЗ-2М',
@@ -172,8 +201,10 @@ const MINES = {
     DESCRIPTION_MINE:
       'Встановлюється вручну на вбитий у ґрунт дерев`яний кілок. '
         + 'Вибух відбувається коли людина зачепившись ногою за дротяну розтяжку, висмикне бойову чеку.',
+    MINE_AVAILABLE: false,
   },
   PMN: {
+    MINE_ID: 'PMN',
     MINE_PHOTO_SRC: './src/assets/images--landing/PMN.png',
     MINE_ICON: './src/assets/images--landing/mine-15.svg',
     MINE_NAME: 'ПМН',
@@ -184,8 +215,10 @@ const MINES = {
     DESCRIPTION_MINE:
       'Зазвичай закопана у ґрунт, замаскована рослинністю. Вибух '
         + 'відбувається коли людина наступає ногою на кришку міни.',
+    MINE_AVAILABLE: false,
   },
   N210: {
+    MINE_ID: 'N210',
     MINE_PHOTO_SRC: './src/assets/images--landing/N210.png',
     MINE_ICON: './src/assets/images--landing/mine-16.svg',
     MINE_NAME: '9Н210',
@@ -197,8 +230,10 @@ const MINES = {
       'Нашпигований сотнями металевих роликів, які під час вибуху '
         + 'здатні пробити сталеву пластину товщиною 6 мм. Можуть знаходитися на поверхні ґрунту, '
         + 'у випадку не спрацювання бойового елемента.',
+    MINE_AVAILABLE: false,
   },
   VOG_25: {
+    MINE_ID: 'VOG_25',
     MINE_PHOTO_SRC: './src/assets/images--landing/VOG_25.png',
     MINE_ICON: './src/assets/images--landing/mine-17.svg',
     MINE_NAME: 'ВОГ-25',
@@ -209,8 +244,10 @@ const MINES = {
     DESCRIPTION_MINE:
       'Поєднує в собі гранату і метальний заряд у гільзі. У разі не спрацювання '
         + 'глибина проникнення у ґрунт може становити близько 10 см. Переважно можна виявити в місцях ведення бойових дій.',
+    MINE_AVAILABLE: false,
   },
   MINOMETNA_MINA: {
+    MINE_ID: 'MINOMETNA_MINA',
     MINE_PHOTO_SRC: './src/assets/images--landing/MINOMETNA_MINA.png',
     MINE_ICON: './src/assets/images--landing/mine-18.svg',
     MINE_NAME: 'Мінометна міна',
@@ -221,8 +258,10 @@ const MINES = {
     DESCRIPTION_MINE:
       'У разі не спрацювання снаряду, глибина проникнення у ґрунт '
         + 'становить до 1 м. Має характерне оперення, що виконує роль стабілізатора.',
+    MINE_AVAILABLE: false,
   },
   FAB_500: {
+    MINE_ID: 'FAB_500',
     MINE_PHOTO_SRC: './src/assets/images--landing/FAB_500.png',
     MINE_ICON: './src/assets/images--landing/mine-19.svg',
     MINE_NAME: 'ФАБ-500',
@@ -233,8 +272,10 @@ const MINES = {
     DESCRIPTION_MINE:
       'Вражає цілі дією продуктів вибуху, осколками корпусу та '
         + 'повітряною ударною хвилею. Мають вибухник сповільненої дії.',
+    MINE_AVAILABLE: false,
   },
   ROCKET: {
+    MINE_ID: 'ROCKET',
     MINE_PHOTO_SRC: './src/assets/images--landing/ROCKET.png',
     MINE_ICON: './src/assets/images--landing/mine-20.svg',
     MINE_NAME: 'Залишки ракети',
@@ -245,8 +286,10 @@ const MINES = {
     DESCRIPTION_MINE:
       'Мають стабілізатори у вигляді відкидного оперення та реактивні двигуни. '
         + 'Наближатися та чіпати боєприпаси небезпечно.',
+    MINE_AVAILABLE: false,
   },
   PG_7V: {
+    MINE_ID: 'PG_7V',
     MINE_PHOTO_SRC: './src/assets/images--landing/PG_7V.png',
     MINE_ICON: './src/assets/images--landing/mine-21.svg',
     MINE_NAME: 'ПГ-7В',
@@ -257,8 +300,10 @@ const MINES = {
     DESCRIPTION_MINE:
       'У разі не спрацювання боєприпасу глибина проникнення у ґрунт може становити близько 50 см. '
         + 'Забороняється зрушувати з місця через можливість спрацювання снаряду, або наявність міни-пастки поряд.',
+    MINE_AVAILABLE: false,
   },
   SHELL_TANK: {
+    MINE_ID: 'SHELL_TANK',
     MINE_PHOTO_SRC: './src/assets/images--landing/SHELL_TANK.png',
     MINE_ICON: './src/assets/images--landing/mine-22.svg',
     MINE_NAME: 'Танковий снаряд',
@@ -269,8 +314,10 @@ const MINES = {
     DESCRIPTION_MINE:
       'У разі не спрацювання боєприпасу глибина проникнення у ґрунт може становити близько 2 м. '
         + 'Можна виявити на поверхні ґрунту у місцях ведення бойових дій.',
+    MINE_AVAILABLE: false,
   },
   ARTILLERY_SHELL: {
+    MINE_ID: 'ARTILLERY_SHELL',
     MINE_PHOTO_SRC: './src/assets/images--landing/ARTILLERY_SHELL.png',
     MINE_ICON: './src/assets/images--landing/mine-23.svg',
     MINE_NAME: 'Aртснаряд',
@@ -281,8 +328,10 @@ const MINES = {
     DESCRIPTION_MINE:
       'У разі не спрацювання боєприпасу глибина проникнення у '
         + 'ґрунт може становити близько 2 м. Можна виявити на поверхні ґрунту у місцях ведення бойових дій.',
+    MINE_AVAILABLE: false,
   },
   NAVAL_MINE: {
+    MINE_ID: 'NAVAL_MINE',
     MINE_PHOTO_SRC: './src/assets/images--landing/NAVAL_MINE.png',
     MINE_ICON: './src/assets/images--landing/mine-24.svg',
     MINE_NAME: 'Морська міна',
@@ -294,8 +343,10 @@ const MINES = {
             'Поділяються на якірні, донні і плаваючі. Встановлюється у воді, '
         + 'призначена для ураження підводних човнів, надводних кораблів і суден, '
         + 'а також ускладнення їх плавання. Може виноситися на берег штормом.',
+    MINE_AVAILABLE: false,
   },
   MINE_SURPRISE: {
+    MINE_ID: 'MINE_SURPRISE',
     MINE_PHOTO_SRC: './src/assets/images--landing/MINE_SURPRISE.png',
     MINE_ICON: './src/assets/images--landing/mine-25.svg',
     MINE_NAME: 'Міна-сюрприз',
@@ -306,11 +357,18 @@ const MINES = {
     DESCRIPTION_MINE:
       'Маскується під безпечний предмет, здатний привернути увагу. Це може бути: '
         + 'коштовні речі, сумка, пакет, телефон, іграшка, зброя, пляшки. Зарононено чіпати та зрушувати. ',
+    MINE_AVAILABLE: false,
   },
 };
 
+const availableMinesString = window.localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY) || '';
+
+availableMinesString.split(',').forEach((mineId) => {
+  if (MINES[mineId]) MINES[mineId].MINE_AVAILABLE = true;
+});
+
 const MINES_POPUP = `
-<div class="popUpMineWrapp">
+<div class="popUpMineWrap">
     <div class="overlay"></div>
     <div class="mine-pop-up-wrap">
         <button id="close-mine-popup" class="close-pop-up"></button>
@@ -353,7 +411,7 @@ const getMinePopup = (mineName) => {
 
 const MINES_LIST = `
 <div class="mine-item">
-    <img src="{{MINE_ICON}}" alt="{{MINE_NAME}}" class="mine mine--disable">
+    <img src="{{MINE_ICON}}" alt="{{MINE_ID}}" class="mine {{MINE_AVAILABLE}}">
     <div class="name-title-wrap">
         <p class="mine-name mine-name--disable">{{MINE_NAME}}</p>
         <div class="info-icon"></div>
@@ -362,16 +420,20 @@ const MINES_LIST = `
 `;
 
 const getMinesList = () => {
+  document.getElementById('mines-list').innerHTML = '';
+
   Object.keys(MINES).forEach((key) => {
     let innerHTML = MINES_LIST;
     const element = document.createElement('div');
 
-    innerHTML = innerHTML.replaceAll('{{MINE_NAME}}', MINES[key].MINE_NAME);
+    innerHTML = innerHTML.replace('{{MINE_ID}}', MINES[key].MINE_ID);
+    innerHTML = innerHTML.replace('{{MINE_NAME}}', MINES[key].MINE_NAME);
     innerHTML = innerHTML.replace('{{MINE_ICON}}', MINES[key].MINE_ICON);
+    innerHTML = innerHTML.replace('{{MINE_AVAILABLE}}', MINES[key].MINE_AVAILABLE ? '' : 'mine--disable');
     element.innerHTML = innerHTML;
     element.addEventListener('click', () => getMinePopup(key));
     document.getElementById('mines-list').appendChild(element);
   });
 };
 
-export default getMinesList;
+export { getMinesList, MINES };

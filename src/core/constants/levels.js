@@ -1,4 +1,5 @@
 import CONSTANTS from './constants';
+import { MINES } from './mines';
 
 const { E, P, M, B, U } = CONSTANTS.MAP.ENTITIES;
 
@@ -93,9 +94,15 @@ for (let row = 0; row < LEVEL1.length; row++) {
 
 const LEVEL_SECONDS = (BEAR_STEPS.length + (MINES_NUMBER * 2)) * BEAR_SPEED;
 
+const MINE_TYPES = [
+  MINES.MON_200.MINE_ID,
+  MINES.TM_62.MINE_ID,
+];
+
 export default {
   LEVEL1,
   LEVEL_SECONDS,
   BEAR_SPEED,
   BEAR_STEPS,
+  MINE_TYPES,
 };
