@@ -2,7 +2,7 @@ import config from '../../config/config';
 import CONSTANTS from '../../constants/constants';
 import LEVELS from '../../constants/levels';
 
-const { E, W, T, P, M, F, B, U } = CONSTANTS.MAP.ENTITIES;
+const { E, W, T, P, M, F, B, U, R, G } = CONSTANTS.MAP.ENTITIES;
 
 const LEVEL_MAP = LEVELS.LEVEL_MAP;
 
@@ -26,6 +26,8 @@ export default class Map {
       FLAG: F,
       BUSH: B,
       BEAR: U,
+      TIRE: R,
+      GARDEN: G,
     };
 
     this._mapStart = JSON.parse(JSON.stringify(LEVEL_MAP));

@@ -21,6 +21,8 @@ export default {
       F: 'flag', // Flag
       B: 'bush', // Bush
       U: 'bear', // Bear (Ursus)
+      R: 'tire', // Tire (round)
+      G: 'garden', // Garden
     },
   },
   ANIMATION_DURATION_DEFAULT: 0.038,

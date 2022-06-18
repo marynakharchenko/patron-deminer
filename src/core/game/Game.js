@@ -5,11 +5,15 @@ import bearAnimations from '../animations/bearAnimations';
 import mineAnimations from '../animations/mineAnimations';
 import flagAnimations from '../animations/flagAnimations';
 import bushAnimations from '../animations/bushAnimations';
+import tireAnimations from '../animations/tireAnimations';
+import gardenAnimations from '../animations/gardenAnimations';
 import Map from '../entities/maps/Map';
 import Patron from '../entities/models/Patron';
 import Bear from '../entities/models/Bear';
 import Mine from '../entities/models/Mine';
 import Bush from '../entities/models/Bush';
+import Tire from '../entities/models/Tire';
+import Garden from '../entities/models/Garden';
 import Flag from '../entities/models/Flag';
 import Timer from '../entities/Timer';
 import EndScreen from '../entities/EndScreen';
@@ -46,6 +50,8 @@ export default class Game extends Container {
     this._mines = [];
     this._flags = [];
     this._bushes = [];
+    this._tires = [];
+    this._garden = [];
 
     this._bearIntervalId = null;
   }
@@ -56,6 +62,8 @@ export default class Game extends Container {
     this._createFence();
     this._createMines();
     this._createBushes();
+    this._createTires();
+    this._createGarden();
     this._createPatron();
     if (BEAR.BEAR_AVAILABLE) this._createBear();
     this.addChild(this._endScreen);
@@ -225,6 +233,44 @@ export default class Game extends Container {
 
       this.addChild(bush.anim);
       this._bushes.push(bush);
+    });
+  }
+
+  _createTires() {
+    const tiresPositions = this._map.posById(this._map.IDS.TIRE);
+
+    tiresPositions.forEach((tirePosition) => {
+      const tireCoords = this._map.coordsFromPos(tirePosition);
+      const tire = new Tire(tireAnimations);
+
+      // this._patron.anim.anchor.set(0.5);
+      tireCoords.x = tireCoords.x - (config.game.tileWidth / 2);
+      tireCoords.y = tireCoords.y - (config.game.tileHeight / 2);
+
+      tire.init(tireCoords, config.game.tileWidth, config.game.tileHeight);
+      tire.position = tirePosition;
+
+      this.addChild(tire.anim);
+      this._tires.push(tire);
+    });
+  }
+
+  _createGarden() {
+    const gardenPositions = this._map.posById(this._map.IDS.GARDEN);
+
+    gardenPositions.forEach((gardenPosition) => {
+      const gardenCoords = this._map.coordsFromPos(gardenPosition);
+      const garden = new Garden(gardenAnimations);
+
+      // this._patron.anim.anchor.set(0.5);
+      gardenCoords.x = gardenCoords.x - (config.game.tileWidth / 2);
+      gardenCoords.y = gardenCoords.y - (config.game.tileHeight / 2);
+
+      garden.init(gardenCoords, config.game.tileWidth, config.game.tileHeight);
+      garden.position = gardenPosition;
+
+      this.addChild(garden.anim);
+      this._garden.push(garden);
     });
   }
 

@@ -2,10 +2,12 @@ import CONSTANTS from './constants';
 
 import LEVEL01 from '../levels/level01';
 import LEVEL02 from '../levels/level02';
+import LEVEL03 from '../levels/level03';
 
 const LEVELS = {
   LEVEL01,
   LEVEL02,
+  LEVEL03,
 };
 
 const levelNumberString = window.localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY_LEVEL_NUMBER) || '01';
