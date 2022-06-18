@@ -5,7 +5,7 @@ class Config {
     return {
       width: size,
       height: size,
-      backgroundColor: 0x779642,
+      backgroundColor: 0x606060,
       worldWidth: size * 6,
       worldHeight: size * 6,
       resizeTo: document.getElementById('game'),
