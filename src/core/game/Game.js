@@ -22,6 +22,10 @@ import Assets from '../assetsManager/AssetManager';
 import CONSTANTS from '../constants/constants';
 import LEVELS from '../constants/levels';
 
+const MINE_TYPES = LEVELS.MINE_TYPES;
+const BEAR = LEVELS.BEAR;
+const NEXT_LEVEL_NUMBER = LEVELS.NEXT_LEVEL_NUMBER;
+
 /**
  * Main game stage, manages scenes/levels.
  *
@@ -52,8 +56,8 @@ export default class Game extends Container {
     this._createFence();
     this._createMines();
     this._createBushes();
-    this._createBear();
     this._createPatron();
+    if (BEAR.BEAR_AVAILABLE) this._createBear();
     this.addChild(this._endScreen);
     this._timer.start(() => this._onEnd());
 
@@ -138,9 +142,9 @@ export default class Game extends Container {
         }
       }
 
-      if (counter >= LEVELS.BEAR_STEPS.length) counter = 0;
+      if (counter >= BEAR.BEAR_STEPS.length) counter = 0;
 
-      const bearSteps = LEVELS.BEAR_STEPS[counter];
+      const bearSteps = BEAR.BEAR_STEPS[counter];
 
       const newPos = { row: bearSteps.row, col: bearSteps.col };
 
@@ -157,7 +161,7 @@ export default class Game extends Container {
       counter++;
 
       return counter;
-    }, LEVELS.BEAR_SPEED * 1000);
+    }, BEAR.BEAR_SPEED * 1000);
   }
 
   _bearMine(mine, bearPos) {
@@ -342,19 +346,22 @@ export default class Game extends Container {
     // Play Win or Lose sounds
 
     if (win === true) {
-      const availableMinesString = window.localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY) || '';
+      const availableMinesString = window.localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY_MINES_LIST) || '';
 
       if (availableMinesString) {
         window.localStorage.setItem(
-          CONSTANTS.LOCAL_STORAGE_KEY,
-          availableMinesString.split(',').concat(...LEVELS.MINE_TYPES).toString()
+          CONSTANTS.LOCAL_STORAGE_KEY_MINES_LIST,
+          availableMinesString.split(',').concat(...MINE_TYPES).toString()
         );
       } else {
         window.localStorage.setItem(
-          CONSTANTS.LOCAL_STORAGE_KEY,
-          LEVELS.MINE_TYPES.toString()
+          CONSTANTS.LOCAL_STORAGE_KEY_MINES_LIST,
+          MINE_TYPES.toString()
         );
       }
+
+      window.localStorage.setItem(CONSTANTS.LOCAL_STORAGE_KEY_LEVEL_NUMBER, NEXT_LEVEL_NUMBER);
+
       Assets.sounds.win.play();
     } else {
       Assets.sounds.lose.play();

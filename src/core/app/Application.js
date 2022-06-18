@@ -7,7 +7,7 @@ import Assets from '../assetsManager/AssetManager';
 import CONSTANTS from '../constants/constants';
 import LEVELS from '../constants/levels';
 
-const LEVEL1 = LEVELS.LEVEL1;
+const LEVEL_MAP = LEVELS.LEVEL_MAP;
 
 const { E, M, U } = CONSTANTS.MAP.ENTITIES;
 
@@ -69,17 +69,17 @@ export default class GameApplication extends Application {
     let miniMapString = '';
     let minesNumber = 0;
 
-    for (let row = 0; row < LEVEL1.length; row++) {
-      for (let col = 0; col < LEVEL1[0].length; col++) {
-        const isMine = LEVEL1[row][col].includes(M);
-        const isBear = LEVEL1[row][col].includes(U);
+    for (let row = 0; row < LEVEL_MAP.length; row++) {
+      for (let col = 0; col < LEVEL_MAP[0].length; col++) {
+        const isMine = LEVEL_MAP[row][col].includes(M);
+        const isBear = LEVEL_MAP[row][col].includes(U);
 
         if (isMine) {
           minesNumber += 1;
         }
 
         miniMapString
-          += `<div id='miniMap-${row}-${col}' class='miniMapTile ${isMine || isBear ? E : LEVEL1[row][col][0]}'></div>`;
+          += `<div id='miniMap-${row}-${col}' class='miniMapTile ${isMine || isBear ? E : LEVEL_MAP[row][col][0]}'></div>`;
       }
     }
 
@@ -88,8 +88,8 @@ export default class GameApplication extends Application {
     miniMap.innerHTML = miniMapString;
 
     document.querySelectorAll('.miniMapTile').forEach((e) => {
-      e.style.width = `${miniMap.offsetWidth / LEVEL1[0].length / miniMap.offsetWidth * 100}%`;
-      e.style.height = `${miniMap.offsetHeight / LEVEL1.length / miniMap.offsetHeight * 100}%`;
+      e.style.width = `${miniMap.offsetWidth / LEVEL_MAP[0].length / miniMap.offsetWidth * 100}%`;
+      e.style.height = `${miniMap.offsetHeight / LEVEL_MAP.length / miniMap.offsetHeight * 100}%`;
     });
 
     document.getElementById('scoreBoardMinesCurrent').innerText = String(minesNumber);
