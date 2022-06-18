@@ -19,7 +19,8 @@ import viewport from '../viewport/viewport';
 // Import the sounds
 import Assets from '../assetsManager/AssetManager';
 
-import CONSTANTS from '../constants/levels';
+import CONSTANTS from '../constants/constants';
+import LEVELS from '../constants/levels';
 
 /**
  * Main game stage, manages scenes/levels.
@@ -137,9 +138,9 @@ export default class Game extends Container {
         }
       }
 
-      if (counter >= CONSTANTS.BEAR_STEPS.length) counter = 0;
+      if (counter >= LEVELS.BEAR_STEPS.length) counter = 0;
 
-      const bearSteps = CONSTANTS.BEAR_STEPS[counter];
+      const bearSteps = LEVELS.BEAR_STEPS[counter];
 
       const newPos = { row: bearSteps.row, col: bearSteps.col };
 
@@ -156,7 +157,7 @@ export default class Game extends Container {
       counter++;
 
       return counter;
-    }, CONSTANTS.BEAR_SPEED * 1000);
+    }, LEVELS.BEAR_SPEED * 1000);
   }
 
   _bearMine(mine, bearPos) {
@@ -337,10 +338,23 @@ export default class Game extends Container {
     clearInterval(this._bearIntervalId);
 
     const score = this._flags.length;
-    const win = score === 0;
+    const win = score === this._mines.length;
     // Play Win or Lose sounds
 
     if (win === true) {
+      const availableMinesString = window.localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY) || '';
+
+      if (availableMinesString) {
+        window.localStorage.setItem(
+          CONSTANTS.LOCAL_STORAGE_KEY,
+          availableMinesString.split(',').concat(...LEVELS.MINE_TYPES).toString()
+        );
+      } else {
+        window.localStorage.setItem(
+          CONSTANTS.LOCAL_STORAGE_KEY,
+          LEVELS.MINE_TYPES.toString()
+        );
+      }
       Assets.sounds.win.play();
     } else {
       Assets.sounds.lose.play();
