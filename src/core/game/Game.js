@@ -7,6 +7,8 @@ import flagAnimations from '../animations/flagAnimations';
 import bushAnimations from '../animations/bushAnimations';
 import tireAnimations from '../animations/tireAnimations';
 import gardenAnimations from '../animations/gardenAnimations';
+import carAnimations from '../animations/carAnimations';
+import towerAnimations from '../animations/towerAnimations';
 import Map from '../entities/maps/Map';
 import Patron from '../entities/models/Patron';
 import Bear from '../entities/models/Bear';
@@ -14,6 +16,8 @@ import Mine from '../entities/models/Mine';
 import Bush from '../entities/models/Bush';
 import Tire from '../entities/models/Tire';
 import Garden from '../entities/models/Garden';
+import Car from '../entities/models/Car';
+import Tower from '../entities/models/Tower';
 import Flag from '../entities/models/Flag';
 import Timer from '../entities/Timer';
 import EndScreen from '../entities/EndScreen';
@@ -52,6 +56,8 @@ export default class Game extends Container {
     this._bushes = [];
     this._tires = [];
     this._garden = [];
+    this._cars = [];
+    this._towers = [];
 
     this._bearIntervalId = null;
   }
@@ -64,6 +70,8 @@ export default class Game extends Container {
     this._createBushes();
     this._createTires();
     this._createGarden();
+    this._createCars();
+    this._createTowers();
     this._createPatron();
     if (BEAR.BEAR_AVAILABLE) this._createBear();
     this.addChild(this._endScreen);
@@ -271,6 +279,44 @@ export default class Game extends Container {
 
       this.addChild(garden.anim);
       this._garden.push(garden);
+    });
+  }
+
+  _createCars() {
+    const carsPositions = this._map.posById(this._map.IDS.CAR);
+
+    carsPositions.forEach((carPosition) => {
+      const carCoords = this._map.coordsFromPos(carPosition);
+      const car = new Car(carAnimations);
+
+      // this._patron.anim.anchor.set(0.5);
+      carCoords.x = carCoords.x - config.game.tileWidth;
+      carCoords.y = carCoords.y - (config.game.tileHeight * 1.25);
+
+      car.init(carCoords, config.game.tileWidth * 2, config.game.tileHeight * 2);
+      car.position = carPosition;
+
+      this.addChild(car.anim);
+      this._cars.push(car);
+    });
+  }
+
+  _createTowers() {
+    const towersPositions = this._map.posById(this._map.IDS.TOWER);
+
+    towersPositions.forEach((towerPosition) => {
+      const towerCoords = this._map.coordsFromPos(towerPosition);
+      const tower = new Tower(towerAnimations);
+
+      // this._patron.anim.anchor.set(0.5);
+      towerCoords.x = towerCoords.x - config.game.tileWidth;
+      towerCoords.y = towerCoords.y - (config.game.tileHeight * 3);
+
+      tower.init(towerCoords, config.game.tileWidth * 2, config.game.tileHeight * 4);
+      tower.position = towerPosition;
+
+      this.addChild(tower.anim);
+      this._towers.push(tower);
     });
   }
 

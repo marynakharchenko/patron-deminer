@@ -9,7 +9,7 @@ import LEVELS from '../constants/levels';
 
 const LEVEL_MAP = LEVELS.LEVEL_MAP;
 
-const { E, M, U } = CONSTANTS.MAP.ENTITIES;
+const { E, M, U, C } = CONSTANTS.MAP.ENTITIES;
 
 /**
  * Game entry point. Holds the game's viewport
@@ -78,8 +78,14 @@ export default class GameApplication extends Application {
           minesNumber += 1;
         }
 
+        let className = isMine || isBear ? E : LEVEL_MAP[row][col][0];
+        // car case (2 tiles)
+        if (LEVEL_MAP[row + 1] && LEVEL_MAP[row + 1][col] && LEVEL_MAP[row + 1][col].includes(C)) {
+          className = C;
+        }
+
         miniMapString
-          += `<div id='miniMap-${row}-${col}' class='miniMapTile ${isMine || isBear ? E : LEVEL_MAP[row][col][0]}'></div>`;
+          += `<div id='miniMap-${row}-${col}' class='miniMapTile ${className}'></div>`;
       }
     }
 

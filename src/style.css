@@ -41,7 +41,7 @@ body {
   background-color: rgba(0, 0, 0, 0.56);
 }
 
-.miniMapTile.wall {
+.miniMapTile.wall, .miniMapTile.tower {
   background-color: white;
 }
 
@@ -57,8 +57,12 @@ body {
   background-color: orange;
 }
 
-.miniMapTile.bush {
+.miniMapTile.bush, .miniMapTile.garden {
   background-color: green;
+}
+
+.miniMapTile.tire, .miniMapTile.car {
+  background-color: gray;
 }
 
 #scoreBoard {

@@ -23,6 +23,8 @@ export default {
       U: 'bear', // Bear (Ursus)
       R: 'tire', // Tire (round)
       G: 'garden', // Garden
+      C: 'car', // Car
+      L: 'tower', // Tower (lookout)
     },
   },
   ANIMATION_DURATION_DEFAULT: 0.038,
