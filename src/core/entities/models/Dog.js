@@ -1,7 +1,7 @@
 import Entity from './Entity';
 import CONSTANTS from '../../constants/constants';
 
-export default class Patron extends Entity {
+export default class Dog extends Entity {
   constructor(config, animations) {
     super(config, animations);
     // this.isDemining = false;

@@ -2,16 +2,16 @@ import CONSTANTS from '../constants/constants';
 
 export default {
   [`${CONSTANTS.ACTIONS.STAND}${CONSTANTS.DIRECTIONS.LEFT}`]: [
-    'patronLeft',
+    'dogLeft',
   ],
   [`${CONSTANTS.ACTIONS.STAND}${CONSTANTS.DIRECTIONS.RIGHT}`]: [
-    'patronRight',
+    'dogRight',
   ],
   [`${CONSTANTS.ACTIONS.STAND}${CONSTANTS.DIRECTIONS.UP}`]: [
-    'patronUp',
+    'dogUp',
   ],
   [`${CONSTANTS.ACTIONS.STAND}${CONSTANTS.DIRECTIONS.DOWN}`]: [
-    'patronDown',
+    'dogDown',
   ],
   [`${CONSTANTS.ACTIONS.WALK}${CONSTANTS.DIRECTIONS.LEFT}`]: [
     'walkLeft1',

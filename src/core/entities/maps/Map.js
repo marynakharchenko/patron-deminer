@@ -2,7 +2,7 @@ import config from '../../config/config';
 import CONSTANTS from '../../constants/constants';
 import LEVELS from '../../constants/levels';
 
-const { E, W, T, P, M, F, B, U, R, G, C, L } = CONSTANTS.MAP.ENTITIES;
+const { E, W, T, D, M, F, B, U, R, G, C, L } = CONSTANTS.MAP.ENTITIES;
 
 const LEVEL_MAP = LEVELS.LEVEL_MAP;
 
@@ -21,7 +21,7 @@ export default class Map {
       EMPTY: E,
       WALL: W,
       TELEPORT: T,
-      PATRON: P,
+      DOG: D,
       MINE: M,
       FLAG: F,
       BUSH: B,

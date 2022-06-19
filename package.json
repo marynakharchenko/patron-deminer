@@ -1,7 +1,7 @@
 {
-  "name": "patron-deminer",
+  "name": "deminer-dog",
   "version": "0.0.1",
-  "description": "patron-deminer",
+  "description": "deminer-dog",
   "main": "src/index.js",
   "scripts": {
     "build": "webpack",

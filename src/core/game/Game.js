@@ -1,6 +1,6 @@
 const { Container } = window.PIXI;
 
-import patronAnimations from '../animations/patronAnimations';
+import dogAnimations from '../animations/dogAnimations';
 import bearAnimations from '../animations/bearAnimations';
 import mineAnimations from '../animations/mineAnimations';
 import flagAnimations from '../animations/flagAnimations';
@@ -10,7 +10,7 @@ import gardenAnimations from '../animations/gardenAnimations';
 import carAnimations from '../animations/carAnimations';
 import towerAnimations from '../animations/towerAnimations';
 import Map from '../entities/maps/Map';
-import Patron from '../entities/models/Patron';
+import Dog from '../entities/models/Dog';
 import Bear from '../entities/models/Bear';
 import Mine from '../entities/models/Mine';
 import Bush from '../entities/models/Bush';
@@ -49,7 +49,7 @@ export default class Game extends Container {
     this._map = new Map();
     this._timer = new Timer();
     this._endScreen = new EndScreen();
-    this._patron = null;
+    this._dog = null;
     this._bear = null;
     this._mines = [];
     this._flags = [];
@@ -72,7 +72,7 @@ export default class Game extends Container {
     this._createGarden();
     this._createCars();
     this._createTowers();
-    this._createPatron();
+    this._createDog();
     if (BEAR.BEAR_AVAILABLE) this._createBear();
     this.addChild(this._endScreen);
     this._timer.start(() => this._onEnd());
@@ -110,19 +110,19 @@ export default class Game extends Container {
     }
   }
 
-  _createPatron() {
-    const patronMapPos = this._map.posById(this._map.IDS.PATRON)[0];
-    const patronCoords = this._map.coordsFromPos(patronMapPos);
+  _createDog() {
+    const dogMapPos = this._map.posById(this._map.IDS.DOG)[0];
+    const dogCoords = this._map.coordsFromPos(dogMapPos);
 
-    this._patron = new Patron(patronAnimations);
+    this._dog = new Dog(dogAnimations);
 
-    this._patron.init(patronCoords, config.game.tileWidth, config.game.tileHeight);
-    this._patron.position = patronMapPos;
+    this._dog.init(dogCoords, config.game.tileWidth, config.game.tileHeight);
+    this._dog.position = dogMapPos;
 
-    this._patron.anim.anchor.set(0.5);
-    viewport.follow(this._patron.anim);
+    this._dog.anim.anchor.set(0.5);
+    viewport.follow(this._dog.anim);
 
-    this.addChild(this._patron.anim);
+    this.addChild(this._dog.anim);
   }
 
   _createBear() {
@@ -212,7 +212,7 @@ export default class Game extends Container {
       const mineCoords = this._map.coordsFromPos(minePosition);
       const mine = new Mine(mineAnimations);
 
-      // this._patron.anim.anchor.set(0.5);
+      // this._dog.anim.anchor.set(0.5);
       mineCoords.x = mineCoords.x - (config.game.tileWidth / 6);
       // mineCoords.y = mineCoords.y - (config.game.tileHeight / 6);
 
@@ -232,7 +232,7 @@ export default class Game extends Container {
       const bushCoords = this._map.coordsFromPos(bushPosition);
       const bush = new Bush(bushAnimations);
 
-      // this._patron.anim.anchor.set(0.5);
+      // this._dog.anim.anchor.set(0.5);
       bushCoords.x = bushCoords.x - (config.game.tileWidth / 2);
       bushCoords.y = bushCoords.y - (config.game.tileHeight / 2);
 
@@ -251,7 +251,7 @@ export default class Game extends Container {
       const tireCoords = this._map.coordsFromPos(tirePosition);
       const tire = new Tire(tireAnimations);
 
-      // this._patron.anim.anchor.set(0.5);
+      // this._dog.anim.anchor.set(0.5);
       tireCoords.x = tireCoords.x - (config.game.tileWidth / 2);
       tireCoords.y = tireCoords.y - (config.game.tileHeight / 2);
 
@@ -270,7 +270,7 @@ export default class Game extends Container {
       const gardenCoords = this._map.coordsFromPos(gardenPosition);
       const garden = new Garden(gardenAnimations);
 
-      // this._patron.anim.anchor.set(0.5);
+      // this._dog.anim.anchor.set(0.5);
       gardenCoords.x = gardenCoords.x - (config.game.tileWidth / 2);
       gardenCoords.y = gardenCoords.y - (config.game.tileHeight / 2);
 
@@ -289,7 +289,7 @@ export default class Game extends Container {
       const carCoords = this._map.coordsFromPos(carPosition);
       const car = new Car(carAnimations);
 
-      // this._patron.anim.anchor.set(0.5);
+      // this._dog.anim.anchor.set(0.5);
       carCoords.x = carCoords.x - config.game.tileWidth;
       carCoords.y = carCoords.y - (config.game.tileHeight * 1.25);
 
@@ -308,7 +308,7 @@ export default class Game extends Container {
       const towerCoords = this._map.coordsFromPos(towerPosition);
       const tower = new Tower(towerAnimations);
 
-      // this._patron.anim.anchor.set(0.5);
+      // this._dog.anim.anchor.set(0.5);
       towerCoords.x = towerCoords.x - config.game.tileWidth;
       towerCoords.y = towerCoords.y - (config.game.tileHeight * 3);
 
@@ -329,80 +329,80 @@ export default class Game extends Container {
     if (this._pressedKeys.includes(e.code)) return;
 
     this._pressedKeys.push(e.code);
-    this._patronAction();
+    this._dogAction();
   }
 
   _onKeyUp(e) {
     this._pressedKeys.splice(this._pressedKeys.indexOf(e.code), 1); // no checks ftw
   }
 
-  _patronAction() {
-    if (this._patron.moving) return;
+  _dogAction() {
+    if (this._dog.moving) return;
 
     const directionKey = this._pressedKeys.find((k) => ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(k));
 
     if (directionKey) {
       const direction = directionKey.replace('Arrow', '');
 
-      this._patronMove(direction);
+      this._dogMove(direction);
 
       return;
     }
 
     if (this._pressedKeys.includes('Space')) {
-      this._patronDemine();
+      this._dogDemine();
 
       return;
     }
 
-    this._patron.standStill();
+    this._dog.standStill();
   }
 
-  async _patronMove(direction) {
-    const oldPos = this._map.posById(this._map.IDS.PATRON)[0];
+  async _dogMove(direction) {
+    const oldPos = this._map.posById(this._map.IDS.DOG)[0];
     const newPos = this._map.getDestination(oldPos, direction);
 
     if (this._map.outOfBounds(newPos) || this._map.collide(newPos) || this._map.isEnemyPosition(newPos)) {
-      return this._patron.standStill(direction);
+      return this._dog.standStill(direction);
     }
 
     const targetPos = this._map.coordsFromPos(newPos);
 
-    this._patron.position = newPos;
-    await this._patron.move(targetPos, direction);
-    document.getElementById(`miniMap-${oldPos.row}-${oldPos.col}`).classList.remove(this._map.IDS.PATRON);
+    this._dog.position = newPos;
+    await this._dog.move(targetPos, direction);
+    document.getElementById(`miniMap-${oldPos.row}-${oldPos.col}`).classList.remove(this._map.IDS.DOG);
     document.getElementById(`miniMap-${oldPos.row}-${oldPos.col}`).classList.add(this._map.IDS.EMPTY);
     document.getElementById(`miniMap-${newPos.row}-${newPos.col}`).classList.remove(this._map.IDS.EMPTY);
-    document.getElementById(`miniMap-${newPos.row}-${newPos.col}`).classList.add(this._map.IDS.PATRON);
+    document.getElementById(`miniMap-${newPos.row}-${newPos.col}`).classList.add(this._map.IDS.DOG);
 
-    this._map.removeModelFromTileOnMap(oldPos, this._map.IDS.PATRON);
-    this._map.addModelToTileOnMap(newPos, this._map.IDS.PATRON);
+    this._map.removeModelFromTileOnMap(oldPos, this._map.IDS.DOG);
+    this._map.addModelToTileOnMap(newPos, this._map.IDS.DOG);
 
-    return this._patronAction();
+    return this._dogAction();
   }
 
-  _patronDemine() {
-    const patronPos = this._map.posById(this._map.IDS.PATRON)[0];
+  _dogDemine() {
+    const dogPos = this._map.posById(this._map.IDS.DOG)[0];
 
-    const hitMine = this._map.getTileStart(patronPos).includes(this._map.IDS.MINE);
+    const hitMine = this._map.getTileStart(dogPos).includes(this._map.IDS.MINE);
 
-    if (!hitMine) return this._patron.standStill();
+    if (!hitMine) return this._dog.standStill();
 
-    const mine = this._mines.find((s) => s.row === patronPos.row && s.col === patronPos.col);
+    const mine = this._mines.find((s) => s.row === dogPos.row && s.col === dogPos.col);
 
-    if (mine.deminedCount >= 1) return this._patron.standStill();
+    if (mine.deminedCount >= 1) return this._dog.standStill();
 
     document.getElementById('scoreBoardMinesCurrent').innerText
       = String(Number(document.getElementById('scoreBoardMinesCurrent').innerText) - 1);
     // Play the demine sound
     if (!Assets.sounds.demine.playing()) Assets.sounds.demine.play();
 
-    this._patron.demine(() => {
+    this._dog.demine(() => {
       mine.deminedCount++;
       if (mine.deminedCount >= 1) {
-        document.getElementById(`miniMap-${patronPos.row}-${patronPos.col}`).classList.add(this._map.IDS.FLAG);
+        document.getElementById(`miniMap-${dogPos.row}-${dogPos.col}`).classList.add(this._map.IDS.FLAG);
 
-        // patron on mine
+        // dog on mine
         this._map.addModelToTileOnMap({ row: mine.row, col: mine.col }, this._map.IDS.FLAG);
 
         const flagCoords = this._map.coordsFromPos({ row: mine.row, col: mine.col });
@@ -412,7 +412,7 @@ export default class Game extends Container {
         flagCoords.y = flagCoords.y - (config.game.tileHeight / 2);
 
         flag.init(flagCoords, config.game.tileWidth, config.game.tileHeight);
-        flag.position = patronPos;
+        flag.position = dogPos;
 
         this.addChild(flag.anim);
         this._flags.push(flag);

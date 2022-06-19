@@ -16,7 +16,7 @@ export default {
       E: 'empty', // Empty
       W: 'wall', // Wall - tree or end of map
       T: 'teleport', // Teleport - puddle or lake
-      P: 'patron', // Patron
+      D: 'dog', // Dog
       M: 'mine', // Mine
       F: 'flag', // Flag
       B: 'bush', // Bush
