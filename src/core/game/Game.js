@@ -213,11 +213,11 @@ export default class Game extends Container {
       const mine = new Mine(mineAnimations);
 
       // this._dog.anim.anchor.set(0.5);
-      mineCoords.x = mineCoords.x - (config.game.tileWidth / 6);
-      // mineCoords.y = mineCoords.y - (config.game.tileHeight / 6);
+      mineCoords.x = mineCoords.x - (config.game.tileWidth / 3);
+      mineCoords.y = mineCoords.y - (config.game.tileHeight / 6);
 
       mine.deminedCount = 0;
-      mine.init(mineCoords, config.game.tileWidth / 3, config.game.tileHeight / 3, MINE_TYPES);
+      mine.init(mineCoords, config.game.tileWidth / 2, config.game.tileHeight / 2, MINE_TYPES);
       mine.position = minePosition;
 
       this.addChild(mine.anim);
