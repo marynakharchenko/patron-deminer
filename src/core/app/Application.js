@@ -80,6 +80,7 @@ export default class GameApplication extends Application {
 
         let className = isMine || isBear ? E : LEVEL_MAP[row][col][0];
         // car case (2 tiles)
+
         if (LEVEL_MAP[row + 1] && LEVEL_MAP[row + 1][col] && LEVEL_MAP[row + 1][col].includes(C)) {
           className = C;
         }
