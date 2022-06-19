@@ -217,7 +217,7 @@ export default class Game extends Container {
       // mineCoords.y = mineCoords.y - (config.game.tileHeight / 6);
 
       mine.deminedCount = 0;
-      mine.init(mineCoords, config.game.tileWidth / 3, config.game.tileHeight / 3);
+      mine.init(mineCoords, config.game.tileWidth / 3, config.game.tileHeight / 3, MINE_TYPES);
       mine.position = minePosition;
 
       this.addChild(mine.anim);

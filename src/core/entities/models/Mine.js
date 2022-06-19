@@ -1,3 +1,5 @@
+import bushAnimations from '../../animations/bushAnimations';
+
 const { AnimatedSprite } = window.PIXI;
 
 import Entity from './Entity';
@@ -15,9 +17,12 @@ export default class Mine extends Entity {
    * @param {x,y} position coordinates
    * @param width width
    * @param height height
+   * @param mine_types mine_types array
    */
-  async init(position, width, height) {
-    this.anim = new AnimatedSprite(this.animations[`${CONSTANTS.ACTIONS.STAND}${this.direction}`]);
+  async init(position, width, height, mine_types = []) {
+    const mineNumber = Math.floor(Math.random() * mine_types.length);
+    console.log(mineNumber);
+    this.anim = new AnimatedSprite(this.animations[`${CONSTANTS.ACTIONS.STAND}${mine_types[mineNumber]}`]);
     this.anim.position = position;
     // Adjust animation speed
     this.anim.animationSpeed = 0.2;

@@ -99,8 +99,8 @@ for (let row = 0; row < LEVEL_MAP.length; row++) {
 const LEVEL_SECONDS = (BEAR_STEPS.length + (MINES_NUMBER * 2)) * BEAR_SPEED;
 
 const MINE_TYPES = [
-  MINES.MON_200.MINE_ID,
-  MINES.TM_62.MINE_ID,
+  MINES.PMN_2.MINE_ID,
+  MINES.OZM_72.MINE_ID,
 ];
 
 const BEAR = {
