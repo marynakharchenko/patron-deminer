@@ -1,19 +1,141 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Patron deminer</title>
+  <head>
+    <title>Deminer.Dog</title>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/6.3.2/browser/pixi.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pixi-viewport@4.34.4/dist/viewport.min.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+  </head>
+  <body>
+    <div style="display: none" class="start-bg" id="background-start">
+      <div>
+        <img
+          src="src/assets/images--landing/home-page-bg.png"
+          class="bg-start-phone"
+        />
+      </div>
+      <div class="logo-and-btn-wrap">
+        <img src="src/assets/images--landing/logo_1.png" class="logo-start" />
+        <button class="btn-home btn-start loading"></button>
+        <button class="btn-home btn-about-game loading"></button>
+        <button class="btn-home btn-donate loading"></button>
+        <button class="btn-home btn-collection loading"></button>
+      </div>
+    </div>
 
-	<meta charset="utf-8">
-	<style type="text/css">
-		body {
-			margin: 0;
-			padding: 0;
-			overflow: hidden;
-		}
-	</style>
+    <div class="collections" style="display: none">
+      <div class="collections-wrap">
+        <div class="collections-bg">
+          <img
+            src="src/assets/images--landing/btn-collection.png"
+            class="btn-collection-wrap"
+          />
+          <div class="info-bg">
+            <p class="info-text">Знайдено 5 із 25 об’єктів</p>
+          </div>
+          <div id="mines-list" class="mines-wrap"></div>
+          <div>
+            <div class="attention-bg">
+              <h3 class="attention-title">Важливо!</h3>
+              <p class="attention-description">
+                Помітив схожий предмет у реальному житті - не підходь та не
+                зрушуй з місця.<br />1. Відійди на безпечну відстань ( понад 300
+                м.). <br />2. Повідом іншим про знахідку за можливості познач
+                місце добревидимим орієнтрором. <br />3. Звернися до
+                спеціалізованих органів (зателефонуй на номер 101 або 102 та
+                вкажи місце знаходження небезпечного предмета). <br />4. Очікуй
+                на приїзд спеціалізованої служби на безпечній відстані.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-</head>
-<body>
+    <div style="display: none">
+      <div class="about-game">
+        <div id="about">
+          <img
+            src="src/assets/images--landing/logo-about-game.svg"
+            class="logo-about-game"
+          />
+          <div>
+            <div class="aboutTextWrap">
+              <img
+                src="src/assets/images--landing/mine-icon.png"
+                class="mine-wrap"
+              />
+              <div class="about-game-text-wrap">
+                <p class="about-game-text">
+                  Не дай рашистам та техніці окупантів пройти поряд: бойовий
+                  качур допоможе тобі в цьому. Тебе очікує 5 різних локацій для
+                  знешкодження загарбників, та фінішний рівень в бункері, де
+                  твоя ціль - путін.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="rulesWrap">
+            <img
+              src="src/assets/images--landing/btn-how-to-play.png"
+              class="how-to-play-wrap"
+            />
+            <div class="about-game-text-wrap">
+              <p class="about-game-text">
+                Не дай рашистам та техніці окупантів пройти поряд: бойовий качур
+                допоможе тобі в цьому. Тебе очікує 5 різних локацій для
+                знешкодження загарбників, та фінішний рівень в бункері, де твоя
+                ціль - путін.
+              </p>
+            </div>
+          </div>
+          <div class="rulesWrap">
+            <img
+              src="src/assets/images--landing/btn-how-to-play.png"
+              class="how-to-play-wrap"
+            />
+            <div class="about-game-text-wrap">
+              <p class="about-game-text">
+                Не дай рашистам та техніці окупантів пройти поряд: бойовий качур
+                допоможе тобі в цьому. Тебе очікує 5 різних локацій для
+                знешкодження загарбників, та фінішний рівень в бункері, де твоя
+                ціль - путін.
+              </p>
+            </div>
+          </div>
+          <p class="disclaimer">
+            <b>Дисклеймер</b><br />
+            Даний ресурс носить розважальний характер. Всі персонажі та описані
+            події є вигаданими, будь-який збіг з реальними людьми або подіями, є
+            випадковістю.<br />
+            Жодний качур не постраждав під час створення гри.
+          </p>
+        </div>
+      </div>
+    </div>
 
-</body>
+    <div id="game">
+      <div id="miniMap"></div>
+      <div id="scoreBoard">
+        <span id="scoreBoardTimer">
+          <span class="timerIcon"></span>
+          <span class="timer">
+            <span id="scoreBoardTimerMinutes"></span
+            ><span class="minutesSecondsСolon">:</span
+            ><span id="scoreBoardTimerSeconds"></span>
+          </span>
+        </span>
+        <span class="scoreMines">
+          <span class="minesIcon"></span>
+          <span class="mines">
+            <span id="scoreBoardMinesCurrent"></span
+            ><span class="scoreMinesСolon"> /</span>
+            <span id="scoreBoardMinesAll"></span>
+          </span>
+        </span>
+      </div>
+    </div>
+  </body>
 </html>

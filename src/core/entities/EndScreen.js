@@ -1,5 +1,4 @@
-import { Container, Text, TextStyle } from 'pixi.js';
-// const Resources = Loader.shared.resources;
+const { Container, Text, TextStyle } = window.PIXI;
 
 const Texts = {
   YOU_WIN: 'Congratulations you win!',
@@ -18,20 +17,21 @@ export default class EndScreen extends Container {
    *
    * @param {int} score
    * @param {boolean} win
+   * @param {int} seconds
    */
-  show(score, win) {
+  show(score, win, seconds) {
     this.visible = true;
-    this._updateTexts(score, win);
+    this._updateTexts(score, win, seconds);
   }
 
   hide() {
     this.visible = false;
   }
 
-  _updateTexts(score, win) {
+  _updateTexts(score, win, seconds) {
     this.label.text = win === true ? Texts.YOU_WIN : Texts.YOU_LOOSE;
 
-    this.score.text = `Score: ${score}`;
+    this.score.text = `Score: ${score}, Time left: ${seconds} seconds`;
   }
 
   _createText() {

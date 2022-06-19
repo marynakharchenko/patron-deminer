@@ -1,5 +1,5 @@
-import { Howl } from 'howler';
-import { Loader, Texture } from 'pixi.js';
+const { Loader, Texture } = window.PIXI;
+const Howl = window.Howl;
 
 const contextImage = require.context('../../assets/images', true, /\.(jpg|png)$/im);
 const contextSound = require.context('../../assets/sounds', true, /\.(wav|mp3)$/im);
@@ -150,10 +150,11 @@ class AssetManager {
    */
   _importAssets() {
     contextImage.keys().forEach((filename) => {
-      let [, id] = filename.split('.'); // eslint-disable-line prefer-const
+      let [, , id] = filename.split('/'); // eslint-disable-line prefer-const
       const url = contextImage(filename);
 
-      id = id.substring(1);
+      id = id.split('.')[0];
+
       this._assets[id] = url;
       this._images[id] = url;
     });
@@ -163,6 +164,7 @@ class AssetManager {
       const url = contextSound(filename);
 
       id = id.substring(1);
+
       this._assets[id] = url;
       this._sounds[id] = url;
     });
