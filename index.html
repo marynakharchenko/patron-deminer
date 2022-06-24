@@ -9,6 +9,43 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
   </head>
   <body>
+    <div class="popUpStart" id="bg-popUp-finish" style="display: none">
+      <div class="endPopUpBg">
+        <div class="finish-popUp-wrap">
+          <p class="endTitle">Pівень пройдено</p>
+          <img
+            src="src/assets/images--landing/dog-finish-popUp.svg"
+            class="dog-finish-popUp"
+          />
+            <p class="level-description">Місцевість очищена від усіх небезпечних предметів.</p>
+          <button class="btn-home btn-next-level loading"></button>
+          <button class="btn-donat-popup loading">Зробити донат</button>
+        </div>
+      </div>
+    </div>
+     <div class="popUpStart" id="bg-popUp-finish-fail" >
+      <div class="endPopUpBg">
+        <div class="finish-popUp-wrap">
+          <p class="endTitle">Спробуй ще раз</p>
+            <p class="level-description">На території залишилися ще небезпечні предмети, знайди їх усі</p>
+          <button class="btn-home btn-play-again loading"></button>
+          <button class="btn-donat-popup loading">Зробити донат</button>
+        </div>
+      </div>
+    </div>
+    <div class="popUpStart" id="bg-popUp-start" style="display: none">
+      <div class="endPopUpBg">
+        <div class="finish-popUp-wrap">
+          <p class="endTitle">Рівень 1 <br/>"Парк"</p>
+          <img
+            src="src/assets/images--landing/levelPopUp/park-popUp.png"
+            class="level-popUp"
+          />
+          <p class="level-description">Знайди всі небезпечні предмети, які розкидав клишоногий.</p>
+          <button class="btn-home btn-start-next-level loading"></button>
+        </div>
+      </div>
+    </div>
     <div style="display: none" class="start-bg" id="background-start">
       <div>
         <img
@@ -54,8 +91,8 @@
       </div>
     </div>
 
-    <div style="display: none">
-      <div class="about-game">
+    <div>
+      <div class="about-game" style="display: none">
         <div id="about">
           <img
             src="src/assets/images--landing/logo-about-game.svg"
@@ -116,7 +153,7 @@
       </div>
     </div>
 
-    <div id="game">
+    <div id="game" style="display: none">
       <div id="miniMap"></div>
       <div id="scoreBoard">
         <span id="scoreBoardTimer">

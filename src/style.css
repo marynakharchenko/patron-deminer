@@ -41,7 +41,8 @@ body {
   background-color: rgba(0, 0, 0, 0.56);
 }
 
-.miniMapTile.wall, .miniMapTile.tower {
+.miniMapTile.wall,
+.miniMapTile.tower {
   background-color: white;
 }
 
@@ -57,11 +58,13 @@ body {
   background-color: orange;
 }
 
-.miniMapTile.bush, .miniMapTile.garden {
+.miniMapTile.bush,
+.miniMapTile.garden {
   background-color: green;
 }
 
-.miniMapTile.tire, .miniMapTile.car {
+.miniMapTile.tire,
+.miniMapTile.car {
   background-color: gray;
 }
 
@@ -110,6 +113,36 @@ body {
   transform: translateY(-1px);
   transition: all 0.1s;
   cursor: pointer;
+}
+.btn-donat-popup {
+  background-color: transparent;
+  border: none;
+  transform: translateY(-1px);
+  transition: all 0.1s;
+  cursor: pointer;
+  font-size: 9px;
+  text-align: center;
+  -webkit-text-stroke: 1px black;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+.btn-donat-popup:hover {
+  text-decoration: underline;
+}
+.btn-next-level {
+  width: 138px;
+  height: 45px;
+  background-image: url("../src/assets/images--landing/btn-play-next-level.png");
+}
+.btn-play-again {
+  width: 138px;
+  height: 45px;
+  background-image: url("../src/assets/images--landing/btn-start-popUp.png");
+}
+.btn-start-next-level {
+  width: 138px;
+  height: 45px;
+  background-image: url("../src/assets/images--landing/btn-start-popUp.png");
 }
 .btn-start {
   background-image: url("../src/assets/images--landing/btn-start.png");
@@ -318,6 +351,12 @@ body {
 .about-game-text-wrap {
   padding: 15%;
 }
+.finish-popUp-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px;
+}
 .attention-bg {
   background-color: #d31818;
   border-radius: 15px;
@@ -360,6 +399,7 @@ body {
   background-position: center center;
   background-size: contain;
 }
+
 .how-to-play-wrap {
   position: absolute;
   max-width: 300px;
@@ -544,6 +584,23 @@ body {
   text-align: center;
   line-height: 1.5;
 }
+.endTitle {
+  font-size: 14px;
+  color: black;
+  -webkit-text-stroke: 1px black;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.5;
+}
+.dog-finish-popUp {
+  width: 150px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.level-popUp {
+  width: 200px;
+  margin-top: 20px;
+}
 .weight-mine,
 .distance-mine {
   margin: 0;
@@ -587,4 +644,45 @@ body {
 }
 .popUpMine1 {
   display: none;
+}
+
+.popUpStart {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+#bg-popUp-finish,
+#bg-popUp-finish-fail {
+  background: url(assets/images--landing/footer-about-us-page.svg)
+    rgba(35, 13, 9, 0.7) center bottom no-repeat;
+  background-size: cover;
+  background-blend-mode: multiply;
+  display: flex;
+  flex-direction: column;
+}
+#bg-popUp-start {
+  background: url(assets/images--landing/footer-about-us-page.svg)
+    rgba(35, 13, 9, 0.7) center bottom no-repeat;
+  background-size: cover;
+  background-blend-mode: multiply;
+  display: flex;
+  flex-direction: column;
+}
+.endPopUpBg {
+  position: relative;
+  max-width: 400px;
+  height: 500px;
+  width: inherit;
+  margin-top: 40px;
+  margin-right: auto;
+  margin-left: auto;
+  background-image: url(assets/images--landing/collection-bg.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+.level-description {
+  font-size: 11px;
+  color: black;
+  text-align: center;
 }

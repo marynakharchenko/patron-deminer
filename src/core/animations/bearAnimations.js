@@ -2,7 +2,9 @@ import CONSTANTS from '../constants/constants';
 
 export default {
   [`${CONSTANTS.ACTIONS.STAND}${CONSTANTS.DIRECTIONS.LEFT}`]: ['bearWalkLeft7'],
-  [`${CONSTANTS.ACTIONS.STAND}${CONSTANTS.DIRECTIONS.RIGHT}`]: ['bearWalkRight7'],
+  [`${CONSTANTS.ACTIONS.STAND}${CONSTANTS.DIRECTIONS.RIGHT}`]: [
+    'bearWalkRight7',
+  ],
   [`${CONSTANTS.ACTIONS.STAND}${CONSTANTS.DIRECTIONS.UP}`]: ['bearWalkUp7'],
   [`${CONSTANTS.ACTIONS.STAND}${CONSTANTS.DIRECTIONS.DOWN}`]: ['bearWalkDown6'],
   [`${CONSTANTS.ACTIONS.WALK}${CONSTANTS.DIRECTIONS.LEFT}`]: [
@@ -42,12 +44,12 @@ export default {
     'bearWalkDown6',
   ],
   [CONSTANTS.ACTIONS.MINE]: [
-    'demineDown1',
-    'demineDown2',
-    'demineDown3',
-    'demineDown4',
-    'demineDown5',
-    'demineDown6',
-    'demineDown7',
+    'bearMineDown1',
+    'bearMineDown2',
+    'bearMineDown2',
+    'bearMineDown1',
+    'bearMineDown2',
+    'bearMineDown2',
+    'bearWalkRight7',
   ],
 };
