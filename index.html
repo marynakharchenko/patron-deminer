@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
   </head>
   <body>
-    <div class="popUpStart" id="bg-popUp-finish" style="display: none">
+    <div style="display: none" class="popUpStart" id="bg-popUp-finish">
       <div class="endPopUpBg">
         <div class="finish-popUp-wrap">
           <p class="endTitle">Pівень пройдено</p>
@@ -17,31 +17,37 @@
             src="src/assets/images--landing/dog-finish-popUp.svg"
             class="dog-finish-popUp"
           />
-            <p class="level-description">Місцевість очищена від усіх небезпечних предметів.</p>
+          <p class="level-description">
+            Місцевість очищена від усіх небезпечних предметів.
+          </p>
           <button class="btn-home btn-next-level loading"></button>
           <button class="btn-donat-popup loading">Зробити донат</button>
         </div>
       </div>
     </div>
-     <div class="popUpStart" id="bg-popUp-finish-fail" >
+    <div style="display: none" class="popUpStart" id="bg-popUp-finish-fail">
       <div class="endPopUpBg">
         <div class="finish-popUp-wrap">
           <p class="endTitle">Спробуй ще раз</p>
-            <p class="level-description">На території залишилися ще небезпечні предмети, знайди їх усі</p>
+          <p class="level-description">
+            На території залишилися ще небезпечні предмети, знайди їх усі
+          </p>
           <button class="btn-home btn-play-again loading"></button>
           <button class="btn-donat-popup loading">Зробити донат</button>
         </div>
       </div>
     </div>
-    <div class="popUpStart" id="bg-popUp-start" style="display: none">
+    <div style="display: none" class="popUpStart" id="bg-popUp-start">
       <div class="endPopUpBg">
         <div class="finish-popUp-wrap">
-          <p class="endTitle">Рівень 1 <br/>"Парк"</p>
+          <p class="endTitle">Рівень 1 <br />"Парк"</p>
           <img
             src="src/assets/images--landing/levelPopUp/park-popUp.png"
             class="level-popUp"
           />
-          <p class="level-description">Знайди всі небезпечні предмети, які розкидав клишоногий.</p>
+          <p class="level-description">
+            Знайди всі небезпечні предмети, які розкидав клишоногий.
+          </p>
           <button class="btn-home btn-start-next-level loading"></button>
         </div>
       </div>
@@ -62,7 +68,7 @@
       </div>
     </div>
 
-    <div class="collections" style="display: none">
+    <div style="display: none" class="collections">
       <div class="collections-wrap">
         <div class="collections-bg">
           <img
@@ -91,8 +97,8 @@
       </div>
     </div>
 
-    <div>
-      <div class="about-game" style="display: none">
+    <div style="display: none">
+      <div class="about-game">
         <div id="about">
           <img
             src="src/assets/images--landing/logo-about-game.svg"
@@ -153,26 +159,9 @@
       </div>
     </div>
 
-    <div id="game" style="display: none">
+    <div id="game">
       <div id="miniMap"></div>
-      <div id="scoreBoard">
-        <span id="scoreBoardTimer">
-          <span class="timerIcon"></span>
-          <span class="timer">
-            <span id="scoreBoardTimerMinutes"></span
-            ><span class="minutesSecondsСolon">:</span
-            ><span id="scoreBoardTimerSeconds"></span>
-          </span>
-        </span>
-        <span class="scoreMines">
-          <span class="minesIcon"></span>
-          <span class="mines">
-            <span id="scoreBoardMinesCurrent"></span
-            ><span class="scoreMinesСolon"> /</span>
-            <span id="scoreBoardMinesAll"></span>
-          </span>
-        </span>
-      </div>
+      <div id="scoreBoard"></div>
     </div>
   </body>
 </html>

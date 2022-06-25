@@ -42,8 +42,6 @@ export default class GameApplication extends Application {
     };
 
     this.loadAssets().then(() => this.initGame());
-
-    this.initMiniMapAndScoreBoard();
   }
 
   /**
@@ -59,9 +57,9 @@ export default class GameApplication extends Application {
    *
    */
   async initGame() {
+    this.initMiniMapAndScoreBoard();
     this.game = new Game();
     this.viewport.addChild(this.game);
-
     this.game.start();
   }
 
@@ -99,8 +97,26 @@ export default class GameApplication extends Application {
       e.style.height = `${miniMap.offsetHeight / LEVEL_MAP.length / miniMap.offsetHeight * 100}%`;
     });
 
-    document.getElementById('scoreBoardMinesCurrent').innerText = String(minesNumber);
-    document.getElementById('scoreBoardMinesAll').innerText = String(minesNumber);
+    const scoreBoard = document.getElementById('scoreBoard');
+
+    scoreBoard.innerHTML = `
+      <span id="scoreBoardTimer">
+        <span class="timerIcon"></span>
+        <span class="timer">
+          <span id="scoreBoardTimerMinutes"></span
+          ><span class="minutesSecondsСolon">:</span
+          ><span id="scoreBoardTimerSeconds"></span>
+        </span>
+      </span>
+      <span class="scoreMines">
+        <span class="minesIcon"></span>
+        <span class="mines">
+          <span id="scoreBoardMinesCurrent">${minesNumber}</span
+          ><span class="scoreMinesСolon"> /</span>
+          <span id="scoreBoardMinesAll">${minesNumber}</span>
+        </span>
+      </span>
+    `;
   }
 
   /**
