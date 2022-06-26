@@ -5,5 +5,6 @@ import Application from './core/app/Application';
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Application();
 
-  window.reloadGame = () => app.reloadGame();
+  window.loadGame = () => app.loadGame();
+  window.hideGame = () => app.hideGame();
 });

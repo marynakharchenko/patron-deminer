@@ -1,6 +1,6 @@
 class Config {
   static get view() {
-    const size = document.getElementById('game').offsetWidth;
+    const size = window.innerWidth > window.innerHeight ? window.innerHeight : window.innerWidth;
 
     return {
       width: size,
@@ -8,12 +8,11 @@ class Config {
       backgroundColor: 0x606060,
       worldWidth: size * 6,
       worldHeight: size * 6,
-      resizeTo: document.getElementById('game'),
     };
   }
 
   static get game() {
-    const size = document.getElementById('game').offsetWidth;
+    const size = window.innerWidth > window.innerHeight ? window.innerHeight : window.innerWidth;
 
     return {
       width: size * 6,

@@ -82,6 +82,9 @@ export default class Game extends Container {
   }
 
   async finish() {
+    clearInterval(this._bearIntervalId);
+    this._bearIntervalId = null;
+
     this._removeKeyboardListeners();
     this._timer.stop();
 
@@ -122,9 +125,6 @@ export default class Game extends Container {
     this._garden = [];
     this._cars = [];
     this._towers = [];
-
-    clearInterval(this._bearIntervalId);
-    this._bearIntervalId = null;
   }
 
   _createFence() {
@@ -518,5 +518,7 @@ export default class Game extends Container {
     // Fade out the background sound
     Assets.sounds.background.fade(1, 0, 200);
     this._endScreen.show(score, win, this._timer._levelSeconds);
+
+    window.loadGame();
   }
 }

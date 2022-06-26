@@ -39,7 +39,7 @@ export default class GameApplication extends Application {
       resizeTimeout = setTimeout(resize, 10);
     };
 
-    this.loadAssets().then(() => this.initGame());
+    (async () => await this.loadAssets())();
   }
 
   /**
@@ -49,22 +49,23 @@ export default class GameApplication extends Application {
     await Assets.load({ images: Assets.images, sounds: Assets.sounds });
   }
 
-  /**
-   * Game main entry point. Loads and prerenders assets.
-   * Creates the main game container.
-   *
-   */
-  async initGame() {
+  async loadGame() {
     this.initMiniMapAndScoreBoard();
-    this.game = new Game();
-    this.viewport.addChild(this.game);
-    await this.game.start();
+
+    if (!this.game) {
+      this.game = new Game();
+      this.viewport.addChild(this.game);
+      await this.game.start();
+    } else {
+      await this.game.finish();
+      await this.game.start();
+    }
+
+    document.getElementById('game').style.display = 'block';
   }
 
-  async reloadGame() {
-    this.initMiniMapAndScoreBoard();
-    await this.game.finish();
-    await this.game.start();
+  async hideGame() {
+    document.getElementById('game').style.display = 'none';
   }
 
   initMiniMapAndScoreBoard() {
