@@ -99,8 +99,8 @@ for (let row = 0; row < LEVEL_MAP.length; row++) {
 const LEVEL_SECONDS = (BEAR_STEPS.length + (MINES_NUMBER * 2)) * BEAR_SPEED;
 
 const MINE_TYPES = [
-  MINES.PFM_1.MINE_ID,
-  MINES.MON_50.MINE_ID,
+  MINES.NAVAL_MINE.MINE_ID,
+  MINES.F_1.MINE_ID,
 ];
 
 const BEAR_SETTINGS = {
@@ -109,7 +109,7 @@ const BEAR_SETTINGS = {
   BEAR_STEPS,
 };
 
-const BACKGROUND_COLOR = 0x729641;
+const BACKGROUND_COLOR = 0x6D6E71;
 
 export default {
   LEVEL_NUMBER,
