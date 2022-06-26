@@ -44,7 +44,9 @@ export default class Timer {
   }
 
   restart() {
+    const { LEVEL_SECONDS } = getLevelSettings();
     // Restart the timer
+
     this.stop();
     this._levelSeconds = LEVEL_SECONDS;
     this.start();

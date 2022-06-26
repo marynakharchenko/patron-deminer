@@ -44,6 +44,7 @@ export default class Game extends Container {
 
   async start() {
     const { BEAR_SETTINGS } = getLevelSettings();
+
     this.BEAR_SETTINGS = JSON.parse(JSON.stringify(BEAR_SETTINGS));
 
     this._pressedKeys = [];
@@ -507,6 +508,7 @@ export default class Game extends Container {
       }
 
       const { NEXT_LEVEL_NUMBER } = getLevelSettings();
+
       window.localStorage.setItem(CONSTANTS.LOCAL_STORAGE_KEY_LEVEL_NUMBER, NEXT_LEVEL_NUMBER);
 
       Assets.sounds.win.play();
