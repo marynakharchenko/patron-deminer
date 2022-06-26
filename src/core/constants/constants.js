@@ -26,6 +26,9 @@ export default {
       C: 'car', // Car
       L: 'tower', // Tower (lookout)
       I: 'iceCream', // Ice Cream
+      S: 'beach', // Beach (shore)
+      H: 'trailer', // Trailer (home)
+      P: 'light', // Light (phare)
     },
   },
   ANIMATION_DURATION_DEFAULT: 0.038,

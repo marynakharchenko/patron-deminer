@@ -109,7 +109,7 @@ const BEAR_SETTINGS = {
   BEAR_STEPS,
 };
 
-const BACKGROUND_COLOR = 0x729641;
+const BACKGROUND_COLOR = 0xBAB861;
 
 export default {
   LEVEL_NUMBER,

@@ -5,21 +5,27 @@ import bearAnimations from '../animations/bearAnimations';
 import mineAnimations from '../animations/mineAnimations';
 import flagAnimations from '../animations/flagAnimations';
 import bushAnimations from '../animations/bushAnimations';
+import beachAnimations from '../animations/beachAnimations';
 import tireAnimations from '../animations/tireAnimations';
 import gardenAnimations from '../animations/gardenAnimations';
 import carAnimations from '../animations/carAnimations';
 import towerAnimations from '../animations/towerAnimations';
+import lightAnimations from '../animations/lightAnimations';
 import iceCreamAnimations from '../animations/iceCreamAnimations';
+import trailerAnimations from '../animations/trailerAnimations';
 import Map from '../entities/maps/Map';
 import Dog from '../entities/models/Dog';
 import Bear from '../entities/models/Bear';
 import Mine from '../entities/models/Mine';
 import Bush from '../entities/models/Bush';
+import Beach from '../entities/models/Beach';
 import Tire from '../entities/models/Tire';
 import Garden from '../entities/models/Garden';
 import Car from '../entities/models/Car';
 import Tower from '../entities/models/Tower';
+import Light from '../entities/models/Light';
 import IceCream from '../entities/models/IceCream';
+import Trailer from '../entities/models/Trailer';
 import Flag from '../entities/models/Flag';
 import Timer from '../entities/Timer';
 
@@ -56,11 +62,14 @@ export default class Game extends Container {
     this._mines = [];
     this._flags = [];
     this._bushes = [];
+    this._beaches = [];
     this._tires = [];
     this._garden = [];
     this._cars = [];
     this._towers = [];
+    this._lights = [];
     this._iceCreams = [];
+    this._trailers = [];
 
     this._bearIntervalId = null;
 
@@ -69,11 +78,14 @@ export default class Game extends Container {
     this._createFence();
     this._createMines();
     this._createBushes();
+    this._createBeaches();
     this._createTires();
     this._createGarden();
     this._createCars();
     this._createTowers();
+    this._createLights();
     this._createIceCreams();
+    this._createTrailers();
     this._createDog();
     if (this.BEAR_SETTINGS.BEAR_AVAILABLE) this._createBear();
     this._timer.start(() => this._onEnd());
@@ -100,6 +112,9 @@ export default class Game extends Container {
     this._bushes.forEach((bush) => {
       this.removeChild(bush.anim);
     });
+    this._beaches.forEach((bush) => {
+      this.removeChild(bush.anim);
+    });
     this._tires.forEach((tire) => {
       this.removeChild(tire.anim);
     });
@@ -112,6 +127,15 @@ export default class Game extends Container {
     this._towers.forEach((tower) => {
       this.removeChild(tower.anim);
     });
+    this._lights.forEach((tower) => {
+      this.removeChild(tower.anim);
+    });
+    this._iceCreams.forEach((tower) => {
+      this.removeChild(tower.anim);
+    });
+    this._trailers.forEach((tower) => {
+      this.removeChild(tower.anim);
+    });
 
     this._pressedKeys = [];
     this._map = null;
@@ -121,10 +145,14 @@ export default class Game extends Container {
     this._mines = [];
     this._flags = [];
     this._bushes = [];
+    this._beaches = [];
     this._tires = [];
     this._garden = [];
     this._cars = [];
     this._towers = [];
+    this._lights = [];
+    this._iceCreams = [];
+    this._trailers = [];
   }
 
   _createFence() {
@@ -292,6 +320,25 @@ export default class Game extends Container {
     });
   }
 
+  _createBeaches() {
+    const beachesPositions = this._map.posById(this._map.IDS.BEACH);
+
+    beachesPositions.forEach((beachPosition) => {
+      const beachCoords = this._map.coordsFromPos(beachPosition);
+      const beach = new Beach(beachAnimations);
+
+      // this._dog.anim.anchor.set(0.5);
+      beachCoords.x = beachCoords.x - (config.game.tileWidth / 2);
+      beachCoords.y = beachCoords.y - (config.game.tileHeight / 2);
+
+      beach.init(beachCoords, config.game.tileWidth, config.game.tileHeight);
+      beach.position = beachPosition;
+
+      this.addChild(beach.anim);
+      this._beaches.push(beach);
+    });
+  }
+
   _createTires() {
     const tiresPositions = this._map.posById(this._map.IDS.TIRE);
 
@@ -368,6 +415,25 @@ export default class Game extends Container {
     });
   }
 
+  _createLights() {
+    const lightsPositions = this._map.posById(this._map.IDS.LIGHT);
+
+    lightsPositions.forEach((lightPosition) => {
+      const lightCoords = this._map.coordsFromPos(lightPosition);
+      const light = new Light(lightAnimations);
+
+      // this._dog.anim.anchor.set(0.5);
+      lightCoords.x = lightCoords.x - config.game.tileWidth;
+      lightCoords.y = lightCoords.y - (config.game.tileHeight * 3);
+
+      light.init(lightCoords, config.game.tileWidth * 2, config.game.tileHeight * 4);
+      light.position = lightPosition;
+
+      this.addChild(light.anim);
+      this._lights.push(light);
+    });
+  }
+
   _createIceCreams() {
     const iceCreamsPositions = this._map.posById(this._map.IDS.ICE_CREAM);
 
@@ -384,6 +450,25 @@ export default class Game extends Container {
 
       this.addChild(iceCream.anim);
       this._iceCreams.push(iceCream);
+    });
+  }
+
+  _createTrailers() {
+    const trailersPositions = this._map.posById(this._map.IDS.TRAILER);
+
+    trailersPositions.forEach((trailerPosition) => {
+      const trailerCoords = this._map.coordsFromPos(trailerPosition);
+      const trailer = new Trailer(trailerAnimations);
+
+      // this._dog.anim.anchor.set(0.5);
+      trailerCoords.x = trailerCoords.x - config.game.tileWidth;
+      trailerCoords.y = trailerCoords.y - config.game.tileHeight;
+
+      trailer.init(trailerCoords, config.game.tileWidth * 2, config.game.tileHeight * 2);
+      trailer.position = trailerPosition;
+
+      this.addChild(trailer.anim);
+      this._trailers.push(trailer);
     });
   }
 

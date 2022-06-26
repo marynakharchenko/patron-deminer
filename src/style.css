@@ -43,7 +43,9 @@ body {
 
 .miniMapTile.wall,
 .miniMapTile.tower,
-.miniMapTile.iceCream {
+.miniMapTile.iceCream,
+.miniMapTile.trailer,
+.miniMapTile.light {
   background-color: white;
 }
 
@@ -60,7 +62,8 @@ body {
 }
 
 .miniMapTile.bush,
-.miniMapTile.garden {
+.miniMapTile.garden,
+.miniMapTile.beach {
   background-color: green;
 }
 

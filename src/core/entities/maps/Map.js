@@ -2,7 +2,7 @@ import config from '../../config/config';
 import CONSTANTS from '../../constants/constants';
 import getLevelSettings from '../../constants/levels';
 
-const { E, W, T, D, M, F, B, U, R, G, C, L, I } = CONSTANTS.MAP.ENTITIES;
+const { E, W, T, D, M, F, B, U, R, G, C, L, I, S, H, P } = CONSTANTS.MAP.ENTITIES;
 
 export default class Map {
   constructor() {
@@ -33,6 +33,9 @@ export default class Map {
       CAR: C,
       TOWER: L,
       ICE_CREAM: I,
+      BEACH: S,
+      TRAILER: H,
+      LIGHT: P,
     };
 
     this._mapStart = JSON.parse(JSON.stringify(this.levelMap));
