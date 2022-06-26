@@ -1,7 +1,9 @@
 import { getMinesList } from './core/constants/mines';
+import { getLevelsPopup } from './core/constants/levelsPopup';
 
 window.onload = () => {
   getMinesList();
+  getLevelsPopup();
 
   document.getElementById('btn-start').onclick = () => {
     document.getElementById('background-start').style.display = 'none';
@@ -33,32 +35,22 @@ window.onload = () => {
     document.getElementById('bg-popUp-finish-fail').style.display = 'none';
   };
 
-  document.getElementById('btn-start-next-level').onclick = () => {
-    document.getElementById('background-start').style.display = 'none';
-    document.getElementById('collection').style.display = 'none';
-    document.getElementById('about-game').style.display = 'none';
-    window.loadGame();
-    document.getElementById('bg-popUp-start').style.display = 'none';
-    document.getElementById('bg-popUp-finish').style.display = 'none';
-    document.getElementById('bg-popUp-finish-fail').style.display = 'none';
-  };
-
   document.getElementById('btn-next-level').onclick = () => {
+    getLevelsPopup();
     document.getElementById('background-start').style.display = 'none';
     document.getElementById('collection').style.display = 'none';
     document.getElementById('about-game').style.display = 'none';
-    window.loadGame();
-    document.getElementById('bg-popUp-start').style.display = 'none';
+    document.getElementById('bg-popUp-start').style.display = 'block';
     document.getElementById('bg-popUp-finish').style.display = 'none';
     document.getElementById('bg-popUp-finish-fail').style.display = 'none';
   };
 
   document.getElementById('bg-popUp-finish-fail').onclick = () => {
+    getLevelsPopup();
     document.getElementById('background-start').style.display = 'none';
     document.getElementById('collection').style.display = 'none';
     document.getElementById('about-game').style.display = 'none';
-    window.loadGame();
-    document.getElementById('bg-popUp-start').style.display = 'none';
+    document.getElementById('bg-popUp-start').style.display = 'block';
     document.getElementById('bg-popUp-finish').style.display = 'none';
     document.getElementById('bg-popUp-finish-fail').style.display = 'none';
   };
