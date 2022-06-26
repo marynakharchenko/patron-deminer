@@ -9,49 +9,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
   </head>
   <body>
-    <div style="display: none" class="popUpStart" id="bg-popUp-finish">
-      <div class="endPopUpBg">
-        <div class="finish-popUp-wrap">
-          <p class="endTitle">Рівень пройдено</p>
-          <img
-            src="src/assets/images--landing/dog-finish-popUp.svg"
-            class="dog-finish-popUp"
-          />
-          <p class="level-description">
-            Місцевість очищена від усіх небезпечних предметів.
-          </p>
-          <button class="btn-home btn-next-level loading"></button>
-          <button class="btn-donat-popup loading">Зробити донат</button>
-        </div>
-      </div>
-    </div>
-    <div style="display: none" class="popUpStart" id="bg-popUp-finish-fail">
-      <div class="endPopUpBg">
-        <div class="finish-popUp-wrap">
-          <p class="endTitle">Спробуй ще раз</p>
-          <p class="level-description">
-            На території залишилися ще небезпечні предмети, знайди їх усі
-          </p>
-          <button class="btn-home btn-play-again loading"></button>
-          <button class="btn-donat-popup loading">Зробити донат</button>
-        </div>
-      </div>
-    </div>
-    <div style="display: none" class="popUpStart" id="bg-popUp-start">
-      <div class="endPopUpBg">
-        <div class="finish-popUp-wrap">
-          <p class="endTitle">Рівень 1 <br />"Парк"</p>
-          <img
-            src="src/assets/images--landing/levelPopUp/park-popUp.png"
-            class="level-popUp"
-          />
-          <p class="level-description">
-            Знайди всі небезпечні предмети, які розкидав клишоногий.
-          </p>
-          <button class="btn-home btn-start-next-level loading"></button>
-        </div>
-      </div>
-    </div>
     <div class="start-bg" id="background-start">
       <div>
         <img
@@ -62,13 +19,19 @@
       <div class="logo-and-btn-wrap">
         <img src="src/assets/images--landing/logo_1.png" class="logo-start" />
         <button id="btn-start" class="btn-home btn-start loading"></button>
-        <button class="btn-home btn-about-game loading"></button>
+        <button
+          id="btn-about-game"
+          class="btn-home btn-about-game loading"
+        ></button>
         <button class="btn-home btn-donate loading"></button>
-        <button class="btn-home btn-collection loading"></button>
+        <button
+          id="btn-collection"
+          class="btn-home btn-collection loading"
+        ></button>
       </div>
     </div>
 
-    <div style="display: none" class="collections">
+    <div style="display: none" id="collection" class="collections">
       <div class="collections-wrap">
         <div class="collections-bg">
           <img
@@ -97,7 +60,7 @@
       </div>
     </div>
 
-    <div style="display: none">
+    <div id="about-game" style="display: none">
       <div class="about-game">
         <div id="about">
           <img
@@ -162,6 +125,52 @@
     <div style="display: none" id="game">
       <div id="miniMap"></div>
       <div id="scoreBoard"></div>
+    </div>
+
+    <div style="display: none" class="popUpStart" id="bg-popUp-start">
+      <div class="endPopUpBg">
+        <div class="finish-popUp-wrap">
+          <p class="endTitle">Рівень 1 <br />"Парк"</p>
+          <img
+            src="src/assets/images--landing/levelPopUp/park-popUp.png"
+            class="level-popUp"
+          />
+          <p class="level-description">
+            Знайди всі небезпечні предмети, які розкидав клишоногий.
+          </p>
+          <button id="btn-start-next-level" class="btn-home btn-start-next-level loading"></button>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: none" class="popUpStart" id="bg-popUp-finish">
+      <div class="endPopUpBg">
+        <div class="finish-popUp-wrap">
+          <p class="endTitle">Рівень пройдено</p>
+          <img
+            src="src/assets/images--landing/dog-finish-popUp.svg"
+            class="dog-finish-popUp"
+          />
+          <p class="level-description">
+            Місцевість очищена від усіх небезпечних предметів.
+          </p>
+          <button id="btn-next-level" class="btn-home btn-next-level loading"></button>
+          <button class="btn-donat-popup loading">Зробити донат</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: none" class="popUpStart" id="bg-popUp-finish-fail">
+      <div class="endPopUpBg">
+        <div class="finish-popUp-wrap">
+          <p class="endTitle">Спробуй ще раз</p>
+          <p class="level-description">
+            На території залишилися ще небезпечні предмети, знайди їх усі
+          </p>
+          <button id="btn-play-again" class="btn-home btn-play-again loading"></button>
+          <button class="btn-donat-popup loading">Зробити донат</button>
+        </div>
+      </div>
     </div>
   </body>
 </html>

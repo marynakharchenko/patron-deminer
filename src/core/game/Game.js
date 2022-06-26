@@ -20,7 +20,6 @@ import Car from '../entities/models/Car';
 import Tower from '../entities/models/Tower';
 import Flag from '../entities/models/Flag';
 import Timer from '../entities/Timer';
-import EndScreen from '../entities/EndScreen';
 
 import config from '../config/config';
 import viewport from '../viewport/viewport';
@@ -50,7 +49,6 @@ export default class Game extends Container {
     this._pressedKeys = [];
     this._map = new Map();
     this._timer = new Timer();
-    this._endScreen = new EndScreen();
     this._dog = null;
     this._bear = null;
     this._mines = [];
@@ -74,7 +72,6 @@ export default class Game extends Container {
     this._createTowers();
     this._createDog();
     if (this.BEAR_SETTINGS.BEAR_AVAILABLE) this._createBear();
-    this.addChild(this._endScreen);
     this._timer.start(() => this._onEnd());
 
     // Start the background loop
@@ -115,7 +112,6 @@ export default class Game extends Container {
     this._pressedKeys = [];
     this._map = null;
     this._timer = null;
-    this._endScreen = null;
     this._dog = null;
     this._bear = null;
     this._mines = [];
@@ -512,13 +508,16 @@ export default class Game extends Container {
       window.localStorage.setItem(CONSTANTS.LOCAL_STORAGE_KEY_LEVEL_NUMBER, NEXT_LEVEL_NUMBER);
 
       Assets.sounds.win.play();
+
+      window.hideGame();
+      document.getElementById('bg-popUp-finish').style.display = 'block';
     } else {
       Assets.sounds.lose.play();
+
+      document.getElementById('bg-popUp-finish-fail').style.display = 'block';
+      window.hideGame();
     }
     // Fade out the background sound
     Assets.sounds.background.fade(1, 0, 200);
-    this._endScreen.show(score, win, this._timer._levelSeconds);
-
-    window.loadGame();
   }
 }
