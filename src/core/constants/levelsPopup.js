@@ -11,15 +11,29 @@ const LEVELS_POPUP = {
   '02': {
     LEVEL_POPUP_ID: '02',
     LEVEL_POPUP_NUMBER: 'Рівень 2',
-    LEVEL_POPUP_TITLE: 'Парк',
-    LEVEL_POPUP_PHOTO_SRC: './src/assets/images--landing/levelPopUp/park-popUp.png',
+    LEVEL_POPUP_TITLE: 'Занедбане подвір\'я',
+    LEVEL_POPUP_PHOTO_SRC: './src/assets/images--landing/levelPopUp/field-popUp.png',
     LEVEL_POPUP_DESCRIPTION: 'Знайди всі небезпечні предмети, які розкидав клишоногий.',
   },
   '03': {
     LEVEL_POPUP_ID: '03',
     LEVEL_POPUP_NUMBER: 'Рівень 3',
-    LEVEL_POPUP_TITLE: 'Парк',
-    LEVEL_POPUP_PHOTO_SRC: './src/assets/images--landing/levelPopUp/park-popUp.png',
+    LEVEL_POPUP_TITLE: 'Пляж',
+    LEVEL_POPUP_PHOTO_SRC: './src/assets/images--landing/levelPopUp/beach-popUp.png',
+    LEVEL_POPUP_DESCRIPTION: 'Знайди всі небезпечні предмети, які розкидав клишоногий.',
+  },
+  '04': {
+    LEVEL_POPUP_ID: '04',
+    LEVEL_POPUP_NUMBER: 'Рівень 4',
+    LEVEL_POPUP_TITLE: 'Місто',
+    LEVEL_POPUP_PHOTO_SRC: './src/assets/images--landing/levelPopUp/city-popUp.png',
+    LEVEL_POPUP_DESCRIPTION: 'Знайди всі небезпечні предмети, які розкидав клишоногий.',
+  },
+  '05': {
+    LEVEL_POPUP_ID: '05',
+    LEVEL_POPUP_NUMBER: 'Рівень 5',
+    LEVEL_POPUP_TITLE: 'Військова позиція',
+    LEVEL_POPUP_PHOTO_SRC: './src/assets/images--landing/levelPopUp/military-popUp.png',
     LEVEL_POPUP_DESCRIPTION: 'Знайди всі небезпечні предмети, які розкидав клишоногий.',
   },
 };
