@@ -25,6 +25,7 @@ export default {
       G: 'garden', // Garden
       C: 'car', // Car
       L: 'tower', // Tower (lookout)
+      I: 'iceCream', // Ice Cream
     },
   },
   ANIMATION_DURATION_DEFAULT: 0.038,

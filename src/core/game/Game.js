@@ -9,6 +9,7 @@ import tireAnimations from '../animations/tireAnimations';
 import gardenAnimations from '../animations/gardenAnimations';
 import carAnimations from '../animations/carAnimations';
 import towerAnimations from '../animations/towerAnimations';
+import iceCreamAnimations from '../animations/iceCreamAnimations';
 import Map from '../entities/maps/Map';
 import Dog from '../entities/models/Dog';
 import Bear from '../entities/models/Bear';
@@ -18,6 +19,7 @@ import Tire from '../entities/models/Tire';
 import Garden from '../entities/models/Garden';
 import Car from '../entities/models/Car';
 import Tower from '../entities/models/Tower';
+import IceCream from '../entities/models/IceCream';
 import Flag from '../entities/models/Flag';
 import Timer from '../entities/Timer';
 
@@ -58,6 +60,7 @@ export default class Game extends Container {
     this._garden = [];
     this._cars = [];
     this._towers = [];
+    this._iceCreams = [];
 
     this._bearIntervalId = null;
 
@@ -70,6 +73,7 @@ export default class Game extends Container {
     this._createGarden();
     this._createCars();
     this._createTowers();
+    this._createIceCreams();
     this._createDog();
     if (this.BEAR_SETTINGS.BEAR_AVAILABLE) this._createBear();
     this._timer.start(() => this._onEnd());
@@ -361,6 +365,25 @@ export default class Game extends Container {
 
       this.addChild(tower.anim);
       this._towers.push(tower);
+    });
+  }
+
+  _createIceCreams() {
+    const iceCreamsPositions = this._map.posById(this._map.IDS.ICE_CREAM);
+
+    iceCreamsPositions.forEach((iceCreamPosition) => {
+      const iceCreamCoords = this._map.coordsFromPos(iceCreamPosition);
+      const iceCream = new IceCream(iceCreamAnimations);
+
+      // this._dog.anim.anchor.set(0.5);
+      iceCreamCoords.x = iceCreamCoords.x - config.game.tileWidth;
+      iceCreamCoords.y = iceCreamCoords.y - (config.game.tileHeight * 3);
+
+      iceCream.init(iceCreamCoords, config.game.tileWidth * 2, config.game.tileHeight * 4);
+      iceCream.position = iceCreamPosition;
+
+      this.addChild(iceCream.anim);
+      this._iceCreams.push(iceCream);
     });
   }
 

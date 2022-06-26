@@ -42,7 +42,8 @@ body {
 }
 
 .miniMapTile.wall,
-.miniMapTile.tower {
+.miniMapTile.tower,
+.miniMapTile.iceCream {
   background-color: white;
 }
 

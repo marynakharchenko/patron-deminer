@@ -7,7 +7,7 @@ import Assets from '../assetsManager/AssetManager';
 import CONSTANTS from '../constants/constants';
 import getLevelSettings from '../constants/levels';
 
-const { E, M, U, C } = CONSTANTS.MAP.ENTITIES;
+const { E, M, U, C, I } = CONSTANTS.MAP.ENTITIES;
 
 /**
  * Game entry point. Holds the game's viewport
@@ -86,10 +86,15 @@ export default class GameApplication extends Application {
         }
 
         let className = isMine || isBear ? E : levelMap[row][col][0];
-        // car case (2 tiles)
+
+        // car or ice cream cases (2 tiles)
 
         if (levelMap[row + 1] && levelMap[row + 1][col] && levelMap[row + 1][col].includes(C)) {
           className = C;
+        }
+
+        if (levelMap[row + 1] && levelMap[row + 1][col] && levelMap[row + 1][col].includes(I)) {
+          className = I;
         }
 
         miniMapString
@@ -101,9 +106,12 @@ export default class GameApplication extends Application {
 
     miniMap.innerHTML = miniMapString;
 
+    const offsetWidth = config.view.width / 4;
+    const offsetHeight = config.view.height / 4;
+
     document.querySelectorAll('.miniMapTile').forEach((e) => {
-      e.style.width = `${miniMap.offsetWidth / levelMap[0].length / miniMap.offsetWidth * 100}%`;
-      e.style.height = `${miniMap.offsetHeight / levelMap.length / miniMap.offsetHeight * 100}%`;
+      e.style.width = `${offsetWidth / levelMap[0].length / offsetWidth * 100}%`;
+      e.style.height = `${offsetHeight / levelMap.length / offsetHeight * 100}%`;
     });
 
     const scoreBoard = document.getElementById('scoreBoard');
