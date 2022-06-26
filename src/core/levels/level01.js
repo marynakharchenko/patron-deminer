@@ -103,7 +103,7 @@ const MINE_TYPES = [
   MINES.TM_62.MINE_ID,
 ];
 
-const BEAR = {
+const BEAR_SETTINGS = {
   BEAR_AVAILABLE,
   BEAR_SPEED,
   BEAR_STEPS,
@@ -114,6 +114,6 @@ export default {
   NEXT_LEVEL_NUMBER,
   LEVEL_MAP,
   LEVEL_SECONDS,
-  BEAR,
+  BEAR_SETTINGS,
   MINE_TYPES,
 };

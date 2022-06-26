@@ -10,21 +10,25 @@ const LEVELS = {
   LEVEL03,
 };
 
-const levelNumberString = window.localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY_LEVEL_NUMBER) || '01';
-const LEVEL = LEVELS[`LEVEL${levelNumberString}`];
+const getLevelSettings = () => {
+  const levelNumberString = window.localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY_LEVEL_NUMBER) || '01';
+  const LEVEL = LEVELS[`LEVEL${levelNumberString}`];
 
-const LEVEL_NUMBER = LEVEL.LEVEL_NUMBER;
-const NEXT_LEVEL_NUMBER = LEVEL.NEXT_LEVEL_NUMBER;
-const LEVEL_MAP = LEVEL.LEVEL_MAP;
-const LEVEL_SECONDS = LEVEL.LEVEL_SECONDS;
-const BEAR = LEVEL.BEAR;
-const MINE_TYPES = LEVEL.MINE_TYPES;
+  const LEVEL_NUMBER = LEVEL.LEVEL_NUMBER;
+  const NEXT_LEVEL_NUMBER = LEVEL.NEXT_LEVEL_NUMBER;
+  const LEVEL_MAP = LEVEL.LEVEL_MAP;
+  const LEVEL_SECONDS = LEVEL.LEVEL_SECONDS;
+  const BEAR_SETTINGS = LEVEL.BEAR_SETTINGS;
+  const MINE_TYPES = LEVEL.MINE_TYPES;
 
-export default {
-  LEVEL_NUMBER,
-  NEXT_LEVEL_NUMBER,
-  LEVEL_MAP,
-  LEVEL_SECONDS,
-  BEAR,
-  MINE_TYPES,
+  return {
+    LEVEL_NUMBER,
+    NEXT_LEVEL_NUMBER,
+    LEVEL_MAP,
+    LEVEL_SECONDS,
+    BEAR_SETTINGS,
+    MINE_TYPES,
+  };
 };
+
+export default getLevelSettings;

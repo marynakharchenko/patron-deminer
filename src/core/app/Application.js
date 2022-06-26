@@ -5,9 +5,7 @@ import viewport from '../viewport/viewport';
 import Game from '../game/Game';
 import Assets from '../assetsManager/AssetManager';
 import CONSTANTS from '../constants/constants';
-import LEVELS from '../constants/levels';
-
-const LEVEL_MAP = LEVELS.LEVEL_MAP;
+import getLevelSettings from '../constants/levels';
 
 const { E, M, U, C } = CONSTANTS.MAP.ENTITIES;
 
@@ -60,26 +58,36 @@ export default class GameApplication extends Application {
     this.initMiniMapAndScoreBoard();
     this.game = new Game();
     this.viewport.addChild(this.game);
-    this.game.start();
+    await this.game.start();
+  }
+
+  async reloadGame() {
+    this.initMiniMapAndScoreBoard();
+    await this.game.finish();
+    await this.game.start();
   }
 
   initMiniMapAndScoreBoard() {
+    const { LEVEL_MAP } = getLevelSettings();
+
+    const levelMap = JSON.parse(JSON.stringify(LEVEL_MAP));
+
     let miniMapString = '';
     let minesNumber = 0;
 
-    for (let row = 0; row < LEVEL_MAP.length; row++) {
-      for (let col = 0; col < LEVEL_MAP[0].length; col++) {
-        const isMine = LEVEL_MAP[row][col].includes(M);
-        const isBear = LEVEL_MAP[row][col].includes(U);
+    for (let row = 0; row < levelMap.length; row++) {
+      for (let col = 0; col < levelMap[0].length; col++) {
+        const isMine = levelMap[row][col].includes(M);
+        const isBear = levelMap[row][col].includes(U);
 
         if (isMine) {
           minesNumber += 1;
         }
 
-        let className = isMine || isBear ? E : LEVEL_MAP[row][col][0];
+        let className = isMine || isBear ? E : levelMap[row][col][0];
         // car case (2 tiles)
 
-        if (LEVEL_MAP[row + 1] && LEVEL_MAP[row + 1][col] && LEVEL_MAP[row + 1][col].includes(C)) {
+        if (levelMap[row + 1] && levelMap[row + 1][col] && levelMap[row + 1][col].includes(C)) {
           className = C;
         }
 
@@ -93,8 +101,8 @@ export default class GameApplication extends Application {
     miniMap.innerHTML = miniMapString;
 
     document.querySelectorAll('.miniMapTile').forEach((e) => {
-      e.style.width = `${miniMap.offsetWidth / LEVEL_MAP[0].length / miniMap.offsetWidth * 100}%`;
-      e.style.height = `${miniMap.offsetHeight / LEVEL_MAP.length / miniMap.offsetHeight * 100}%`;
+      e.style.width = `${miniMap.offsetWidth / levelMap[0].length / miniMap.offsetWidth * 100}%`;
+      e.style.height = `${miniMap.offsetHeight / levelMap.length / miniMap.offsetHeight * 100}%`;
     });
 
     const scoreBoard = document.getElementById('scoreBoard');

@@ -1,17 +1,19 @@
 import config from '../../config/config';
 import CONSTANTS from '../../constants/constants';
-import LEVELS from '../../constants/levels';
+import getLevelSettings from '../../constants/levels';
 
 const { E, W, T, D, M, F, B, U, R, G, C, L } = CONSTANTS.MAP.ENTITIES;
 
-const LEVEL_MAP = LEVELS.LEVEL_MAP;
-
 export default class Map {
   constructor() {
+    const { LEVEL_MAP } = getLevelSettings();
+
+    this.levelMap = JSON.parse(JSON.stringify(LEVEL_MAP));
+
     this.tileWidth = config.game.tileWidth;
     this.tileHeight = config.game.tileHeight;
-    this.offsetX = (config.game.width - (config.game.tileWidth * LEVEL_MAP[0].length)) / 2;
-    this.offsetY = -(config.game.height - (config.game.tileHeight * LEVEL_MAP.length)) / 2;
+    this.offsetX = (config.game.width - (config.game.tileWidth * this.levelMap[0].length)) / 2;
+    this.offsetY = -(config.game.height - (config.game.tileHeight * this.levelMap.length)) / 2;
 
     this.isoY = 0.7; // tile positions appear skewed
 
@@ -32,8 +34,8 @@ export default class Map {
       TOWER: L,
     };
 
-    this._mapStart = JSON.parse(JSON.stringify(LEVEL_MAP));
-    this._map = LEVEL_MAP;
+    this._mapStart = JSON.parse(JSON.stringify(this.levelMap));
+    this._map = this.levelMap;
   }
 
   /**
@@ -130,7 +132,7 @@ export default class Map {
   }
 
   outOfBounds({ row, col }) {
-    return row < 0 || col < 0 || row > LEVEL_MAP.length - 1 || col > LEVEL_MAP[0].length - 1;
+    return row < 0 || col < 0 || row > this.levelMap.length - 1 || col > this.levelMap[0].length - 1;
   }
 
   collide({ row, col }) {

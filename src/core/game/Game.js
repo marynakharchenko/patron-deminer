@@ -28,11 +28,7 @@ import viewport from '../viewport/viewport';
 import Assets from '../assetsManager/AssetManager';
 
 import CONSTANTS from '../constants/constants';
-import LEVELS from '../constants/levels';
-
-const MINE_TYPES = LEVELS.MINE_TYPES;
-const BEAR = LEVELS.BEAR;
-const NEXT_LEVEL_NUMBER = LEVELS.NEXT_LEVEL_NUMBER;
+import getLevelSettings from '../constants/levels';
 
 /**
  * Main game stage, manages scenes/levels.
@@ -44,6 +40,11 @@ export default class Game extends Container {
     super();
     // Set to use zIndex
     this.sortableChildren = true;
+  }
+
+  async start() {
+    const { BEAR_SETTINGS } = getLevelSettings();
+    this.BEAR_SETTINGS = JSON.parse(JSON.stringify(BEAR_SETTINGS));
 
     this._pressedKeys = [];
     this._map = new Map();
@@ -60,9 +61,7 @@ export default class Game extends Container {
     this._towers = [];
 
     this._bearIntervalId = null;
-  }
 
-  async start() {
     this._attachKeyboardListeners();
 
     this._createFence();
@@ -73,12 +72,58 @@ export default class Game extends Container {
     this._createCars();
     this._createTowers();
     this._createDog();
-    if (BEAR.BEAR_AVAILABLE) this._createBear();
+    if (this.BEAR_SETTINGS.BEAR_AVAILABLE) this._createBear();
     this.addChild(this._endScreen);
     this._timer.start(() => this._onEnd());
 
     // Start the background loop
     Assets.sounds.background.play();
+  }
+
+  async finish() {
+    this._removeKeyboardListeners();
+    this._timer.stop();
+
+    this.removeChild(this._dog.anim);
+    if (this._bear) this.removeChild(this._bear.anim);
+    this._mines.forEach((mine) => {
+      this.removeChild(mine.anim);
+    });
+    this._flags.forEach((flag) => {
+      this.removeChild(flag.anim);
+    });
+    this._bushes.forEach((bush) => {
+      this.removeChild(bush.anim);
+    });
+    this._tires.forEach((tire) => {
+      this.removeChild(tire.anim);
+    });
+    this._garden.forEach((garden) => {
+      this.removeChild(garden.anim);
+    });
+    this._cars.forEach((car) => {
+      this.removeChild(car.anim);
+    });
+    this._towers.forEach((tower) => {
+      this.removeChild(tower.anim);
+    });
+
+    this._pressedKeys = [];
+    this._map = null;
+    this._timer = null;
+    this._endScreen = null;
+    this._dog = null;
+    this._bear = null;
+    this._mines = [];
+    this._flags = [];
+    this._bushes = [];
+    this._tires = [];
+    this._garden = [];
+    this._cars = [];
+    this._towers = [];
+
+    clearInterval(this._bearIntervalId);
+    this._bearIntervalId = null;
   }
 
   _createFence() {
@@ -158,9 +203,9 @@ export default class Game extends Container {
         }
       }
 
-      if (counter >= BEAR.BEAR_STEPS.length) counter = 0;
+      if (counter >= this.BEAR_SETTINGS.BEAR_STEPS.length) counter = 0;
 
-      const bearSteps = BEAR.BEAR_STEPS[counter];
+      const bearSteps = this.BEAR_SETTINGS.BEAR_STEPS[counter];
 
       const newPos = { row: bearSteps.row, col: bearSteps.col };
 
@@ -177,7 +222,7 @@ export default class Game extends Container {
       counter++;
 
       return counter;
-    }, BEAR.BEAR_SPEED * 1000);
+    }, this.BEAR_SETTINGS.BEAR_SPEED * 1000);
   }
 
   _bearMine(mine, bearPos) {
@@ -206,6 +251,8 @@ export default class Game extends Container {
   }
 
   _createMines() {
+    const { MINE_TYPES } = getLevelSettings();
+
     const minePositions = this._map.posById(this._map.IDS.MINE);
 
     minePositions.forEach((minePosition) => {
@@ -217,7 +264,7 @@ export default class Game extends Container {
       mineCoords.y = mineCoords.y - (config.game.tileHeight / 6);
 
       mine.deminedCount = 0;
-      mine.init(mineCoords, config.game.tileWidth / 2, config.game.tileHeight / 2, MINE_TYPES);
+      mine.init(mineCoords, config.game.tileWidth / 2, config.game.tileHeight / 2, [...MINE_TYPES]);
       mine.position = minePosition;
 
       this.addChild(mine.anim);
@@ -323,6 +370,11 @@ export default class Game extends Container {
   _attachKeyboardListeners() {
     document.addEventListener('keydown', this._onKeyDown.bind(this));
     document.addEventListener('keyup', this._onKeyUp.bind(this));
+  }
+
+  _removeKeyboardListeners() {
+    document.removeEventListener('keydown', this._onKeyDown.bind(this));
+    document.removeEventListener('keyup', this._onKeyUp.bind(this));
   }
 
   _onKeyDown(e) {
@@ -431,6 +483,8 @@ export default class Game extends Container {
   }
 
   _onEnd() {
+    const { MINE_TYPES } = getLevelSettings();
+
     clearInterval(this._bearIntervalId);
 
     const score = this._flags.length;
@@ -443,15 +497,16 @@ export default class Game extends Container {
       if (availableMinesString) {
         window.localStorage.setItem(
           CONSTANTS.LOCAL_STORAGE_KEY_MINES_LIST,
-          availableMinesString.split(',').concat(...MINE_TYPES).toString()
+          availableMinesString.split(',').concat([...MINE_TYPES]).toString()
         );
       } else {
         window.localStorage.setItem(
           CONSTANTS.LOCAL_STORAGE_KEY_MINES_LIST,
-          MINE_TYPES.toString()
+          [...MINE_TYPES].toString()
         );
       }
 
+      const { NEXT_LEVEL_NUMBER } = getLevelSettings();
       window.localStorage.setItem(CONSTANTS.LOCAL_STORAGE_KEY_LEVEL_NUMBER, NEXT_LEVEL_NUMBER);
 
       Assets.sounds.win.play();
