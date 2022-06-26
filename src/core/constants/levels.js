@@ -3,11 +3,15 @@ import CONSTANTS from './constants';
 import LEVEL01 from '../levels/level01';
 import LEVEL02 from '../levels/level02';
 import LEVEL03 from '../levels/level03';
+import LEVEL04 from '../levels/level04';
+import LEVEL05 from '../levels/level05';
 
 const LEVELS = {
   LEVEL01,
   LEVEL02,
   LEVEL03,
+  LEVEL04,
+  LEVEL05,
 };
 
 const getLevelSettings = () => {
@@ -20,6 +24,7 @@ const getLevelSettings = () => {
   const LEVEL_SECONDS = LEVEL.LEVEL_SECONDS;
   const BEAR_SETTINGS = LEVEL.BEAR_SETTINGS;
   const MINE_TYPES = LEVEL.MINE_TYPES;
+  const BACKGROUND_COLOR = LEVEL.BACKGROUND_COLOR;
 
   return {
     LEVEL_NUMBER,
@@ -28,6 +33,7 @@ const getLevelSettings = () => {
     LEVEL_SECONDS,
     BEAR_SETTINGS,
     MINE_TYPES,
+    BACKGROUND_COLOR,
   };
 };
 

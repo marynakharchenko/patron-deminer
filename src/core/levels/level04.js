@@ -1,38 +1,38 @@
 import CONSTANTS from '../constants/constants';
 import { MINES } from '../constants/mines';
 
-const { E, D, M, B, U, I } = CONSTANTS.MAP.ENTITIES;
+const { E, D, M, U, R, C } = CONSTANTS.MAP.ENTITIES;
 
-const LEVEL_NUMBER = '01';
-const NEXT_LEVEL_NUMBER = '02';
+const LEVEL_NUMBER = '04';
+const NEXT_LEVEL_NUMBER = '05';
 
 const LEVEL_MAP = [
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [B], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [B], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [B], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [B], [B], [B], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [B], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [B], [E], [E], [E], [E], [I], [E], [E], [E], [B], [B], [B], [B], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [B], [E], [M], [M], [E], [E], [E], [M], [E], [B], [E], [E], [B], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [B], [B], [B], [E], [E], [E], [E], [E], [B], [B], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [B], [E], [E], [D], [B], [E], [B], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [B], [E], [E], [B], [B], [E], [E], [E], [E], [B], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [B], [E], [E], [E], [M], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [B], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [B], [E], [E], [M], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [B], [B], [B], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [B], [M], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [B], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [R], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [R], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [R], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [R], [R], [R], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [R], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [R], [E], [E], [E], [E], [C], [E], [E], [E], [R], [R], [R], [R], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [R], [E], [M], [M], [E], [E], [E], [M], [E], [R], [E], [E], [R], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [R], [R], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [E], [R], [E], [E], [D], [E], [E], [R], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [R], [E], [E], [R], [R], [E], [E], [E], [E], [R], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [R], [E], [E], [E], [M], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [M], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [R], [R], [R], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [R], [M], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [R], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [U], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
 ];
 
-const BEAR_AVAILABLE = false;
+const BEAR_AVAILABLE = true;
 const BEAR_SPEED = 1;
 const BEAR_STEPS = [
   // { row: 19, col: 9 },
@@ -99,8 +99,8 @@ for (let row = 0; row < LEVEL_MAP.length; row++) {
 const LEVEL_SECONDS = (BEAR_STEPS.length + (MINES_NUMBER * 2)) * BEAR_SPEED;
 
 const MINE_TYPES = [
-  MINES.MON_200.MINE_ID,
-  MINES.TM_62.MINE_ID,
+  MINES.PFM_1.MINE_ID,
+  MINES.MON_50.MINE_ID,
 ];
 
 const BEAR_SETTINGS = {

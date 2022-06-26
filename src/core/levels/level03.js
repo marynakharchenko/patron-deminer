@@ -3,8 +3,8 @@ import { MINES } from '../constants/mines';
 
 const { E, D, M, U, R, C } = CONSTANTS.MAP.ENTITIES;
 
-const LEVEL_NUMBER = '02';
-const NEXT_LEVEL_NUMBER = '03';
+const LEVEL_NUMBER = '03';
+const NEXT_LEVEL_NUMBER = '04';
 
 const LEVEL_MAP = [
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
@@ -109,6 +109,8 @@ const BEAR_SETTINGS = {
   BEAR_STEPS,
 };
 
+const BACKGROUND_COLOR = 0x729641;
+
 export default {
   LEVEL_NUMBER,
   NEXT_LEVEL_NUMBER,
@@ -116,4 +118,5 @@ export default {
   LEVEL_SECONDS,
   BEAR_SETTINGS,
   MINE_TYPES,
+  BACKGROUND_COLOR,
 };
