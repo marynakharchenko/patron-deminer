@@ -270,6 +270,18 @@ export default class Game extends Container {
 
         if (isCurrentFlag) {
           this.removeChild(flag.anim);
+
+          const flagCoords = this._map.coordsFromPos({ row: flag.row, col: flag.col });
+          const flagDown = new Flag(flagAnimations);
+
+          flagCoords.x = flagCoords.x - (config.game.tileWidth / 2);
+          flagCoords.y = flagCoords.y - (config.game.tileHeight / 2);
+
+          flagDown.initDown(flagCoords, config.game.tileWidth, config.game.tileHeight);
+
+          this.addChild(flagDown.anim);
+
+          setTimeout(() => this.removeChild(flagDown.anim), 2000);
         }
 
         return !isCurrentFlag;
