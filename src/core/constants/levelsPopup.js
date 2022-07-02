@@ -26,15 +26,15 @@ const LEVELS_POPUP = {
     LEVEL_POPUP_ID: '04',
     LEVEL_POPUP_NUMBER: 'Рівень 4',
     LEVEL_POPUP_TITLE: 'Ліс',
-    LEVEL_POPUP_PHOTO_SRC: './src/assets/images--landing/levelPopUp/city-popUp.png',
+    LEVEL_POPUP_PHOTO_SRC: './src/assets/images--landing/levelPopUp/beach-popUp.png',
     LEVEL_POPUP_DESCRIPTION: 'Клишавий знайшов газові гранати і може використати їх проти тебе. Остерігайся!',
   },
   '05': {
     LEVEL_POPUP_ID: '05',
     LEVEL_POPUP_NUMBER: 'Рівень 5',
-    LEVEL_POPUP_TITLE: '???',
-    LEVEL_POPUP_PHOTO_SRC: './src/assets/images--landing/levelPopUp/military-popUp.png',
-    LEVEL_POPUP_DESCRIPTION: 'Знайди всі небезпечні предмети, які розкидав клишоногий.',
+    LEVEL_POPUP_TITLE: 'Промисловий об`єкт',
+    LEVEL_POPUP_PHOTO_SRC: './src/assets/images--landing/levelPopUp/field-popUp.png',
+    LEVEL_POPUP_DESCRIPTION: 'Щоб прогнати клишавого, кусай його коли він стає до тебе спиною.',
   },
 };
 

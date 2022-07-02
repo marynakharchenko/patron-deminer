@@ -1,35 +1,34 @@
 import CONSTANTS from '../constants/constants';
 import { MINES } from '../constants/mines';
 
-const { E, D, M, U, R, C } = CONSTANTS.MAP.ENTITIES;
+const { E, D, M, U, G } = CONSTANTS.MAP.ENTITIES;
 
 const LEVEL_NUMBER = '05';
 const NEXT_LEVEL_NUMBER = '01';
 
 const LEVEL_MAP = [
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [R], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [R], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [R], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [R], [R], [R], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [R], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [R], [E], [E], [E], [E], [C], [E], [E], [E], [R], [R], [R], [R], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [R], [E], [M], [M], [E], [E], [E], [M], [E], [R], [E], [E], [R], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [R], [R], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [R], [E], [E], [D], [E], [E], [R], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [R], [E], [E], [R], [R], [E], [E], [E], [E], [R], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [R], [E], [E], [E], [M], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [M], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [R], [R], [R], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [R], [M], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [R], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [U], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [G], [M], [E], [E], [E], [E], [E], [E], [E], [E], [E], [G], [E], [G], [G], [G], [E], [E], [M]],
+  [[E], [E], [E], [E], [G], [G], [E], [E], [E], [E], [E], [E], [E], [G], [E], [E], [E], [E], [E], [E], [E], [E], [G]],
+  [[E], [E], [E], [E], [G], [E], [E], [E], [E], [E], [E], [E], [E], [G], [E], [E], [G], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [G], [G], [G], [E], [E], [E], [E], [G], [E], [E], [E], [E], [E], [E], [G], [E], [E], [E], [E], [E], [G]],
+  [[G], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [M], [G], [E], [G], [E], [E], [G], [E]],
+  [[G], [E], [G], [E], [E], [E], [E], [G], [E], [E], [E], [E], [E], [E], [E], [E], [G], [G], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [G], [E], [E], [G], [G], [E], [G], [E], [E], [E], [E], [E], [E], [G], [G], [E]],
+  [[E], [E], [E], [G], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [M], [E], [E]],
+  [[E], [E], [M], [G], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [G], [E], [E]],
+  [[M], [G], [G], [G], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[G], [E], [E], [E], [E], [E], [E], [E], [G], [E], [E], [D], [E], [G], [G], [G], [G], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [G], [G], [G], [G], [G], [E], [E], [G], [G], [M], [E], [E], [E], [E], [E], [G], [G], [E], [E]],
+  [[E], [E], [G], [G], [M], [E], [E], [M], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [G], [M], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [G], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [G], [E], [E], [E]],
+  [[G], [G], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [G], [E], [E], [E], [G], [G], [G], [E], [E], [E], [G]],
+  [[E], [E], [E], [E], [G], [E], [E], [E], [E], [E], [E], [E], [G], [E], [E], [E], [G], [E], [E], [E], [E], [E], [G]],
+  [[E], [E], [E], [E], [G], [G], [E], [E], [E], [E], [G], [G], [G], [E], [G], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [G], [G], [E], [G], [E], [E], [E], [E], [E], [E], [E], [E], [E], [G], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [G], [G], [E], [E], [G], [E], [U], [E], [E], [E], [E], [G], [G], [G], [G], [E], [E], [G], [G], [G]],
+  [[G], [E], [G], [M], [G], [E], [E], [E], [E], [E], [E], [E], [E], [E], [G], [E], [E], [E], [E], [E], [E], [E], [M]],
+  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [G], [E], [M], [E], [E], [G], [G], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [G], [E], [E], [E], [E], [E], [M], [E], [E], [G], [G], [E], [G], [E], [E], [E]],
 ];
 
 const BEAR_AVAILABLE = true;
@@ -99,8 +98,13 @@ for (let row = 0; row < LEVEL_MAP.length; row++) {
 const LEVEL_SECONDS = (BEAR_STEPS.length + (MINES_NUMBER * 2)) * BEAR_SPEED;
 
 const MINE_TYPES = [
-  MINES.ARTILLERY_SHELL.MINE_ID,
-  MINES.MINE_SURPRISE.MINE_ID,
+  MINES.NAVAL_MINE.MINE_ID,
+  MINES.PG_7V.MINE_ID,
+  MINES.ROCKET.MINE_ID,
+  MINES.MINOMETNA_MINA.MINE_ID,
+  MINES.N210.MINE_ID,
+  MINES.RGO.MINE_ID,
+  MINES.TM_62.MINE_ID,
 ];
 
 const BEAR_SETTINGS = {
@@ -109,7 +113,7 @@ const BEAR_SETTINGS = {
   BEAR_STEPS,
 };
 
-const BACKGROUND_COLOR = 0x474747;
+const BACKGROUND_COLOR = 0x595C60;
 
 export default {
   LEVEL_NUMBER,
