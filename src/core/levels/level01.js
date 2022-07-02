@@ -26,7 +26,7 @@ const LEVEL_MAP = [
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [B], [B], [B], [E], [E], [E], [E], [E], [E], [E]],
   [[E], [E], [E], [E], [E], [E], [E], [E], [B], [E], [E], [E], [E], [B], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [B], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [M], [E], [E], [E], [E], [U], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [M], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [B], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
@@ -112,6 +112,8 @@ const BEAR_SETTINGS = {
 
 const BACKGROUND_COLOR = 0x729641;
 
+const FENCE_ENTITY = B;
+
 export default {
   LEVEL_NUMBER,
   NEXT_LEVEL_NUMBER,
@@ -120,4 +122,5 @@ export default {
   BEAR_SETTINGS,
   MINE_TYPES,
   BACKGROUND_COLOR,
+  FENCE_ENTITY,
 };

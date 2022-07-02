@@ -25,6 +25,7 @@ const getLevelSettings = () => {
   const BEAR_SETTINGS = LEVEL.BEAR_SETTINGS;
   const MINE_TYPES = LEVEL.MINE_TYPES;
   const BACKGROUND_COLOR = LEVEL.BACKGROUND_COLOR;
+  const FENCE_ENTITY = LEVEL.FENCE_ENTITY;
 
   return {
     LEVEL_NUMBER,
@@ -34,6 +35,7 @@ const getLevelSettings = () => {
     BEAR_SETTINGS,
     MINE_TYPES,
     BACKGROUND_COLOR,
+    FENCE_ENTITY,
   };
 };
 

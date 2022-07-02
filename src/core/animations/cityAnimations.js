@@ -13,7 +13,7 @@ export default {
   [`${CONSTANTS.ACTIONS.STAND}3`]: [
     'barriers3',
   ],
-  [`${CONSTANTS.ACTIONS.STAND}3`]: [
+  [`${CONSTANTS.ACTIONS.STAND}4`]: [
     'tire0',
   ],
 };

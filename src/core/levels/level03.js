@@ -114,6 +114,8 @@ const BEAR_SETTINGS = {
 
 const BACKGROUND_COLOR = 0x6D6E71;
 
+const FENCE_ENTITY = V;
+
 export default {
   LEVEL_NUMBER,
   NEXT_LEVEL_NUMBER,
@@ -122,4 +124,5 @@ export default {
   BEAR_SETTINGS,
   MINE_TYPES,
   BACKGROUND_COLOR,
+  FENCE_ENTITY,
 };

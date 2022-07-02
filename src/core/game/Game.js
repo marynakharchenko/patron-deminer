@@ -175,6 +175,8 @@ export default class Game extends Container {
     const fenceWidth = this._map._map[0].length + (config.game.fenceSize * 2); // left/right
     const fenceHeight = this._map._map.length + (config.game.fenceSize * 2); // up/down
 
+    const { FENCE_ENTITY } = getLevelSettings();
+
     for (let col = 0; col < fenceWidth; col++) {
       for (let row = 0; row < fenceHeight; row++) {
         if (
@@ -183,18 +185,39 @@ export default class Game extends Container {
             || row < config.game.fenceSize
             || row >= fenceHeight - config.game.fenceSize
         ) {
-          const bushPosition = { row: row - config.game.fenceSize, col: col - config.game.fenceSize };
-          const bushCoords = this._map.coordsFromPos(bushPosition);
-          const bush = new Bush(bushAnimations);
+          const fencePosition = { row: row - config.game.fenceSize, col: col - config.game.fenceSize };
+          const fenceCoords = this._map.coordsFromPos(fencePosition);
 
-          bushCoords.x = bushCoords.x - (config.game.tileWidth / 2);
-          bushCoords.y = bushCoords.y - (config.game.tileHeight / 2);
+          let fence = new Bush(bushAnimations);
 
-          bush.init(bushCoords, config.game.tileWidth, config.game.tileHeight);
-          bush.position = bushPosition;
+          switch (FENCE_ENTITY) {
+            case CONSTANTS.MAP.ENTITIES.B:
+              fence = new Bush(bushAnimations);
+              break;
+            case CONSTANTS.MAP.ENTITIES.R:
+              fence = new Tire(tireAnimations);
+              break;
+            case CONSTANTS.MAP.ENTITIES.V:
+              fence = new City(cityAnimations);
+              break;
+            case CONSTANTS.MAP.ENTITIES.S:
+              fence = new Beach(beachAnimations);
+              break;
+            case CONSTANTS.MAP.ENTITIES.G:
+              fence = new Garden(gardenAnimations);
+              break;
+            default:
+              fence = new Bush(bushAnimations);
+              break;
+          }
 
-          this.addChild(bush.anim);
-          this._bushes.push(bush);
+          fenceCoords.x = fenceCoords.x - (config.game.tileWidth / 2);
+          fenceCoords.y = fenceCoords.y - (config.game.tileHeight / 2);
+
+          fence.init(fenceCoords, config.game.tileWidth, config.game.tileHeight);
+          fence.position = fencePosition;
+
+          this.addChild(fence.anim);
         }
       }
     }
