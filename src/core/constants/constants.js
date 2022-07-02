@@ -29,6 +29,8 @@ export default {
       S: 'beach', // Beach (shore)
       H: 'trailer', // Trailer (home)
       P: 'light', // Light (phare)
+      O: 'ruins', // ruins
+      V: 'city', // city barriers
     },
   },
   ANIMATION_DURATION_DEFAULT: 0.038,

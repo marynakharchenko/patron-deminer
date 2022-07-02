@@ -2,18 +2,18 @@ import CONSTANTS from '../constants/constants';
 
 export default {
   [`${CONSTANTS.ACTIONS.STAND}0`]: [
-    'beach0',
+    'barriers0',
   ],
   [`${CONSTANTS.ACTIONS.STAND}1`]: [
-    'beach1',
+    'barriers1',
   ],
   [`${CONSTANTS.ACTIONS.STAND}2`]: [
-    'beach2',
+    'barriers2',
   ],
   [`${CONSTANTS.ACTIONS.STAND}3`]: [
-    'beach3',
+    'barriers3',
   ],
-  [`${CONSTANTS.ACTIONS.STAND}4`]: [
-    'beach4',
+  [`${CONSTANTS.ACTIONS.STAND}3`]: [
+    'tire0',
   ],
 };

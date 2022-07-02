@@ -1,35 +1,35 @@
 import CONSTANTS from '../constants/constants';
 import { MINES } from '../constants/mines';
 
-const { E, D, M, U, S, H, P } = CONSTANTS.MAP.ENTITIES;
+const { E, D, M, U, O, V } = CONSTANTS.MAP.ENTITIES;
 
 const LEVEL_NUMBER = '03';
 const NEXT_LEVEL_NUMBER = '04';
 
 const LEVEL_MAP = [
+  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [V], [E]],
+  [[E], [O], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [V], [E], [E], [V], [E]],
+  [[M], [E], [E], [E], [E], [E], [E], [E], [V], [V], [E], [E], [E], [E], [E], [E], [V], [M], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [V], [E], [E], [V], [E], [E], [E], [V], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [V], [E], [E], [E], [E], [E], [E], [E], [E], [V], [E], [E], [V], [V]],
+  [[V], [E], [E], [E], [E], [E], [E], [E], [E], [V], [E], [E], [E], [V], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[V], [E], [E], [E], [E], [E], [M], [V], [V], [V], [E], [E], [E], [E], [E], [E], [E], [V], [E], [E], [E], [E], [E]],
+  [[V], [V], [E], [E], [E], [E], [V], [E], [E], [E], [M], [E], [E], [E], [E], [E], [E], [M], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [V], [E], [E], [E], [V], [V], [E], [E], [E], [V], [V], [V], [V], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [V], [E], [E], [E], [E], [E], [E], [E], [E], [V], [E], [E], [V], [E], [E], [E], [E]],
+  [[E], [V], [E], [V], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [V], [V], [E], [E], [E], [E], [E], [V], [E]],
+  [[E], [E], [E], [V], [V], [V], [E], [E], [V], [E], [E], [D], [E], [E], [V], [E], [E], [E], [E], [E], [E], [M], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [V], [E], [E], [E], [V], [V], [V], [E], [E]],
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [S], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [S], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [S], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [S], [S], [S], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [S], [E], [E], [E], [E], [E], [E], [P], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [S], [E], [E], [E], [E], [H], [E], [E], [E], [S], [S], [S], [S], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [S], [E], [M], [M], [E], [E], [E], [M], [E], [S], [E], [E], [S], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [S], [S], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [S], [E], [E], [D], [E], [E], [S], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [S], [E], [E], [S], [S], [E], [E], [E], [E], [S], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [S], [E], [E], [E], [M], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [M], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [S], [S], [S], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [S], [M], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [S], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [U], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
-  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[V], [V], [V], [E], [E], [E], [E], [E], [E], [V], [E], [V], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [V], [V], [V], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [V], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [V], [V], [E], [V], [V], [M], [V], [E], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [M], [E], [E], [E]],
+  [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [V], [E], [E], [E], [E]],
+  [[V], [M], [V], [E], [E], [E], [E], [E], [E], [U], [E], [E], [E], [E], [E], [E], [E], [E], [V], [E], [E], [E], [E]],
+  [[E], [E], [V], [E], [E], [V], [E], [V], [E], [E], [E], [E], [V], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [E], [V], [E], [E], [V], [E], [E], [E], [V], [E], [V], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E]],
+  [[E], [M], [V], [E], [E], [V], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [V], [V], [M], [E]],
 ];
 
 const BEAR_AVAILABLE = true;
@@ -100,7 +100,10 @@ const LEVEL_SECONDS = (BEAR_STEPS.length + (MINES_NUMBER * 2)) * BEAR_SPEED;
 
 const MINE_TYPES = [
   MINES.PFM_1.MINE_ID,
-  MINES.MON_50.MINE_ID,
+  MINES.PTM_1.MINE_ID,
+  MINES.FAB_500.MINE_ID,
+  MINES.MINE_SURPRISE.MINE_ID,
+  MINES.PMN_2.MINE_ID,
 ];
 
 const BEAR_SETTINGS = {
@@ -109,7 +112,7 @@ const BEAR_SETTINGS = {
   BEAR_STEPS,
 };
 
-const BACKGROUND_COLOR = 0xD8CAAD;
+const BACKGROUND_COLOR = 0x6D6E71;
 
 export default {
   LEVEL_NUMBER,

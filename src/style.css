@@ -10,7 +10,21 @@ body {
 #game {
   position: absolute;
 }
+::-webkit-scrollbar-track
+{
+  background-color: #F2D391;
+}
 
+::-webkit-scrollbar
+{
+  width: 4px;
+  background-color: #F2D391;
+}
+
+::-webkit-scrollbar-thumb
+{
+  background-color: #D4701B;
+}
 @media (orientation: landscape) {
   #game {
     width: 100vh;
@@ -254,12 +268,12 @@ body {
 }
 .aboutTextWrap {
   position: relative;
-  max-width: 700px;
+  max-width: 900px;
   width: inherit;
   margin-top: 40px;
   margin-right: auto;
   margin-left: auto;
-  background-image: url(assets/images--landing/about-game-block1.svg);
+  background-image: url(assets/images--landing/about-game-block1-history.svg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
@@ -343,8 +357,9 @@ body {
 
 .about-game-text {
   width: inherit;
-  font-size: 16px;
+  font-size: 14px;
   color: black;
+  line-height: 1.4;
   margin-right: auto;
   margin-left: auto;
   padding: 50px;
@@ -353,7 +368,7 @@ body {
   height: inherit;
 }
 .about-game-text-wrap {
-  padding: 15%;
+  padding: 5% 20% 20% 20%;
 }
 .finish-popUp-wrap {
   display: flex;
@@ -379,7 +394,9 @@ body {
     padding: 20px;
   }
   .about-game-text {
-    font-size: 14px;
+    font-size: 12px;
+    height: 100px;
+    overflow-y: scroll;
   }
   .mines-wrap {
     width: 90%;
@@ -415,9 +432,10 @@ body {
 
 .mine-wrap {
   position: absolute;
-  max-width: 130px;
-  height: 100px;
-  bottom: 30px;
+  max-width: 300px;
+  /*height: 100px;*/
+
+  bottom: -30px;
   right: 40px;
 }
 .disclaimer {
@@ -425,11 +443,13 @@ body {
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 50px;
   color: white;
   font-size: 14px;
   padding: 0 10%;
   line-height: 1.6;
 }
+
 .collections {
   position: relative;
   padding: 0;

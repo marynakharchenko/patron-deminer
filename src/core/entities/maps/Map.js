@@ -2,7 +2,7 @@ import config from '../../config/config';
 import CONSTANTS from '../../constants/constants';
 import getLevelSettings from '../../constants/levels';
 
-const { E, W, T, D, M, F, B, U, R, G, C, L, I, S, H, P } = CONSTANTS.MAP.ENTITIES;
+const { E, W, T, D, M, F, B, U, R, G, C, L, I, S, H, P, O, V } = CONSTANTS.MAP.ENTITIES;
 
 export default class Map {
   constructor() {
@@ -36,6 +36,8 @@ export default class Map {
       BEACH: S,
       TRAILER: H,
       LIGHT: P,
+      RUINS: O,
+      CITY: V,
     };
 
     this._mapStart = JSON.parse(JSON.stringify(this.levelMap));
@@ -142,7 +144,8 @@ export default class Map {
   collide({ row, col }) {
     return (!this._map[row][col].includes(E) && !this._map[row][col].includes(M))
       || (this._map[row + 1] && this._map[row + 1][col].includes(C))
-      || (this._map[row + 1] && this._map[row + 1][col].includes(I));
+      || (this._map[row + 1] && this._map[row + 1][col].includes(I))
+     || (this._map[row + 1] && this._map[row + 1][col].includes(O));
   }
 
   isEnemyPosition({ row, col }) {
