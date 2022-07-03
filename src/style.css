@@ -94,6 +94,53 @@ body {
   position: absolute;
 }
 
+#arrowIcons #upArrowIcon {
+  right: 110px;
+  bottom: 110px;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: url("../src/assets/images/icons/icon-up-ui.png");
+  cursor: pointer;
+}
+#arrowIcons #leftArrowIcon {
+  right: 210px;
+  bottom: 10px;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: url("../src/assets/images/icons/icon-left-ui.png");
+  cursor: pointer;
+}
+#arrowIcons #downArrowIcon {
+  right: 110px;
+  bottom: 10px;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: url("../src/assets/images/icons/icon-down-ui.png");
+  cursor: pointer;
+}
+#arrowIcons #rightArrowIcon {
+  right: 10px;
+  bottom: 10px;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: url("../src/assets/images/icons/icon-right-ui.png");
+  cursor: pointer;
+}
+
+#actionIcons #actionIconsFlag {
+  left: 10px;
+  bottom: 10px;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: url("../src/assets/images/icons/icon-flag-ui.png");
+  cursor: pointer;
+}
+
 .bg-start-phone {
   width: 100vw;
   position: absolute;
@@ -197,7 +244,7 @@ body {
   padding: 5px 10px 5px 40px;
   top: 15px;
   left: 165px;
-  width: 40px;
+  width: 60px;
 }
 #scoreBoardTimerMinutes,
 #scoreBoardTimerSeconds,
