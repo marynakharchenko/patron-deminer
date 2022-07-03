@@ -7,7 +7,7 @@ import Assets from '../assetsManager/AssetManager';
 import CONSTANTS from '../constants/constants';
 import getLevelSettings from '../constants/levels';
 
-const { E, M, U, C, I } = CONSTANTS.MAP.ENTITIES;
+const { E, M, U, C, I, O } = CONSTANTS.MAP.ENTITIES;
 
 /**
  * Game entry point. Holds the game's viewport
@@ -95,6 +95,14 @@ export default class GameApplication extends Application {
 
         if (levelMap[row + 1] && levelMap[row + 1][col] && levelMap[row + 1][col].includes(I)) {
           className = I;
+        }
+
+        if (
+          (levelMap[row - 1] && levelMap[row - 1][col] && levelMap[row - 1][col].includes(O))
+          || (levelMap[row] && levelMap[row][col - 1] && levelMap[row][col - 1].includes(O))
+          || (levelMap[row - 1] && levelMap[row - 1][col - 1] && levelMap[row - 1][col - 1].includes(O))
+        ) {
+          className = O;
         }
 
         miniMapString

@@ -214,7 +214,7 @@ export default class Game extends Container {
           fenceCoords.x = fenceCoords.x - (config.game.tileWidth / 2);
           fenceCoords.y = fenceCoords.y - (config.game.tileHeight / 2);
 
-          fence.init(fenceCoords, config.game.tileWidth, config.game.tileHeight);
+          fence.init(fenceCoords, config.game.tileWidth, config.game.tileHeight, true);
           fence.position = fencePosition;
 
           this.addChild(fence.anim);

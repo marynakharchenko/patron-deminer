@@ -143,9 +143,11 @@ export default class Map {
 
   collide({ row, col }) {
     return (!this._map[row][col].includes(E) && !this._map[row][col].includes(M))
-      || (this._map[row + 1] && this._map[row + 1][col].includes(C))
-      || (this._map[row + 1] && this._map[row + 1][col].includes(I))
-     || (this._map[row + 1] && this._map[row + 1][col].includes(O));
+      || (this._map[row + 1] && this._map[row + 1][col] && this._map[row + 1][col].includes(C))
+      || (this._map[row + 1] && this._map[row + 1][col] && this._map[row + 1][col].includes(I))
+      || (this._map[row - 1] && this._map[row - 1][col] && this._map[row - 1][col].includes(O))
+      || (this._map[row - 1] && this._map[row - 1][col - 1] && this._map[row - 1][col - 1].includes(O))
+      || (this._map[row] && this._map[row][col - 1] && this._map[row][col - 1].includes(O));
   }
 
   isEnemyPosition({ row, col }) {

@@ -15,9 +15,14 @@ export default class Beach extends Entity {
    * @param {x,y} position coordinates
    * @param width width
    * @param height height
+   * @param isFence isFence
    */
-  async init(position, width, height) {
-    const animationName = `${CONSTANTS.ACTIONS.STAND}${Math.floor(Math.random() * Object.keys(beachAnimations).length)}`;
+  async init(position, width, height, isFence) {
+    let animationName = `${CONSTANTS.ACTIONS.STAND}${Math.floor(Math.random() * Object.keys(beachAnimations).length)}`;
+
+    if (isFence) {
+      animationName = `${CONSTANTS.ACTIONS.STAND}4`;
+    }
 
     this.anim = new AnimatedSprite(this.animations[animationName]);
     this.anim.position = position;

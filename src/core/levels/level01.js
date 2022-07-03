@@ -1,7 +1,7 @@
 import CONSTANTS from '../constants/constants';
 import { MINES } from '../constants/mines';
 
-const { E, D, M, B, U, I } = CONSTANTS.MAP.ENTITIES;
+const { E, D, M, B, I } = CONSTANTS.MAP.ENTITIES;
 
 const LEVEL_NUMBER = '01';
 const NEXT_LEVEL_NUMBER = '02';

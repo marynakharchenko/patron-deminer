@@ -82,6 +82,8 @@ body {
 }
 
 .miniMapTile.tire,
+.miniMapTile.city,
+.miniMapTile.ruins,
 .miniMapTile.car {
   background-color: gray;
 }
