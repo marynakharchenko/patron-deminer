@@ -6,24 +6,24 @@ window.onload = () => {
   getLevelsPopup();
 
   document.getElementById('upArrowIcon').onclick = () => {
-    document.dispatchEvent(new KeyboardEvent('keydown', {'code': 'ArrowUp'}));
-    document.dispatchEvent(new KeyboardEvent('keyup', {'code': 'ArrowUp'}));
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowUp' }));
+    document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowUp' }));
   };
   document.getElementById('downArrowIcon').onclick = () => {
-    document.dispatchEvent(new KeyboardEvent('keydown', {'code': 'ArrowDown'}));
-    document.dispatchEvent(new KeyboardEvent('keyup', {'code': 'ArrowDown'}));
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowDown' }));
+    document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowDown' }));
   };
   document.getElementById('leftArrowIcon').onclick = () => {
-    document.dispatchEvent(new KeyboardEvent('keydown', {'code': 'ArrowLeft'}));
-    document.dispatchEvent(new KeyboardEvent('keyup', {'code': 'ArrowLeft'}));
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowLeft' }));
+    document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowLeft' }));
   };
   document.getElementById('rightArrowIcon').onclick = () => {
-    document.dispatchEvent(new KeyboardEvent('keydown', {'code': 'ArrowRight'}));
-    document.dispatchEvent(new KeyboardEvent('keyup', {'code': 'ArrowRight'}));
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowRight' }));
+    document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowRight' }));
   };
   document.getElementById('actionIconsFlag').onclick = () => {
-    document.dispatchEvent(new KeyboardEvent('keydown', {'code': 'Space'}));
-    document.dispatchEvent(new KeyboardEvent('keyup', {'code': 'Space'}));
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'Space' }));
+    document.dispatchEvent(new KeyboardEvent('keyup', { code: 'Space' }));
   };
 
   document.getElementById('btn-start').onclick = () => {
