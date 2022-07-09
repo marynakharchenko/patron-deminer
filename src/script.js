@@ -1,8 +1,20 @@
+import CONSTANTS from './core/constants/constants';
 import { getMinesList } from './core/constants/mines';
 import { getLevelsPopup } from './core/constants/levelsPopup';
 
 window.onload = () => {
   getLevelsPopup();
+
+  document.querySelectorAll('.btn-donate').forEach((bd) => {
+    bd.onclick = () => {
+      window.open(CONSTANTS.DONATE_URL, '_blank');
+    };
+  });
+  document.querySelectorAll('.btn-donate-popup').forEach((bdp) => {
+    bdp.onclick = () => {
+      window.open(CONSTANTS.DONATE_URL, '_blank');
+    };
+  });
 
   document.getElementById('upArrowIcon').onclick = () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowUp' }));
