@@ -2,7 +2,6 @@ import { getMinesList } from './core/constants/mines';
 import { getLevelsPopup } from './core/constants/levelsPopup';
 
 window.onload = () => {
-  getMinesList();
   getLevelsPopup();
 
   document.getElementById('upArrowIcon').onclick = () => {
@@ -37,6 +36,8 @@ window.onload = () => {
   };
 
   document.getElementById('btn-collection').onclick = () => {
+    getMinesList();
+
     document.getElementById('background-start').style.display = 'none';
     document.getElementById('collection').style.display = 'block';
     document.getElementById('about-game').style.display = 'none';

@@ -689,9 +689,11 @@ export default class Game extends Container {
       const availableMinesString = window.localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY_MINES_LIST) || '';
 
       if (availableMinesString) {
+        const mineTypesArray = availableMinesString.split(',');
+
         window.localStorage.setItem(
           CONSTANTS.LOCAL_STORAGE_KEY_MINES_LIST,
-          availableMinesString.split(',').concat([...MINE_TYPES]).toString()
+          mineTypesArray.concat([...MINE_TYPES.filter((m) => !mineTypesArray.includes(m))]).toString()
         );
       } else {
         window.localStorage.setItem(
