@@ -34,6 +34,7 @@ export default {
     },
   },
   ANIMATION_DURATION_DEFAULT: 0.038,
+  TELEPORT_DURATION_DEFAULT: 0.2,
   LOCAL_STORAGE_KEY_MINES_LIST: 'deminer-dog:available-mines-list',
   LOCAL_STORAGE_KEY_LEVEL_NUMBER: 'deminer-dog:level-number',
   DONATE_URL: 'https://savelife.in.ua/donate/',

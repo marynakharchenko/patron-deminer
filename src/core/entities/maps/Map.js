@@ -142,7 +142,7 @@ export default class Map {
   }
 
   collide({ row, col }) {
-    return (!this._map[row][col].includes(E) && !this._map[row][col].includes(M))
+    return (!this._map[row][col].includes(E) && !this._map[row][col].includes(M) && !this._map[row][col].includes(T))
       || (this._map[row + 1] && this._map[row + 1][col] && this._map[row + 1][col].includes(C))
       || (this._map[row + 1] && this._map[row + 1][col] && this._map[row + 1][col].includes(I))
       || (this._map[row - 1] && this._map[row - 1][col] && this._map[row - 1][col].includes(O))
@@ -152,5 +152,9 @@ export default class Map {
 
   isEnemyPosition({ row, col }) {
     return this._map[row][col].includes(U);
+  }
+
+  isTeleportPosition({ row, col }) {
+    return this._map[row][col].includes(T);
   }
 }

@@ -1,7 +1,7 @@
 import CONSTANTS from '../constants/constants';
 import { MINES } from '../constants/mines';
 
-const { E, D, M, U, C, P, H, S } = CONSTANTS.MAP.ENTITIES;
+const { E, D, M, U, C, P, H, S, T } = CONSTANTS.MAP.ENTITIES;
 
 const LEVEL_NUMBER = '04';
 const NEXT_LEVEL_NUMBER = '05';
@@ -9,7 +9,7 @@ const NEXT_LEVEL_NUMBER = '05';
 const LEVEL_MAP = [
   [[E], [E], [E], [S], [E], [E], [E], [M], [S], [E], [E], [E], [E], [E], [E], [E], [E], [E], [S], [E], [E], [E], [E]],
   [[E], [E], [E], [S], [E], [E], [E], [E], [S], [E], [E], [E], [S], [E], [E], [E], [E], [E], [S], [E], [E], [P], [P]],
-  [[S], [E], [E], [E], [E], [E], [E], [E], [S], [E], [E], [E], [S], [E], [E], [E], [E], [M], [S], [E], [E], [E], [E]],
+  [[S], [E], [T], [E], [E], [E], [E], [E], [S], [E], [E], [E], [S], [E], [E], [E], [E], [M], [S], [E], [E], [E], [E]],
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [S], [E], [E], [S], [E], [E], [E], [S], [S], [S], [H], [E], [E], [E]],
   [[E], [E], [E], [S], [E], [E], [S], [E], [E], [S], [E], [E], [E], [E], [S], [S], [E], [E], [E], [E], [E], [E], [E]],
   [[E], [E], [E], [S], [E], [E], [E], [P], [E], [S], [E], [E], [S], [S], [E], [E], [E], [E], [S], [E], [E], [P], [E]],
@@ -27,7 +27,7 @@ const LEVEL_MAP = [
   [[S], [S], [S], [S], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [S], [E], [S]],
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [S], [S]],
   [[M], [E], [E], [E], [E], [E], [E], [E], [E], [U], [E], [E], [E], [E], [E], [S], [E], [E], [E], [E], [E], [E], [S]],
-  [[E], [E], [E], [S], [S], [S], [E], [E], [E], [S], [E], [M], [E], [S], [E], [E], [E], [E], [E], [E], [E], [E], [S]],
+  [[E], [E], [E], [S], [S], [S], [E], [E], [E], [S], [E], [M], [E], [S], [E], [E], [E], [E], [E], [E], [T], [E], [S]],
   [[E], [S], [S], [E], [E], [E], [E], [S], [S], [S], [E], [E], [E], [E], [E], [E], [S], [S], [E], [E], [E], [E], [E]],
   [[E], [S], [E], [E], [E], [M], [E], [E], [E], [E], [E], [E], [E], [E], [E], [S], [E], [E], [E], [E], [E], [E], [P]],
 ];
