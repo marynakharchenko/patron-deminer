@@ -362,8 +362,9 @@ const MINES = {
 };
 
 const availableMinesString = window.localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY_MINES_LIST) || '';
+const mineTypesArray = availableMinesString.split(',');
 
-availableMinesString.split(',').forEach((mineId) => {
+mineTypesArray.forEach((mineId) => {
   if (MINES[mineId]) MINES[mineId].MINE_AVAILABLE = true;
 });
 
@@ -420,6 +421,9 @@ const MINES_LIST = `
 `;
 
 const getMinesList = () => {
+  document.getElementById('mines-list-number').innerText
+    = `Знайдено ${mineTypesArray.length || 0} із ${Object.keys(MINES).length || 0} об’єктів`;
+
   document.getElementById('mines-list').innerHTML = '';
 
   Object.keys(MINES).forEach((key) => {

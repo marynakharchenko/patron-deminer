@@ -575,6 +575,7 @@ export default class Game extends Container {
     if (this._pressedKeys.includes(e.code)) return;
 
     this._pressedKeys.push(e.code);
+
     this._dogAction();
   }
 
@@ -596,12 +597,22 @@ export default class Game extends Container {
     }
 
     if (this._pressedKeys.includes('Space')) {
+      const pos = this._map.posById(this._map.IDS.DOG)[0];
+
+      if (this._map.isTeleportPosition(pos)) {
+        this._dogTeleport();
+
+        return;
+      }
+
       this._dogDemine();
 
       return;
     }
 
     this._dog.standStill();
+
+    return;
   }
 
   async _dogMove(direction) {
@@ -676,6 +687,23 @@ export default class Game extends Container {
     return mine.deminedCount;
   }
 
+  async _dogTeleport() {
+    const oldPos = this._map.posById(this._map.IDS.DOG)[0];
+    const newPos = this._map.posById(this._map.IDS.TELEPORT).filter((p) => p.row !== oldPos.row && p.col !== oldPos.col)[0];
+
+    const targetPos = this._map.coordsFromPos(newPos);
+
+    this._dog.position = newPos;
+    await this._dog.teleport(targetPos);
+    document.getElementById(`miniMap-${oldPos.row}-${oldPos.col}`).classList.remove(this._map.IDS.DOG);
+    document.getElementById(`miniMap-${newPos.row}-${newPos.col}`).classList.add(this._map.IDS.DOG);
+
+    this._map.removeModelFromTileOnMap(oldPos, this._map.IDS.DOG);
+    this._map.addModelToTileOnMap(newPos, this._map.IDS.DOG);
+
+    return this._dogAction();
+  }
+
   _onEnd() {
     const { MINE_TYPES } = getLevelSettings();
 
@@ -689,9 +717,11 @@ export default class Game extends Container {
       const availableMinesString = window.localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY_MINES_LIST) || '';
 
       if (availableMinesString) {
+        const mineTypesArray = availableMinesString.split(',');
+
         window.localStorage.setItem(
           CONSTANTS.LOCAL_STORAGE_KEY_MINES_LIST,
-          availableMinesString.split(',').concat([...MINE_TYPES]).toString()
+          mineTypesArray.concat([...MINE_TYPES.filter((m) => !mineTypesArray.includes(m))]).toString()
         );
       } else {
         window.localStorage.setItem(

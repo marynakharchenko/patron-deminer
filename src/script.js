@@ -1,9 +1,20 @@
+import CONSTANTS from './core/constants/constants';
 import { getMinesList } from './core/constants/mines';
 import { getLevelsPopup } from './core/constants/levelsPopup';
 
 window.onload = () => {
-  getMinesList();
   getLevelsPopup();
+
+  document.querySelectorAll('.btn-donate').forEach((bd) => {
+    bd.onclick = () => {
+      window.open(CONSTANTS.DONATE_URL, '_blank');
+    };
+  });
+  document.querySelectorAll('.btn-donate-popup').forEach((bdp) => {
+    bdp.onclick = () => {
+      window.open(CONSTANTS.DONATE_URL, '_blank');
+    };
+  });
 
   document.getElementById('upArrowIcon').onclick = () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowUp' }));
@@ -37,6 +48,8 @@ window.onload = () => {
   };
 
   document.getElementById('btn-collection').onclick = () => {
+    getMinesList();
+
     document.getElementById('background-start').style.display = 'none';
     document.getElementById('collection').style.display = 'block';
     document.getElementById('about-game').style.display = 'none';

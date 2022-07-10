@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Deminer.Dog</title>
+    <title>Sniffer Dog</title>
     <meta charset="utf-8" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/6.3.2/browser/pixi.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pixi-viewport@4.34.4/dist/viewport.min.min.js"></script>
@@ -39,7 +39,7 @@
             class="btn-collection-wrap"
           />
           <div class="info-bg">
-            <p class="info-text">Знайдено 5 із 25 об’єктів</p>
+            <p id="mines-list-number" class="info-text"></p>
           </div>
           <div id="mines-list" class="mines-wrap"></div>
           <div>
@@ -172,7 +172,7 @@
             id="btn-play-again"
             class="btn-home btn-play-again loading"
           ></button>
-          <button class="btn-donat-popup loading">Зробити донат</button>
+          <button class="btn-donate-popup loading">Зробити донат</button>
         </div>
       </div>
     </div>

@@ -109,4 +109,21 @@ export default class Entity {
 
     this.moving = false;
   }
+
+  /**
+   *
+   * @param {{x, y}} target coordinates
+   */
+  async teleport(target) {
+    this.moving = true;
+
+    await gsap.to(this.anim, {
+      duration: CONSTANTS.TELEPORT_DURATION_DEFAULT,
+      x: target.x,
+      y: target.y,
+      ease: 'none',
+    });
+
+    this.moving = false;
+  }
 }
