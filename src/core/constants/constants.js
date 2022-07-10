@@ -1,3 +1,5 @@
+const PROJECT_URL = 'https://sniffer-dog-quest.web.app/';
+
 export default {
   DIRECTIONS: {
     LEFT: 'Left',
@@ -38,4 +40,6 @@ export default {
   LOCAL_STORAGE_KEY_MINES_LIST: 'deminer-dog:available-mines-list',
   LOCAL_STORAGE_KEY_LEVEL_NUMBER: 'deminer-dog:level-number',
   DONATE_URL: 'https://savelife.in.ua/donate/',
+  SHARE_FACEBOOK_URL: `https://www.facebook.com/sharer/sharer.php?u=${PROJECT_URL}`,
+  SHARE_TELEGRAM_URL: `https://t.me/share/url?url=${PROJECT_URL}&text=Sniffer Dog`,
 };

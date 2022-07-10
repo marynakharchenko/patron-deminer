@@ -15,6 +15,16 @@ window.onload = () => {
       window.open(CONSTANTS.DONATE_URL, '_blank');
     };
   });
+  document.querySelectorAll('.facebookBtn').forEach((fbb) => {
+    fbb.onclick = () => {
+      window.open(CONSTANTS.SHARE_FACEBOOK_URL, '_blank');
+    };
+  });
+  document.querySelectorAll('.telegramBtn').forEach((tgb) => {
+    tgb.onclick = () => {
+      window.open(CONSTANTS.SHARE_TELEGRAM_URL, '_blank');
+    };
+  });
 
   document.getElementById('upArrowIcon').onclick = () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowUp' }));
