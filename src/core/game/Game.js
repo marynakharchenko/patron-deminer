@@ -11,6 +11,7 @@ import cityAnimations from '../animations/cityAnimations';
 import gardenAnimations from '../animations/gardenAnimations';
 import carAnimations from '../animations/carAnimations';
 import towerAnimations from '../animations/towerAnimations';
+import teleportAnimations from '../animations/teleportAnimations';
 import lightAnimations from '../animations/lightAnimations';
 import iceCreamAnimations from '../animations/iceCreamAnimations';
 import trailerAnimations from '../animations/trailerAnimations';
@@ -25,6 +26,7 @@ import Tire from '../entities/models/Tire';
 import Garden from '../entities/models/Garden';
 import Car from '../entities/models/Car';
 import Tower from '../entities/models/Tower';
+import Teleport from '../entities/models/Teleport';
 import Light from '../entities/models/Light';
 import IceCream from '../entities/models/IceCream';
 import Trailer from '../entities/models/Trailer';
@@ -71,6 +73,7 @@ export default class Game extends Container {
     this._garden = [];
     this._cars = [];
     this._towers = [];
+    this._teleports = [];
     this._lights = [];
     this._iceCreams = [];
     this._trailers = [];
@@ -89,6 +92,7 @@ export default class Game extends Container {
     this._createGarden();
     this._createCars();
     this._createTowers();
+    this._createTeleports();
     this._createLights();
     this._createIceCreams();
     this._createRuins();
@@ -135,6 +139,9 @@ export default class Game extends Container {
     this._towers.forEach((tower) => {
       this.removeChild(tower.anim);
     });
+    this._teleports.forEach((teleport) => {
+      this.removeChild(teleport.anim);
+    });
     this._lights.forEach((tower) => {
       this.removeChild(tower.anim);
     });
@@ -164,6 +171,7 @@ export default class Game extends Container {
     this._garden = [];
     this._cars = [];
     this._towers = [];
+    this._teleports = [];
     this._lights = [];
     this._iceCreams = [];
     this._trailers = [];
@@ -501,6 +509,25 @@ export default class Game extends Container {
 
       this.addChild(tower.anim);
       this._towers.push(tower);
+    });
+  }
+
+  _createTeleports() {
+    const teleportsPositions = this._map.posById(this._map.IDS.TELEPORT);
+
+    teleportsPositions.forEach((teleportPosition) => {
+      const teleportCoords = this._map.coordsFromPos(teleportPosition);
+      const teleport = new Teleport(teleportAnimations);
+
+      // this._dog.anim.anchor.set(0.5);
+      teleportCoords.x = teleportCoords.x - config.game.tileWidth;
+      teleportCoords.y = teleportCoords.y - (config.game.tileHeight * 3.25);
+
+      teleport.init(teleportCoords, config.game.tileWidth * 2, config.game.tileHeight * 4);
+      teleport.position = teleportPosition;
+
+      this.addChild(teleport.anim);
+      this._teleports.push(teleport);
     });
   }
 
