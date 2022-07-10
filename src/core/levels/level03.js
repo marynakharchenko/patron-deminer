@@ -140,7 +140,7 @@ const BEAR_STEPS = [
   { row: 19, col: 9, direction: 'Right' },
 ];
 
-const LEVEL_SECONDS = 120;
+const LEVEL_SECONDS = 150;
 
 const MINE_TYPES = [
   MINES.PFM_1.MINE_ID,
