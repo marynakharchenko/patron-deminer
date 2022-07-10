@@ -575,6 +575,7 @@ export default class Game extends Container {
     if (this._pressedKeys.includes(e.code)) return;
 
     this._pressedKeys.push(e.code);
+
     this._dogAction();
   }
 
@@ -599,13 +600,19 @@ export default class Game extends Container {
       const pos = this._map.posById(this._map.IDS.DOG)[0];
 
       if (this._map.isTeleportPosition(pos)) {
-        return this._dogTeleport();
+        this._dogTeleport();
+
+        return;
       }
 
-      return this._dogDemine();
+      this._dogDemine();
+
+      return;
     }
 
     this._dog.standStill();
+
+    return;
   }
 
   async _dogMove(direction) {
