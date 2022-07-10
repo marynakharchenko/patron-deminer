@@ -27,9 +27,11 @@ export default class Beach extends Entity {
     this.anim = new AnimatedSprite(this.animations[animationName]);
     this.anim.position = position;
     // Don't loop it at initial state
-    this.anim.loop = false;
+    this.anim.loop = true;
     // Set with and height
     if (width) this.anim.width = width;
     if (height) this.anim.height = height;
+    this.anim.animationSpeed = 0.01;
+    this.anim.gotoAndPlay(0);
   }
 }

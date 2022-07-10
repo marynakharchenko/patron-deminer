@@ -12,6 +12,8 @@ export default {
   ],
   [`${CONSTANTS.ACTIONS.STAND}3`]: [
     'beach3',
+    'beach3_1',
+
   ],
   [`${CONSTANTS.ACTIONS.STAND}4`]: [
     'beach4',

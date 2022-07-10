@@ -5,36 +5,46 @@ const LEVELS_POPUP = {
     LEVEL_POPUP_ID: '01',
     LEVEL_POPUP_NUMBER: 'Рівень 1',
     LEVEL_POPUP_TITLE: 'Парк',
-    LEVEL_POPUP_PHOTO_SRC: './src/assets/images--landing/levelPopUp/park-popUp.png',
-    LEVEL_POPUP_DESCRIPTION: 'Знайди всі небезпечні предмети, які розкидав клишоногий.',
+    LEVEL_POPUP_PHOTO_SRC:
+      './src/assets/images--landing/levelPopUp/park-popUp.png',
+    LEVEL_POPUP_DESCRIPTION:
+      'Знайди всі небезпечні предмети, які розкидав клишоногий.',
   },
   '02': {
     LEVEL_POPUP_ID: '02',
     LEVEL_POPUP_NUMBER: 'Рівень 2',
     LEVEL_POPUP_TITLE: 'Військова позиція',
-    LEVEL_POPUP_PHOTO_SRC: './src/assets/images--landing/levelPopUp/military-popUp.png',
-    LEVEL_POPUP_DESCRIPTION: 'Будь уважний! Клишавий почав замасковувати небезпечні предмети.',
+    LEVEL_POPUP_PHOTO_SRC:
+      './src/assets/images--landing/levelPopUp/military-popUp.png',
+    LEVEL_POPUP_DESCRIPTION:
+      'Будь уважний! Клишавий почав замасковувати небезпечні предмети.',
   },
   '03': {
     LEVEL_POPUP_ID: '03',
     LEVEL_POPUP_NUMBER: 'Рівень 3',
     LEVEL_POPUP_TITLE: 'Місто після воєнних дій',
-    LEVEL_POPUP_PHOTO_SRC: './src/assets/images--landing/levelPopUp/city-popUp.png',
-    LEVEL_POPUP_DESCRIPTION: 'Слідкуй за бурим окупантом - він може топтати прапорці,якими ти відзначаєш знахідки.',
+    LEVEL_POPUP_PHOTO_SRC:
+      './src/assets/images--landing/levelPopUp/city-popUp.png',
+    LEVEL_POPUP_DESCRIPTION:
+      'Слідкуй за бурим окупантом - він може топтати прапорці,якими ти відзначаєш знахідки.',
   },
   '04': {
     LEVEL_POPUP_ID: '04',
     LEVEL_POPUP_NUMBER: 'Рівень 4',
     LEVEL_POPUP_TITLE: 'Ліс',
-    LEVEL_POPUP_PHOTO_SRC: './src/assets/images--landing/levelPopUp/beach-popUp.png',
-    LEVEL_POPUP_DESCRIPTION: 'Клишавий знайшов газові гранати і може використати їх проти тебе. Остерігайся!',
+    LEVEL_POPUP_PHOTO_SRC:
+      './src/assets/images--landing/levelPopUp/beach-popUp.png',
+    LEVEL_POPUP_DESCRIPTION:
+      'На території завилися портали, вони допоможуть швидче переміщатися по місцевості та відшукувати небезпечні предмети.',
   },
   '05': {
     LEVEL_POPUP_ID: '05',
     LEVEL_POPUP_NUMBER: 'Рівень 5',
     LEVEL_POPUP_TITLE: 'Промисловий об`єкт',
-    LEVEL_POPUP_PHOTO_SRC: './src/assets/images--landing/levelPopUp/field-popUp.png',
-    LEVEL_POPUP_DESCRIPTION: 'Щоб прогнати клишавого, кусай його коли він стає до тебе спиною.',
+    LEVEL_POPUP_PHOTO_SRC:
+      './src/assets/images--landing/levelPopUp/field-popUp.png',
+    LEVEL_POPUP_DESCRIPTION:
+      'Щоб прогнати клишавого, кусай його коли він стає до тебе спиною.',
   },
 };
 
@@ -53,16 +63,30 @@ const LEVEL_POPUP = `
 `;
 
 const getLevelsPopup = () => {
-  const levelNumberString = window.localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY_LEVEL_NUMBER) || '01';
+  const levelNumberString
+    = window.localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY_LEVEL_NUMBER)
+    || '01';
 
   let innerHtml = LEVEL_POPUP;
   const element = document.createElement('div');
 
   if (LEVELS_POPUP[levelNumberString]) {
-    innerHtml = innerHtml.replace('{{LEVEL_POPUP_NUMBER}}', LEVELS_POPUP[levelNumberString].LEVEL_POPUP_NUMBER);
-    innerHtml = innerHtml.replace('{{LEVEL_POPUP_TITLE}}', LEVELS_POPUP[levelNumberString].LEVEL_POPUP_TITLE);
-    innerHtml = innerHtml.replace('{{LEVEL_POPUP_PHOTO_SRC}}', LEVELS_POPUP[levelNumberString].LEVEL_POPUP_PHOTO_SRC);
-    innerHtml = innerHtml.replace('{{LEVEL_POPUP_DESCRIPTION}}', LEVELS_POPUP[levelNumberString].LEVEL_POPUP_DESCRIPTION);
+    innerHtml = innerHtml.replace(
+      '{{LEVEL_POPUP_NUMBER}}',
+      LEVELS_POPUP[levelNumberString].LEVEL_POPUP_NUMBER
+    );
+    innerHtml = innerHtml.replace(
+      '{{LEVEL_POPUP_TITLE}}',
+      LEVELS_POPUP[levelNumberString].LEVEL_POPUP_TITLE
+    );
+    innerHtml = innerHtml.replace(
+      '{{LEVEL_POPUP_PHOTO_SRC}}',
+      LEVELS_POPUP[levelNumberString].LEVEL_POPUP_PHOTO_SRC
+    );
+    innerHtml = innerHtml.replace(
+      '{{LEVEL_POPUP_DESCRIPTION}}',
+      LEVELS_POPUP[levelNumberString].LEVEL_POPUP_DESCRIPTION
+    );
   }
 
   element.innerHTML = innerHtml;

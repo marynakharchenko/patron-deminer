@@ -1,7 +1,7 @@
 import CONSTANTS from '../constants/constants';
 import { MINES } from '../constants/mines';
 
-const { E, D, M, U, C, P, H, S, T } = CONSTANTS.MAP.ENTITIES;
+const { E, D, M, U, P, H, S, T } = CONSTANTS.MAP.ENTITIES;
 
 const LEVEL_NUMBER = '04';
 const NEXT_LEVEL_NUMBER = '05';
@@ -15,7 +15,7 @@ const LEVEL_MAP = [
   [[E], [E], [E], [S], [E], [E], [E], [P], [E], [S], [E], [E], [S], [S], [E], [E], [E], [E], [S], [E], [E], [P], [E]],
   [[E], [E], [S], [S], [E], [E], [E], [S], [S], [S], [E], [E], [E], [E], [E], [E], [E], [S], [M], [E], [E], [E], [E]],
   [[E], [E], [E], [E], [E], [E], [S], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [S], [E], [E], [E], [E], [E]],
-  [[E], [P], [E], [M], [E], [E], [S], [E], [E], [E], [E], [C], [E], [E], [E], [S], [S], [E], [E], [E], [E], [E], [S]],
+  [[E], [P], [E], [M], [E], [E], [S], [E], [E], [E], [E], [E], [E], [E], [E], [S], [S], [E], [E], [E], [E], [E], [S]],
   [[E], [E], [E], [E], [E], [E], [S], [E], [E], [E], [E], [E], [E], [E], [E], [E], [S], [E], [E], [E], [E], [S], [M]],
   [[E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [E], [S], [E], [E], [E], [E], [S], [E]],
   [[E], [E], [S], [S], [E], [E], [E], [E], [E], [M], [E], [D], [E], [E], [E], [E], [S], [E], [M], [E], [E], [E], [E]],
