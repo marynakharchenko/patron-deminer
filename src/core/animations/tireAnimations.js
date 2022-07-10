@@ -15,5 +15,8 @@ export default {
   ],
   [`${CONSTANTS.ACTIONS.STAND}4`]: [
     'tire4',
+    'tire4_1',
+    'tire4_2',
+    'tire4_3',
   ],
 };
