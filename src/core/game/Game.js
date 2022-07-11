@@ -520,10 +520,10 @@ export default class Game extends Container {
       const teleport = new Teleport(teleportAnimations);
 
       // this._dog.anim.anchor.set(0.5);
-      teleportCoords.x = teleportCoords.x - config.game.tileWidth;
-      teleportCoords.y = teleportCoords.y - (config.game.tileHeight * 3.25);
+      teleportCoords.x = teleportCoords.x - (config.game.tileWidth / 2);
+      teleportCoords.y = teleportCoords.y - (config.game.tileHeight / 2);
 
-      teleport.init(teleportCoords, config.game.tileWidth * 2, config.game.tileHeight * 4);
+      teleport.init(teleportCoords, config.game.tileWidth, config.game.tileHeight);
       teleport.position = teleportPosition;
 
       this.addChild(teleport.anim);

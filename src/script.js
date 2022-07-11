@@ -55,6 +55,7 @@ window.onload = () => {
     document.getElementById('bg-popUp-start').style.display = 'block';
     document.getElementById('bg-popUp-finish').style.display = 'none';
     document.getElementById('bg-popUp-finish-fail').style.display = 'none';
+    document.getElementById('bg-popUp-happy-finish').style.display = 'none';
   };
 
   document.getElementById('btn-collection').onclick = () => {
@@ -67,6 +68,7 @@ window.onload = () => {
     document.getElementById('bg-popUp-start').style.display = 'none';
     document.getElementById('bg-popUp-finish').style.display = 'none';
     document.getElementById('bg-popUp-finish-fail').style.display = 'none';
+    document.getElementById('bg-popUp-happy-finish').style.display = 'none';
   };
 
   document.getElementById('btn-about-game').onclick = () => {
@@ -77,6 +79,7 @@ window.onload = () => {
     document.getElementById('bg-popUp-start').style.display = 'none';
     document.getElementById('bg-popUp-finish').style.display = 'none';
     document.getElementById('bg-popUp-finish-fail').style.display = 'none';
+    document.getElementById('bg-popUp-happy-finish').style.display = 'none';
   };
 
   document.getElementById('btn-next-level').onclick = () => {
@@ -87,6 +90,7 @@ window.onload = () => {
     document.getElementById('bg-popUp-start').style.display = 'block';
     document.getElementById('bg-popUp-finish').style.display = 'none';
     document.getElementById('bg-popUp-finish-fail').style.display = 'none';
+    document.getElementById('bg-popUp-happy-finish').style.display = 'none';
   };
 
   document.getElementById('bg-popUp-finish-fail').onclick = () => {
@@ -97,6 +101,7 @@ window.onload = () => {
     document.getElementById('bg-popUp-start').style.display = 'block';
     document.getElementById('bg-popUp-finish').style.display = 'none';
     document.getElementById('bg-popUp-finish-fail').style.display = 'none';
+    document.getElementById('bg-popUp-happy-finish').style.display = 'none';
   };
   document.getElementById('btn-back-to-home').onclick = () => {
     document.getElementById('background-start').style.display = 'block';
@@ -106,6 +111,7 @@ window.onload = () => {
     document.getElementById('bg-popUp-start').style.display = 'none';
     document.getElementById('bg-popUp-finish').style.display = 'none';
     document.getElementById('bg-popUp-finish-fail').style.display = 'none';
+    document.getElementById('bg-popUp-happy-finish').style.display = 'none';
   };
   document.getElementById('btn-back').onclick = () => {
     document.getElementById('background-start').style.display = 'block';
@@ -115,5 +121,16 @@ window.onload = () => {
     document.getElementById('bg-popUp-start').style.display = 'none';
     document.getElementById('bg-popUp-finish').style.display = 'none';
     document.getElementById('bg-popUp-finish-fail').style.display = 'none';
+    document.getElementById('bg-popUp-happy-finish').style.display = 'none';
+  };
+  document.getElementById('btn-back-to-home-finish').onclick = () => {
+    document.getElementById('background-start').style.display = 'block';
+    document.getElementById('collection').style.display = 'none';
+    document.getElementById('about-game').style.display = 'none';
+    window.hideGame();
+    document.getElementById('bg-popUp-start').style.display = 'none';
+    document.getElementById('bg-popUp-finish').style.display = 'none';
+    document.getElementById('bg-popUp-finish-fail').style.display = 'none';
+    document.getElementById('bg-popUp-happy-finish').style.display = 'none';
   };
 };

@@ -53,16 +53,8 @@ body {
   background-color: rgba(0, 0, 0, 0.56);
 }
 
-.miniMapTile.wall,
-.miniMapTile.tower,
-.miniMapTile.iceCream,
-.miniMapTile.trailer,
-.miniMapTile.light {
-  background-color: white;
-}
-
 .miniMapTile.teleport {
-  background-color: blue;
+  background-color: #008fd0;
 }
 
 .miniMapTile.flag {
@@ -70,21 +62,24 @@ body {
 }
 
 .miniMapTile.dog {
-  background-color: orange;
+  background-color: #f4960f;
 }
 
 .miniMapTile.bush,
 .miniMapTile.garden,
-.miniMapTile.beach {
-  background-color: green;
-}
-
+.miniMapTile.beach,
 .miniMapTile.tire,
 .miniMapTile.city,
 .miniMapTile.ruins,
-.miniMapTile.car {
-  background-color: gray;
+.miniMapTile.car,
+.miniMapTile.wall,
+.miniMapTile.tower,
+.miniMapTile.iceCream,
+.miniMapTile.trailer,
+.miniMapTile.light {
+  background-color: #729641;
 }
+
 
 #scoreBoard {
   left: 10px;
@@ -811,7 +806,8 @@ body {
   height: 100vh;
 }
 #bg-popUp-finish,
-#bg-popUp-finish-fail {
+#bg-popUp-finish-fail,
+#bg-popUp-happy-finish{
   background: url(assets/images--landing/footer-about-us-page.svg)
     rgba(35, 13, 9, 0.7) center bottom no-repeat;
   background-size: cover;

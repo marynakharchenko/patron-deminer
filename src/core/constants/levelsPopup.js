@@ -35,7 +35,7 @@ const LEVELS_POPUP = {
     LEVEL_POPUP_PHOTO_SRC:
       './src/assets/images--landing/levelPopUp/beach-popUp.png',
     LEVEL_POPUP_DESCRIPTION:
-      'На території завилися портали, вони допоможуть швидче переміщатися по місцевості та відшукувати небезпечні предмети.',
+      'На території з`явилися портали, вони допоможуть швидче переміщатися та відшукувати небезпечні предмети.',
   },
   '05': {
     LEVEL_POPUP_ID: '05',
