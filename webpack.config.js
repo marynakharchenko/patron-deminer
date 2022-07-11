@@ -21,12 +21,37 @@ module.exports = {
       },
       {
         test: [/\.vert$/, /\.frag$/],
-        use: "raw-loader"
+        use: [
+          {
+            loader: "raw-loader",
+            options: {
+              minimize: true,
+            },
+          },
+        ]
       },
       {
         test: /\.(gif|png|jpe?g|svg|xml|wav|mp3)$/i,
-        use: "file-loader"
-      }
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              minimize: true,
+            },
+          },
+        ]
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+            options: {
+              minimize: true,
+            },
+          },
+        ],
+      },
     ]
   },
   plugins: [
