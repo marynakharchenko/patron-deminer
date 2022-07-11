@@ -6,7 +6,7 @@ const LEVELS_POPUP = {
     LEVEL_POPUP_NUMBER: 'Рівень 1',
     LEVEL_POPUP_TITLE: 'Парк',
     LEVEL_POPUP_PHOTO_SRC:
-      './src/assets/images--landing/levelPopUp/park-popUp.png',
+      '../src/assets/images--landing/levelPopUp/park-popUp.png',
     LEVEL_POPUP_DESCRIPTION:
       'Знайди всі небезпечні предмети, які розкидав клишоногий.',
   },
@@ -15,7 +15,7 @@ const LEVELS_POPUP = {
     LEVEL_POPUP_NUMBER: 'Рівень 2',
     LEVEL_POPUP_TITLE: 'Військова позиція',
     LEVEL_POPUP_PHOTO_SRC:
-      './src/assets/images--landing/levelPopUp/military-popUp.png',
+      '../src/assets/images--landing/levelPopUp/military-popUp.png',
     LEVEL_POPUP_DESCRIPTION:
       'Будь уважний! Клишавий почав замасковувати небезпечні предмети.',
   },
@@ -24,7 +24,7 @@ const LEVELS_POPUP = {
     LEVEL_POPUP_NUMBER: 'Рівень 3',
     LEVEL_POPUP_TITLE: 'Місто після воєнних дій',
     LEVEL_POPUP_PHOTO_SRC:
-      './src/assets/images--landing/levelPopUp/city-popUp.png',
+      '../src/assets/images--landing/levelPopUp/city-popUp.png',
     LEVEL_POPUP_DESCRIPTION:
       'Слідкуй за бурим окупантом - він може топтати прапорці,якими ти відзначаєш знахідки.',
   },
@@ -33,7 +33,7 @@ const LEVELS_POPUP = {
     LEVEL_POPUP_NUMBER: 'Рівень 4',
     LEVEL_POPUP_TITLE: 'Ліс',
     LEVEL_POPUP_PHOTO_SRC:
-      './src/assets/images--landing/levelPopUp/beach-popUp.png',
+      '../src/assets/images--landing/levelPopUp/beach-popUp.png',
     LEVEL_POPUP_DESCRIPTION:
       'На території з`явилися портали, вони допоможуть швидче переміщатися та відшукувати небезпечні предмети.',
   },
@@ -42,7 +42,7 @@ const LEVELS_POPUP = {
     LEVEL_POPUP_NUMBER: 'Рівень 5',
     LEVEL_POPUP_TITLE: 'Промисловий об`єкт',
     LEVEL_POPUP_PHOTO_SRC:
-      './src/assets/images--landing/levelPopUp/field-popUp.png',
+      '../src/assets/images--landing/levelPopUp/field-popUp.png',
     LEVEL_POPUP_DESCRIPTION:
       'Щоб прогнати клишавого, кусай його коли він стає до тебе спиною.',
   },

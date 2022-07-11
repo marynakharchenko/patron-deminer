@@ -3,8 +3,8 @@ import CONSTANTS from './constants';
 const MINES = {
   MON_200: {
     MINE_ID: 'MON_200',
-    MINE_PHOTO_SRC: './src/assets/images--landing/mon-200.png',
-    MINE_ICON: './src/assets/images--landing/mine-1.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/mon-200.png',
+    MINE_ICON: '../src/assets/images--landing/mine-1.svg',
     MINE_NAME: 'МОН–200',
     MINE_FULL_NAME:
       'Протипіхотна осколкова керована міна спрямованої дії “МОН–200”',
@@ -17,8 +17,8 @@ const MINES = {
   },
   TM_62: {
     MINE_ID: 'TM_62',
-    MINE_PHOTO_SRC: './src/assets/images--landing/TM_62.png',
-    MINE_ICON: './src/assets/images--landing/mine-2.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/TM_62.png',
+    MINE_ICON: '../src/assets/images--landing/mine-2.svg',
     MINE_NAME: 'ТМ-62',
     MINE_FULL_NAME:
       'Фугасна протитанкова міна “ТМ-62”',
@@ -32,8 +32,8 @@ const MINES = {
   },
   PFM_1: {
     MINE_ID: 'PFM_1',
-    MINE_PHOTO_SRC: './src/assets/images--landing/PFM_1.png',
-    MINE_ICON: './src/assets/images--landing/mine-3.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/PFM_1.png',
+    MINE_ICON: '../src/assets/images--landing/mine-3.svg',
     MINE_NAME: 'ПФМ-1',
     MINE_FULL_NAME:
       'Протипіхотна фугасна міна натискної дії - “метелик”',
@@ -47,8 +47,8 @@ const MINES = {
   },
   MON_50: {
     MINE_ID: 'MON_50',
-    MINE_PHOTO_SRC: './src/assets/images--landing/MON_50.png',
-    MINE_ICON: './src/assets/images--landing/mine-4.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/MON_50.png',
+    MINE_ICON: '../src/assets/images--landing/mine-4.svg',
     MINE_NAME: 'МОН-50',
     MINE_FULL_NAME:
       'Осколкова протипіхотна міна направленої дії “МОН-50”',
@@ -62,8 +62,8 @@ const MINES = {
   },
   PMN_2: {
     MINE_ID: 'PMN_2',
-    MINE_PHOTO_SRC: './src/assets/images--landing/PMN_2.png',
-    MINE_ICON: './src/assets/images--landing/mine-5.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/PMN_2.png',
+    MINE_ICON: '../src/assets/images--landing/mine-5.svg',
     MINE_NAME: 'ПМН-2',
     MINE_FULL_NAME:
       'Фугасна протипіхотна міна натискної дії “ПМН-2”',
@@ -76,8 +76,8 @@ const MINES = {
   },
   OZM_72: {
     MINE_ID: 'OZM_72',
-    MINE_PHOTO_SRC: './src/assets/images--landing/OZM_72.png',
-    MINE_ICON: './src/assets/images--landing/mine-6.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/OZM_72.png',
+    MINE_ICON: '../src/assets/images--landing/mine-6.svg',
     MINE_NAME: 'ОЗМ-72',
     MINE_FULL_NAME:
       'Протипіхотна вистрибуюча осколкова міна кругового ураження “ОЗМ-72” (“міна-жаба”)',
@@ -90,8 +90,8 @@ const MINES = {
   },
   PTM_3: {
     MINE_ID: 'PTM_3',
-    MINE_PHOTO_SRC: './src/assets/images--landing/PTM_3.png',
-    MINE_ICON: './src/assets/images--landing/mine-7.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/PTM_3.png',
+    MINE_ICON: '../src/assets/images--landing/mine-7.svg',
     MINE_NAME: 'ПТМ-3',
     MINE_FULL_NAME:
       'Кумулятивно-фугасна тротитанкова міна “ПТМ-3”',
@@ -105,8 +105,8 @@ const MINES = {
   },
   POM_3: {
     MINE_ID: 'POM_3',
-    MINE_PHOTO_SRC: './src/assets/images--landing/POM_3.png',
-    MINE_ICON: './src/assets/images--landing/mine-8.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/POM_3.png',
+    MINE_ICON: '../src/assets/images--landing/mine-8.svg',
     MINE_NAME: 'ПОМ-3',
     MINE_FULL_NAME:
       'Осколкова протипіхотна міна натяжної дії кругового ураження “ПОМ-3”',
@@ -119,8 +119,8 @@ const MINES = {
   },
   RGD_5: {
     MINE_ID: 'RGD_5',
-    MINE_PHOTO_SRC: './src/assets/images--landing/RGD_5.png',
-    MINE_ICON: './src/assets/images--landing/mine-9.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/RGD_5.png',
+    MINE_ICON: '../src/assets/images--landing/mine-9.svg',
     MINE_NAME: 'РГД-5',
     MINE_FULL_NAME:
       'Ручна протипіхотна уламкова граната “РГД-5”',
@@ -133,8 +133,8 @@ const MINES = {
   },
   F_1: {
     MINE_ID: 'F_1',
-    MINE_PHOTO_SRC: './src/assets/images--landing/F_1.png',
-    MINE_ICON: './src/assets/images--landing/mine-10.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/F_1.png',
+    MINE_ICON: '../src/assets/images--landing/mine-10.svg',
     MINE_NAME: 'Ф-1',
     MINE_FULL_NAME:
       'Ручна осколкова граната “Ф-1”',
@@ -147,8 +147,8 @@ const MINES = {
   },
   RGO: {
     MINE_ID: 'RGO',
-    MINE_PHOTO_SRC: './src/assets/images--landing/RGO.png',
-    MINE_ICON: './src/assets/images--landing/mine-11.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/RGO.png',
+    MINE_ICON: '../src/assets/images--landing/mine-11.svg',
     MINE_NAME: 'РГО',
     MINE_FULL_NAME:
       'Ручна протипіхотна оборонна ударно-дистанційна граната «РГО»',
@@ -162,8 +162,8 @@ const MINES = {
   },
   TMK_2: {
     MINE_ID: 'TMK_2',
-    MINE_PHOTO_SRC: './src/assets/images--landing/TMK_2.png',
-    MINE_ICON: './src/assets/images--landing/mine-12.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/TMK_2.png',
+    MINE_ICON: '../src/assets/images--landing/mine-12.svg',
     MINE_NAME: 'ТМК-2',
     MINE_FULL_NAME:
       'Протитанкова кумулятивна міна “ТМК-2”',
@@ -176,8 +176,8 @@ const MINES = {
   },
   PTM_1: {
     MINE_ID: 'PTM_1',
-    MINE_PHOTO_SRC: './src/assets/images--landing/PTM_1.png',
-    MINE_ICON: './src/assets/images--landing/mine-13.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/PTM_1.png',
+    MINE_ICON: '../src/assets/images--landing/mine-13.svg',
     MINE_NAME: 'ПТМ-1',
     MINE_FULL_NAME:
       'Касетна протитанкова міна “ПТМ-1”',
@@ -191,8 +191,8 @@ const MINES = {
   },
   POMZ_2M: {
     MINE_ID: 'POMZ_2M',
-    MINE_PHOTO_SRC: './src/assets/images--landing/POMZ_2M.png',
-    MINE_ICON: './src/assets/images--landing/mine-14.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/POMZ_2M.png',
+    MINE_ICON: '../src/assets/images--landing/mine-14.svg',
     MINE_NAME: 'ПОМЗ-2М',
     MINE_FULL_NAME:
       'Протипіхотна міна “ПОМЗ-2М”',
@@ -205,8 +205,8 @@ const MINES = {
   },
   PMN: {
     MINE_ID: 'PMN',
-    MINE_PHOTO_SRC: './src/assets/images--landing/PMN.png',
-    MINE_ICON: './src/assets/images--landing/mine-15.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/PMN.png',
+    MINE_ICON: '../src/assets/images--landing/mine-15.svg',
     MINE_NAME: 'ПМН',
     MINE_FULL_NAME:
       'Фугасна протипіхотна міна натискної дії “ПМН”',
@@ -219,8 +219,8 @@ const MINES = {
   },
   N210: {
     MINE_ID: 'N210',
-    MINE_PHOTO_SRC: './src/assets/images--landing/N210.png',
-    MINE_ICON: './src/assets/images--landing/mine-16.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/N210.png',
+    MINE_ICON: '../src/assets/images--landing/mine-16.svg',
     MINE_NAME: '9Н210',
     MINE_FULL_NAME:
       'Осколково-фугасний касетний бойовий елемент “9Н210”',
@@ -234,8 +234,8 @@ const MINES = {
   },
   VOG_25: {
     MINE_ID: 'VOG_25',
-    MINE_PHOTO_SRC: './src/assets/images--landing/VOG_25.png',
-    MINE_ICON: './src/assets/images--landing/mine-17.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/VOG_25.png',
+    MINE_ICON: '../src/assets/images--landing/mine-17.svg',
     MINE_NAME: 'ВОГ-25',
     MINE_FULL_NAME:
       'Осколковий боєприпас 40 мм для підствольних гранатометів “ВОГ-25”',
@@ -248,8 +248,8 @@ const MINES = {
   },
   MINOMETNA_MINA: {
     MINE_ID: 'MINOMETNA_MINA',
-    MINE_PHOTO_SRC: './src/assets/images--landing/MINOMETNA_MINA.png',
-    MINE_ICON: './src/assets/images--landing/mine-18.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/MINOMETNA_MINA.png',
+    MINE_ICON: '../src/assets/images--landing/mine-18.svg',
     MINE_NAME: 'Мінометна міна',
     MINE_FULL_NAME:
       'Мінометна міна 82 мм',
@@ -262,8 +262,8 @@ const MINES = {
   },
   FAB_500: {
     MINE_ID: 'FAB_500',
-    MINE_PHOTO_SRC: './src/assets/images--landing/FAB_500.png',
-    MINE_ICON: './src/assets/images--landing/mine-19.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/FAB_500.png',
+    MINE_ICON: '../src/assets/images--landing/mine-19.svg',
     MINE_NAME: 'ФАБ-500',
     MINE_FULL_NAME:
       'Авіаційна бомба “ФАБ-500”',
@@ -276,8 +276,8 @@ const MINES = {
   },
   ROCKET: {
     MINE_ID: 'ROCKET',
-    MINE_PHOTO_SRC: './src/assets/images--landing/ROCKET.png',
-    MINE_ICON: './src/assets/images--landing/mine-20.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/ROCKET.png',
+    MINE_ICON: '../src/assets/images--landing/mine-20.svg',
     MINE_NAME: 'Залишки ракети',
     MINE_FULL_NAME:
       'Залишки ракети',
@@ -290,8 +290,8 @@ const MINES = {
   },
   PG_7V: {
     MINE_ID: 'PG_7V',
-    MINE_PHOTO_SRC: './src/assets/images--landing/PG_7V.png',
-    MINE_ICON: './src/assets/images--landing/mine-21.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/PG_7V.png',
+    MINE_ICON: '../src/assets/images--landing/mine-21.svg',
     MINE_NAME: 'ПГ-7В',
     MINE_FULL_NAME:
       'Кумулятивний гранатометний снаряд “ПГ-7В” 70,5 мм',
@@ -304,8 +304,8 @@ const MINES = {
   },
   SHELL_TANK: {
     MINE_ID: 'SHELL_TANK',
-    MINE_PHOTO_SRC: './src/assets/images--landing/SHELL_TANK.png',
-    MINE_ICON: './src/assets/images--landing/mine-22.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/SHELL_TANK.png',
+    MINE_ICON: '../src/assets/images--landing/mine-22.svg',
     MINE_NAME: 'Танковий снаряд',
     MINE_FULL_NAME:
       'Кумулятивний танковий снаряд 125 мм',
@@ -318,8 +318,8 @@ const MINES = {
   },
   ARTILLERY_SHELL: {
     MINE_ID: 'ARTILLERY_SHELL',
-    MINE_PHOTO_SRC: './src/assets/images--landing/ARTILLERY_SHELL.png',
-    MINE_ICON: './src/assets/images--landing/mine-23.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/ARTILLERY_SHELL.png',
+    MINE_ICON: '../src/assets/images--landing/mine-23.svg',
     MINE_NAME: 'Aртснаряд',
     MINE_FULL_NAME:
       'Осколково-фугасний артснаряд 122 мм',
@@ -332,8 +332,8 @@ const MINES = {
   },
   NAVAL_MINE: {
     MINE_ID: 'NAVAL_MINE',
-    MINE_PHOTO_SRC: './src/assets/images--landing/NAVAL_MINE.png',
-    MINE_ICON: './src/assets/images--landing/mine-24.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/NAVAL_MINE.png',
+    MINE_ICON: '../src/assets/images--landing/mine-24.svg',
     MINE_NAME: 'Морська міна',
     MINE_FULL_NAME:
             'Морська міна',
@@ -347,8 +347,8 @@ const MINES = {
   },
   MINE_SURPRISE: {
     MINE_ID: 'MINE_SURPRISE',
-    MINE_PHOTO_SRC: './src/assets/images--landing/MINE_SURPRISE.png',
-    MINE_ICON: './src/assets/images--landing/mine-25.svg',
+    MINE_PHOTO_SRC: '../src/assets/images--landing/MINE_SURPRISE.png',
+    MINE_ICON: '../src/assets/images--landing/mine-25.svg',
     MINE_NAME: 'Міна-сюрприз',
     MINE_FULL_NAME:
       'Міна-сюрприз',
