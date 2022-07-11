@@ -1,9 +1,9 @@
-import LEVELS from '../constants/levels';
-
-const LEVEL_SECONDS = LEVELS.LEVEL_SECONDS;
+import getLevelSettings from '../constants/levels';
 
 export default class Timer {
   constructor() {
+    const { LEVEL_SECONDS } = getLevelSettings();
+
     this._levelSeconds = LEVEL_SECONDS;
     this._createText();
   }
@@ -44,7 +44,9 @@ export default class Timer {
   }
 
   restart() {
+    const { LEVEL_SECONDS } = getLevelSettings();
     // Restart the timer
+
     this.stop();
     this._levelSeconds = LEVEL_SECONDS;
     this.start();

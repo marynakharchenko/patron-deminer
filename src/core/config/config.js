@@ -1,19 +1,21 @@
+import getLevelSettings from '../constants/levels';
+
 class Config {
   static get view() {
-    const size = document.getElementById('game').offsetWidth;
+    const { BACKGROUND_COLOR } = getLevelSettings();
+    const size = window.innerWidth > window.innerHeight ? window.innerHeight : window.innerWidth;
 
     return {
       width: size,
       height: size,
-      backgroundColor: 0x606060,
+      backgroundColor: BACKGROUND_COLOR || 0x729641,
       worldWidth: size * 6,
       worldHeight: size * 6,
-      resizeTo: document.getElementById('game'),
     };
   }
 
   static get game() {
-    const size = document.getElementById('game').offsetWidth;
+    const size = window.innerWidth > window.innerHeight ? window.innerHeight : window.innerWidth;
 
     return {
       width: size * 6,

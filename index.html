@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Deminer.Dog</title>
+    <title>Sniffer Dog</title>
     <meta charset="utf-8" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/6.3.2/browser/pixi.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pixi-viewport@4.34.4/dist/viewport.min.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
+     <link rel="icon" type="image/x-icon" href="src/assets/images--landing/favicon2.png" />
+      <meta property="og:type" content="website" />
+    <meta property="og:url" content="" />
+    <meta property="og:site_name" content="Sniffer Dog" />
+    <meta property="og:title" content="Sniffer Dog Game" />
+    <meta property="og:description" content="Шукай міни та інші небезпечні предмети, що порозкидував бурий окупант." />
+    <meta property="og:image" content="src/assets/images--landing/sniffer-facebook.jpeg" />
+
+
   </head>
   <body>
-    <div style="display: none" class="start-bg" id="background-start">
+    <div class="start-bg" id="background-start">
       <div>
         <img
           src="src/assets/images--landing/home-page-bg.png"
@@ -18,14 +27,20 @@
       </div>
       <div class="logo-and-btn-wrap">
         <img src="src/assets/images--landing/logo_1.png" class="logo-start" />
-        <button class="btn-home btn-start loading"></button>
-        <button class="btn-home btn-about-game loading"></button>
+        <button id="btn-start" class="btn-home btn-start loading"></button>
+        <button
+          id="btn-about-game"
+          class="btn-home btn-about-game loading"
+        ></button>
         <button class="btn-home btn-donate loading"></button>
-        <button class="btn-home btn-collection loading"></button>
+        <button
+          id="btn-collection"
+          class="btn-home btn-collection loading"
+        ></button>
       </div>
     </div>
 
-    <div class="collections" style="display: none">
+    <div style="display: none" id="collection" class="collections">
       <div class="collections-wrap">
         <div class="collections-bg">
           <img
@@ -33,7 +48,7 @@
             class="btn-collection-wrap"
           />
           <div class="info-bg">
-            <p class="info-text">Знайдено 5 із 25 об’єктів</p>
+            <p id="mines-list-number" class="info-text"></p>
           </div>
           <div id="mines-list" class="mines-wrap"></div>
           <div>
@@ -41,100 +56,152 @@
               <h3 class="attention-title">Важливо!</h3>
               <p class="attention-description">
                 Помітив схожий предмет у реальному житті - не підходь та не
-                зрушуй з місця.<br />1. Відійди на безпечну відстань ( понад 300
-                м.). <br />2. Повідом іншим про знахідку за можливості познач
-                місце добревидимим орієнтрором. <br />3. Звернися до
+                зрушуй із місця.<br />1. Відійди на безпечну відстань (понад 300
+                м.). <br />2. Повідом іншим про знахідку, за можливості познач
+                місце добревидимим орієнтиром. <br />3. Звернися до
                 спеціалізованих органів (зателефонуй на номер 101 або 102 та
-                вкажи місце знаходження небезпечного предмета). <br />4. Очікуй
-                на приїзд спеціалізованої служби на безпечній відстані.
+                вкажи місце знаходження небезпечного предмета).
               </p>
             </div>
           </div>
         </div>
+        <button id="btn-back" class="btn-home btn-back loading"></button>
       </div>
     </div>
 
-    <div style="display: none">
+    <div id="about-game" style="display: none">
       <div class="about-game">
         <div id="about">
           <img
-            src="src/assets/images--landing/logo-about-game.svg"
+            src="src/assets/images--landing/logo_1.png"
             class="logo-about-game"
           />
           <div>
             <div class="aboutTextWrap">
-              <img
-                src="src/assets/images--landing/mine-icon.png"
-                class="mine-wrap"
-              />
-              <div class="about-game-text-wrap">
+              <div class="about-game-text-wrap-first-block">
                 <p class="about-game-text">
-                  Не дай рашистам та техніці окупантів пройти поряд: бойовий
-                  качур допоможе тобі в цьому. Тебе очікує 5 різних локацій для
-                  знешкодження загарбників, та фінішний рівень в бункері, де
-                  твоя ціль - путін.
+                  Сніффі - безстрашний пес-розміновувач із відмінним нюхом. Для
+                  нього не проблема знайти будь-який вибухонебезпечний
+                  предмет.<br />
+                  Донедавна він жив спокійним життям, але звідкіля не візьмись
+                  на його територію прийшов клишоногий рашист. Негідник приніс
+                  чимало біди, бо повсюди порозкидав велику кількість предметів,
+                  що несуть загрозу. <br />Тепер на плечах у Сніффі важлива
+                  місія: знайти всі небезпечні об’єкти та прогнати бурого
+                  окупанта, щоб той мазав п'яти салом і давав драпака.
                 </p>
               </div>
             </div>
           </div>
           <div class="rulesWrap">
-            <img
-              src="src/assets/images--landing/btn-how-to-play.png"
-              class="how-to-play-wrap"
-            />
             <div class="about-game-text-wrap">
+              <p class="about-game-subtitle">Як грати</p>
               <p class="about-game-text">
-                Не дай рашистам та техніці окупантів пройти поряд: бойовий качур
-                допоможе тобі в цьому. Тебе очікує 5 різних локацій для
-                знешкодження загарбників, та фінішний рівень в бункері, де твоя
-                ціль - путін.
+                Використовуй клавіші ←↓↑→ щоб
+                рухатися по території. Щоб відмітити небезпечний предмет
+                прапорцем, використовуй клавішу “пробіл” або кнопку 🚩.
               </p>
             </div>
           </div>
           <div class="rulesWrap">
-            <img
-              src="src/assets/images--landing/btn-how-to-play.png"
-              class="how-to-play-wrap"
-            />
+
             <div class="about-game-text-wrap">
+                <p class="about-game-subtitle">Сподобалася гра?</p>
               <p class="about-game-text">
-                Не дай рашистам та техніці окупантів пройти поряд: бойовий качур
-                допоможе тобі в цьому. Тебе очікує 5 різних локацій для
-                знешкодження загарбників, та фінішний рівень в бункері, де твоя
-                ціль - путін.
-              </p>
+               Поділись грою та зроби свій вклад в нашу перемогу - задонать на ЗСУ </p>
+ <div class="social-wrap">
+            <img class="socialIcon facebookBtn" src="src/assets/images--landing/facebook.png" />
+            <img class="socialIcon telegramBtn" src="src/assets/images--landing/telegram.png" />
+          </div>
             </div>
           </div>
+          <p class="email">  Залишилися питання чи виникли пропозиції - пишіть нам на пошту:</p>
+          <a href="mailto:snifferdog.info@gmail.com" class="textMail">snifferdog.info@gmail.com</a>
           <p class="disclaimer">
+
             <b>Дисклеймер</b><br />
             Даний ресурс носить розважальний характер. Всі персонажі та описані
-            події є вигаданими, будь-який збіг з реальними людьми або подіями, є
-            випадковістю.<br />
-            Жодний качур не постраждав під час створення гри.
+            події є вигаданими, будь-який збіг з реальними особами або подіями,
+            є випадковістю.<br />
           </p>
+ <button id="btn-back-to-home" class="btn-home btn-back loading"></button>
         </div>
       </div>
     </div>
 
-    <div id="game">
+    <div style="display: none" id="game">
       <div id="miniMap"></div>
-      <div id="scoreBoard">
-        <span id="scoreBoardTimer">
-          <span class="timerIcon"></span>
-          <span class="timer">
-            <span id="scoreBoardTimerMinutes"></span
-            ><span class="minutesSecondsСolon">:</span
-            ><span id="scoreBoardTimerSeconds"></span>
-          </span>
-        </span>
-        <span class="scoreMines">
-          <span class="minesIcon"></span>
-          <span class="mines">
-            <span id="scoreBoardMinesCurrent"></span
-            ><span class="scoreMinesСolon"> /</span>
-            <span id="scoreBoardMinesAll"></span>
-          </span>
-        </span>
+      <div id="scoreBoard"></div>
+      <div id="arrowIcons">
+        <span id="upArrowIcon"></span>
+        <span id="leftArrowIcon"></span>
+        <span id="downArrowIcon"></span>
+        <span id="rightArrowIcon"></span>
+      </div>
+      <div id="actionIcons">
+        <span id="actionIconsFlag"></span>
+      </div>
+    </div>
+
+    <div style="display: none" class="popUpStart" id="bg-popUp-start"></div>
+
+    <div style="display: none" class="popUpStart" id="bg-popUp-finish">
+      <div class="endPopUpBg">
+        <div class="finish-popUp-wrap">
+          <p class="endTitle">Рівень пройдено</p>
+          <img
+            src="src/assets/images--landing/dog-finish-popUp.svg"
+            class="dog-finish-popUp"
+          />
+          <p class="level-description">
+            Місцевість очищена від усіх небезпечних предметів.
+          </p>
+          <button
+            id="btn-next-level"
+            class="btn-home btn-next-level loading"
+          ></button>
+
+        </div>
+      </div>
+    </div>
+ <div style="display: none" class="popUpStart" id="bg-popUp-happy-finish">
+      <div class="endPopUpBg">
+        <div class="finish-popUp-wrap">
+          <p class="endTitle">Ура!</p>
+          <img
+            src="src/assets/images--landing/dog-finish-popUp.svg"
+            class="dog-finish-popUp"
+          />
+          <p class="level-description">
+          Це було не просто, але усі небезпечні предмети знайдено,
+а бурий окупант прогнаний. Не забудь поділитися грою та підтримати ЗСУ.
+          </p>
+           <div class="social-wrap">
+            <img class="socialIcon facebookBtn" src="src/assets/images--landing/facebook.png" />
+            <img class="socialIcon telegramBtn" src="src/assets/images--landing/telegram.png" />
+          </div>
+         <button id="btn-back-to-home-finish" class="btn-home btn-back loading"></button>
+
+        </div>
+      </div>
+    </div>
+    <div style="display: none" class="popUpStart" id="bg-popUp-finish-fail">
+      <div class="endPopUpBg">
+        <div class="finish-popUp-wrap">
+          <p class="endTitle">Спробуй ще раз</p>
+           <img
+            src="src/assets/images--landing/dog-finish-fail-popUp.svg"
+            class="dog-finish-popUp"
+          />
+          <p class="level-description">
+            На території залишилися ще небезпечні предмети. Знайди їх.
+          </p>
+          <button
+            id="btn-play-again"
+            class="btn-home btn-play-again loading"
+          ></button>
+          <button class="btn-donate-popup loading">Зробити донат</button>
+        </div>
       </div>
     </div>
   </body>

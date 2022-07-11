@@ -9,8 +9,20 @@ body {
 
 #game {
   position: absolute;
+  overflow: hidden;
+}
+::-webkit-scrollbar-track {
+  background-color: #f2d391;
 }
 
+::-webkit-scrollbar {
+  width: 4px;
+  background-color: #f2d391;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d4701b;
+}
 @media (orientation: landscape) {
   #game {
     width: 100vh;
@@ -41,12 +53,8 @@ body {
   background-color: rgba(0, 0, 0, 0.56);
 }
 
-.miniMapTile.wall, .miniMapTile.tower {
-  background-color: white;
-}
-
 .miniMapTile.teleport {
-  background-color: blue;
+  background-color: #008fd0;
 }
 
 .miniMapTile.flag {
@@ -54,21 +62,81 @@ body {
 }
 
 .miniMapTile.dog {
-  background-color: orange;
+  background-color: #f4960f;
 }
 
-.miniMapTile.bush, .miniMapTile.garden {
-  background-color: green;
+.miniMapTile.bush,
+.miniMapTile.garden,
+.miniMapTile.beach,
+.miniMapTile.tire,
+.miniMapTile.city,
+.miniMapTile.ruins,
+.miniMapTile.car,
+.miniMapTile.wall,
+.miniMapTile.tower,
+.miniMapTile.iceCream,
+.miniMapTile.trailer,
+.miniMapTile.light {
+  background-color: #729641;
 }
 
-.miniMapTile.tire, .miniMapTile.car {
-  background-color: gray;
-}
 
 #scoreBoard {
   left: 10px;
   top: 10px;
   position: absolute;
+}
+
+#arrowIcons #upArrowIcon {
+  right: 110px;
+  bottom: 110px;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-image: url("../src/assets/images/icons/icon-up-ui.png");
+  cursor: pointer;
+  background-size: contain;
+}
+#arrowIcons #leftArrowIcon {
+  right: 210px;
+  bottom: 10px;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-image: url("../src/assets/images/icons/icon-left-ui.png");
+  cursor: pointer;
+    background-size: contain;
+}
+#arrowIcons #downArrowIcon {
+  right: 110px;
+  bottom: 10px;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-image: url("../src/assets/images/icons/icon-down-ui.png");
+  cursor: pointer;
+    background-size: contain;
+}
+#arrowIcons #rightArrowIcon {
+  right: 10px;
+  bottom: 10px;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-image: url("../src/assets/images/icons/icon-right-ui.png");
+  cursor: pointer;
+    background-size: contain;
+}
+
+#actionIcons #actionIconsFlag {
+  left: 10px;
+  bottom: 10px;
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background-image: url("../src/assets/images/icons/icon-flag-ui.png");
+  cursor: pointer;
+    background-size: contain;
 }
 
 .bg-start-phone {
@@ -111,6 +179,36 @@ body {
   transition: all 0.1s;
   cursor: pointer;
 }
+.btn-donate-popup {
+  background-color: transparent;
+  border: none;
+  transform: translateY(-1px);
+  transition: all 0.1s;
+  cursor: pointer;
+  font-size: 9px;
+  text-align: center;
+  -webkit-text-stroke: 1px black;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+.btn-donate-popup:hover {
+  text-decoration: underline;
+}
+.btn-next-level {
+  width: 138px;
+  height: 45px;
+  background-image: url("../src/assets/images--landing/btn-play-next-level.png");
+}
+.btn-play-again {
+  width: 138px;
+  height: 45px;
+  background-image: url("../src/assets/images--landing/btn-start-popUp.png");
+}
+.btn-start-next-level {
+  width: 138px;
+  height: 45px;
+  background-image: url("../src/assets/images--landing/btn-start-popUp.png");
+}
 .btn-start {
   background-image: url("../src/assets/images--landing/btn-start.png");
 }
@@ -122,6 +220,13 @@ body {
 }
 .btn-collection {
   background-image: url("../src/assets/images--landing/btn-collections.png");
+}
+.btn-back {
+  background-image: url("../src/assets/images--landing/btn-home.png");
+  background-size: contain;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 50px;
 }
 .btn-home:hover {
   transition-duration: 200ms;
@@ -144,13 +249,13 @@ body {
   padding: 5px 10px 5px 40px;
   top: 15px;
   left: 165px;
-  width: 40px;
+  width: 60px;
 }
 #scoreBoardTimerMinutes,
 #scoreBoardTimerSeconds,
 .minutesSecondsСolon {
   font-weight: 900;
-  font-size: 20px;
+  font-size: 18px;
   color: #1ecbca;
   font-family: sans-serif;
 }
@@ -176,7 +281,7 @@ body {
 }
 .scoreMines {
   font-weight: 900;
-  font-size: 20px;
+  font-size: 18px;
   color: #f4960f;
   font-family: sans-serif;
 }
@@ -184,7 +289,7 @@ body {
 .scoreMinesСolon,
 #scoreBoardMinesAll {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
   color: #f4e2a3;
   font-family: sans-serif;
 }
@@ -217,12 +322,12 @@ body {
 }
 .aboutTextWrap {
   position: relative;
-  max-width: 700px;
+  max-width: 900px;
   width: inherit;
   margin-top: 40px;
   margin-right: auto;
   margin-left: auto;
-  background-image: url(assets/images--landing/about-game-block1.svg);
+  background-image: url(assets/images--landing/about-game-block1-history.svg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: contain;
@@ -306,8 +411,9 @@ body {
 
 .about-game-text {
   width: inherit;
-  font-size: 16px;
+  font-size: 14px;
   color: black;
+  line-height: 1.4;
   margin-right: auto;
   margin-left: auto;
   padding: 50px;
@@ -316,7 +422,16 @@ body {
   height: inherit;
 }
 .about-game-text-wrap {
-  padding: 15%;
+  padding: 20%;
+}
+.about-game-text-wrap-first-block {
+  padding: 5% 20% 20% 20%;
+}
+.finish-popUp-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px;
 }
 .attention-bg {
   background-color: #d31818;
@@ -331,12 +446,24 @@ body {
 .btn-collection-wrap {
   max-width: 400px;
 }
+.about-game-subtitle {
+  font-size: 16px;
+  color: black;
+  -webkit-text-stroke: 1px black;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.5;
+  margin: 0;
+}
+
 @media (min-width: 320px) and (max-width: 767px) {
   .about-game-text {
     padding: 20px;
   }
   .about-game-text {
-    font-size: 14px;
+    font-size: 12px;
+    height: 100px;
+    overflow-y: scroll;
   }
   .mines-wrap {
     width: 90%;
@@ -347,6 +474,52 @@ body {
   .btn-collection-wrap {
     max-width: 80%;
   }
+  .about-game-subtitle {
+    font-size: 14px;
+    margin-top: 20px;
+  }
+  .about-game-text-wrap {
+    padding: 20% 10%;
+  }
+  #arrowIcons #upArrowIcon {
+
+  width: 100px;
+  height: 100px;
+
+}
+#arrowIcons #leftArrowIcon {
+
+  width: 100px;
+  height: 100px;
+
+}
+#arrowIcons #downArrowIcon {
+
+  width: 100px;
+  height: 100px;
+
+}
+#arrowIcons #rightArrowIcon {
+
+  width: 100px;
+  height: 100px;
+
+}
+
+#actionIcons #actionIconsFlag {
+
+  width: 100px;
+  height: 100px;
+
+}
+}
+.disclaimer-title {
+  margin-top: 30px;
+}
+.socialIcon {
+  width: 30px;
+  margin: 0 10px;
+  cursor: pointer;
 }
 .rulesWrap {
   position: relative;
@@ -360,20 +533,11 @@ body {
   background-position: center center;
   background-size: contain;
 }
-.how-to-play-wrap {
-  position: absolute;
-  max-width: 300px;
-  height: 100px;
-  top: 20px;
-  left: -20px;
-  transform: rotate(-30deg);
-}
 
 .mine-wrap {
   position: absolute;
-  max-width: 130px;
-  height: 100px;
-  bottom: 30px;
+  max-width: 300px;
+  bottom: -30px;
   right: 40px;
 }
 .disclaimer {
@@ -381,6 +545,36 @@ body {
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 50px;
+  color: white;
+  opacity: 0.6;
+  font-size: 12px;
+  padding: 0 10%;
+  line-height: 1.6;
+}
+.social-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.textMail {
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  line-height: 1.2em;
+  text-decoration: underline;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.email {
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+
   color: white;
   font-size: 14px;
   padding: 0 10%;
@@ -544,6 +738,23 @@ body {
   text-align: center;
   line-height: 1.5;
 }
+.endTitle {
+  font-size: 14px;
+  color: black;
+  -webkit-text-stroke: 1px black;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.dog-finish-popUp {
+  width: 150px;
+  margin-bottom: 20px;
+}
+.level-popUp {
+  width: 200px;
+  margin-top: 20px;
+}
 .weight-mine,
 .distance-mine {
   margin: 0;
@@ -587,4 +798,48 @@ body {
 }
 .popUpMine1 {
   display: none;
+}
+
+.popUpStart {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+#bg-popUp-finish,
+#bg-popUp-finish-fail,
+#bg-popUp-happy-finish{
+  background: url(assets/images--landing/footer-about-us-page.svg)
+    rgba(35, 13, 9, 0.7) center bottom no-repeat;
+  background-size: cover;
+  background-blend-mode: multiply;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+#bg-popUp-start {
+  background: url(assets/images--landing/footer-about-us-page.svg)
+    rgba(35, 13, 9, 0.7) center bottom no-repeat;
+  background-size: cover;
+  background-blend-mode: multiply;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.endPopUpBg {
+  position: relative;
+  max-width: 400px;
+  height: 500px;
+  width: inherit;
+  margin-top: 40px;
+  margin-right: auto;
+  margin-left: auto;
+  background-image: url(assets/images--landing/collection-bg.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+.level-description {
+  font-size: 11px;
+  color: black;
+  text-align: center;
 }

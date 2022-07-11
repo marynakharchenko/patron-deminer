@@ -1,17 +1,19 @@
 import config from '../../config/config';
 import CONSTANTS from '../../constants/constants';
-import LEVELS from '../../constants/levels';
+import getLevelSettings from '../../constants/levels';
 
-const { E, W, T, D, M, F, B, U, R, G, C, L } = CONSTANTS.MAP.ENTITIES;
-
-const LEVEL_MAP = LEVELS.LEVEL_MAP;
+const { E, W, T, D, M, F, B, U, R, G, C, L, I, S, H, P, O, V } = CONSTANTS.MAP.ENTITIES;
 
 export default class Map {
   constructor() {
+    const { LEVEL_MAP } = getLevelSettings();
+
+    this.levelMap = JSON.parse(JSON.stringify(LEVEL_MAP));
+
     this.tileWidth = config.game.tileWidth;
     this.tileHeight = config.game.tileHeight;
-    this.offsetX = (config.game.width - (config.game.tileWidth * LEVEL_MAP[0].length)) / 2;
-    this.offsetY = -(config.game.height - (config.game.tileHeight * LEVEL_MAP.length)) / 2;
+    this.offsetX = (config.game.width - (config.game.tileWidth * this.levelMap[0].length)) / 2;
+    this.offsetY = -(config.game.height - (config.game.tileHeight * this.levelMap.length)) / 2;
 
     this.isoY = 0.7; // tile positions appear skewed
 
@@ -30,10 +32,16 @@ export default class Map {
       GARDEN: G,
       CAR: C,
       TOWER: L,
+      ICE_CREAM: I,
+      BEACH: S,
+      TRAILER: H,
+      LIGHT: P,
+      RUINS: O,
+      CITY: V,
     };
 
-    this._mapStart = JSON.parse(JSON.stringify(LEVEL_MAP));
-    this._map = LEVEL_MAP;
+    this._mapStart = JSON.parse(JSON.stringify(this.levelMap));
+    this._map = this.levelMap;
   }
 
   /**
@@ -130,15 +138,23 @@ export default class Map {
   }
 
   outOfBounds({ row, col }) {
-    return row < 0 || col < 0 || row > LEVEL_MAP.length - 1 || col > LEVEL_MAP[0].length - 1;
+    return row < 0 || col < 0 || row > this.levelMap.length - 1 || col > this.levelMap[0].length - 1;
   }
 
   collide({ row, col }) {
-    return (!this._map[row][col].includes(E) && !this._map[row][col].includes(M))
-      || (this._map[row + 1] && this._map[row + 1][col].includes(C));
+    return (!this._map[row][col].includes(E) && !this._map[row][col].includes(M) && !this._map[row][col].includes(T))
+      || (this._map[row + 1] && this._map[row + 1][col] && this._map[row + 1][col].includes(C))
+      || (this._map[row + 1] && this._map[row + 1][col] && this._map[row + 1][col].includes(I))
+      || (this._map[row - 1] && this._map[row - 1][col] && this._map[row - 1][col].includes(O))
+      || (this._map[row - 1] && this._map[row - 1][col - 1] && this._map[row - 1][col - 1].includes(O))
+      || (this._map[row] && this._map[row][col - 1] && this._map[row][col - 1].includes(O));
   }
 
   isEnemyPosition({ row, col }) {
     return this._map[row][col].includes(U);
+  }
+
+  isTeleportPosition({ row, col }) {
+    return this._map[row][col].includes(T);
   }
 }

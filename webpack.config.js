@@ -2,6 +2,7 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   mode: "production",
@@ -21,12 +22,37 @@ module.exports = {
       },
       {
         test: [/\.vert$/, /\.frag$/],
-        use: "raw-loader"
+        use: [
+          {
+            loader: "raw-loader",
+            options: {
+              minimize: true,
+            },
+          },
+        ]
       },
       {
         test: /\.(gif|png|jpe?g|svg|xml|wav|mp3)$/i,
-        use: "file-loader"
-      }
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              minimize: true,
+            },
+          },
+        ]
+      },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+            options: {
+              minimize: true,
+            },
+          },
+        ],
+      },
     ]
   },
   plugins: [
@@ -37,7 +63,17 @@ module.exports = {
       PROD: JSON.stringify(process.env.NODE_ENV)
     }),
     new HtmlWebpackPlugin({
-      template: "./index.html"
-    })
+      template: "/index.html"
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: "src/assets/images--landing/*"
+        },
+        {
+          from: "src/assets/images--landing/levelPopUp/*"
+        },
+      ],
+    }),
   ]
 };

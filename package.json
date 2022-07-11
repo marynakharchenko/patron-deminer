@@ -4,20 +4,23 @@
   "description": "deminer-dog",
   "main": "src/index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode=production",
     "start": "webpack-dev-server --open --mode=development",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src --max-warnings 0",
-    "lintfix": "npm run lint -- --fix"
+    "lintfix": "npm run lint -- --fix",
+    "deploy": "firebase deploy -P sniffer-dog-quest --only hosting:sniffer-dog-quest"
   },
   "devDependencies": {
     "@babel/core": "7.17.10",
     "@babel/preset-env": "7.17.10",
     "babel-loader": "8.2.5",
     "clean-webpack-plugin": "3.0.0",
+    "copy-webpack-plugin": "6.4.1",
     "css-loader": "4.3.0",
     "eslint": "5.16.0",
     "file-loader": "4.3.0",
+    "html-loader": "1.3.2",
     "html-webpack-plugin": "3.2.0",
     "raw-loader": "3.1.0",
     "style-loader": "2.0.0",

@@ -5,11 +5,9 @@ import viewport from '../viewport/viewport';
 import Game from '../game/Game';
 import Assets from '../assetsManager/AssetManager';
 import CONSTANTS from '../constants/constants';
-import LEVELS from '../constants/levels';
+import getLevelSettings from '../constants/levels';
 
-const LEVEL_MAP = LEVELS.LEVEL_MAP;
-
-const { E, M, U, C } = CONSTANTS.MAP.ENTITIES;
+const { E, M, U, C, I, O } = CONSTANTS.MAP.ENTITIES;
 
 /**
  * Game entry point. Holds the game's viewport
@@ -41,9 +39,7 @@ export default class GameApplication extends Application {
       resizeTimeout = setTimeout(resize, 10);
     };
 
-    this.loadAssets().then(() => this.initGame());
-
-    this.initMiniMapAndScoreBoard();
+    (async () => await this.loadAssets())();
   }
 
   /**
@@ -53,36 +49,60 @@ export default class GameApplication extends Application {
     await Assets.load({ images: Assets.images, sounds: Assets.sounds });
   }
 
-  /**
-   * Game main entry point. Loads and prerenders assets.
-   * Creates the main game container.
-   *
-   */
-  async initGame() {
-    this.game = new Game();
-    this.viewport.addChild(this.game);
+  async loadGame() {
+    this.initMiniMapAndScoreBoard();
 
-    this.game.start();
+    if (!this.game) {
+      this.game = new Game();
+      this.viewport.addChild(this.game);
+      await this.game.start();
+    } else {
+      await this.game.finish();
+      await this.game.start();
+    }
+
+    document.getElementById('game').style.display = 'block';
+  }
+
+  async hideGame() {
+    document.getElementById('game').style.display = 'none';
   }
 
   initMiniMapAndScoreBoard() {
+    const { LEVEL_MAP } = getLevelSettings();
+
+    const levelMap = JSON.parse(JSON.stringify(LEVEL_MAP));
+
     let miniMapString = '';
     let minesNumber = 0;
 
-    for (let row = 0; row < LEVEL_MAP.length; row++) {
-      for (let col = 0; col < LEVEL_MAP[0].length; col++) {
-        const isMine = LEVEL_MAP[row][col].includes(M);
-        const isBear = LEVEL_MAP[row][col].includes(U);
+    for (let row = 0; row < levelMap.length; row++) {
+      for (let col = 0; col < levelMap[0].length; col++) {
+        const isMine = levelMap[row][col].includes(M);
+        const isBear = levelMap[row][col].includes(U);
 
         if (isMine) {
           minesNumber += 1;
         }
 
-        let className = isMine || isBear ? E : LEVEL_MAP[row][col][0];
-        // car case (2 tiles)
+        let className = isMine || isBear ? E : levelMap[row][col][0];
 
-        if (LEVEL_MAP[row + 1] && LEVEL_MAP[row + 1][col] && LEVEL_MAP[row + 1][col].includes(C)) {
+        // car or ice cream cases (2 tiles)
+
+        if (levelMap[row + 1] && levelMap[row + 1][col] && levelMap[row + 1][col].includes(C)) {
           className = C;
+        }
+
+        if (levelMap[row + 1] && levelMap[row + 1][col] && levelMap[row + 1][col].includes(I)) {
+          className = I;
+        }
+
+        if (
+          (levelMap[row - 1] && levelMap[row - 1][col] && levelMap[row - 1][col].includes(O))
+          || (levelMap[row] && levelMap[row][col - 1] && levelMap[row][col - 1].includes(O))
+          || (levelMap[row - 1] && levelMap[row - 1][col - 1] && levelMap[row - 1][col - 1].includes(O))
+        ) {
+          className = O;
         }
 
         miniMapString
@@ -94,13 +114,34 @@ export default class GameApplication extends Application {
 
     miniMap.innerHTML = miniMapString;
 
+    const offsetWidth = config.view.width / 4;
+    const offsetHeight = config.view.height / 4;
+
     document.querySelectorAll('.miniMapTile').forEach((e) => {
-      e.style.width = `${miniMap.offsetWidth / LEVEL_MAP[0].length / miniMap.offsetWidth * 100}%`;
-      e.style.height = `${miniMap.offsetHeight / LEVEL_MAP.length / miniMap.offsetHeight * 100}%`;
+      e.style.width = `${offsetWidth / levelMap[0].length / offsetWidth * 100}%`;
+      e.style.height = `${offsetHeight / levelMap.length / offsetHeight * 100}%`;
     });
 
-    document.getElementById('scoreBoardMinesCurrent').innerText = String(minesNumber);
-    document.getElementById('scoreBoardMinesAll').innerText = String(minesNumber);
+    const scoreBoard = document.getElementById('scoreBoard');
+
+    scoreBoard.innerHTML = `
+      <span id="scoreBoardTimer">
+        <span class="timerIcon"></span>
+        <span class="timer">
+          <span id="scoreBoardTimerMinutes"></span
+          ><span class="minutesSecondsСolon">:</span
+          ><span id="scoreBoardTimerSeconds"></span>
+        </span>
+      </span>
+      <span class="scoreMines">
+        <span class="minesIcon"></span>
+        <span class="mines">
+          <span id="scoreBoardMinesCurrent">${minesNumber}</span
+          ><span class="scoreMinesСolon"> /</span>
+          <span id="scoreBoardMinesAll">${minesNumber}</span>
+        </span>
+      </span>
+    `;
   }
 
   /**
