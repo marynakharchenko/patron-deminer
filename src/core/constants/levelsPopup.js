@@ -26,7 +26,7 @@ const LEVELS_POPUP = {
     LEVEL_POPUP_PHOTO_SRC:
       '../src/assets/images--landing/levelPopUp/city-popUp.png',
     LEVEL_POPUP_DESCRIPTION:
-      'Слідкуй за бурим окупантом - він може топтати прапорці,якими ти відзначаєш знахідки.',
+      'Слідкуй за бурим окупантом - він може топтати прапорці, якими ти відзначаєш знахідки.',
   },
   '04': {
     LEVEL_POPUP_ID: '04',
