@@ -57,7 +57,7 @@ const LEVEL_POPUP = `
       class="level-popUp"
     />
     <p class="level-description">{{LEVEL_POPUP_DESCRIPTION}}</p>
-    <button id="btn-start-next-level" class="btn-home btn-start-next-level loading"></button>
+    <button id="btn-start-next-level" class="btn-home btn-start-next-level"></button>
   </div>
 </div>
 `;

@@ -24,6 +24,19 @@
       property="og:image"
       content="src/assets/images--landing/sniffer-facebook.jpeg"
     />
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9D4GRG1V3K"></script>
+    <script>
+      const hostname = window.location.hostname;
+      if (hostname !== 'localhost') {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-9D4GRG1V3K');
+      }
+    </script>
   </head>
   <body>
     <div class="start-bg" id="background-start">
