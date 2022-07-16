@@ -362,7 +362,7 @@ const MINES = {
 };
 
 const availableMinesString = window.localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY_MINES_LIST) || '';
-const mineTypesArray = availableMinesString.split(',');
+const mineTypesArray = availableMinesString ? availableMinesString.split(',') : [];
 
 mineTypesArray.forEach((mineId) => {
   if (MINES[mineId]) MINES[mineId].MINE_AVAILABLE = true;

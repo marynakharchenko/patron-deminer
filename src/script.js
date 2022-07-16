@@ -3,6 +3,13 @@ import { getMinesList } from './core/constants/mines';
 import { getLevelsPopup } from './core/constants/levelsPopup';
 
 window.onload = () => {
+  const boxLoading = document.querySelectorAll('.boxLoading');
+  const boxLoadingText = document.querySelectorAll('.boxLoadingText');
+  const boxLoadingButton = document.querySelectorAll('.logo-and-btn-wrap button');
+  boxLoading.forEach((bw) => bw.classList.add('loading'));
+  boxLoadingText.forEach((bw) => bw.classList.add('loading'));
+  boxLoadingButton.forEach((bw) => bw.classList.remove('loading'));
+
   getLevelsPopup();
 
   document.querySelectorAll('.btn-donate').forEach((bd) => {
