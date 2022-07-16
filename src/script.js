@@ -8,6 +8,7 @@ window.onload = () => {
   const boxLoading = document.querySelectorAll('.boxLoading');
   const boxLoadingText = document.querySelectorAll('.boxLoadingText');
   const boxLoadingButton = document.querySelectorAll('.logo-and-btn-wrap button');
+
   boxLoading.forEach((bw) => bw.classList.add('loading'));
   boxLoadingText.forEach((bw) => bw.classList.add('loading'));
   boxLoadingButton.forEach((bw) => bw.classList.remove('loading'));
@@ -113,7 +114,7 @@ window.onload = () => {
 
     const levelNumberString = window.localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY_LEVEL_NUMBER) || '01';
 
-    gtag('event', CONSTANTS.NEXT_LEVEL_CLICK + '_' + levelNumberString);
+    gtag('event', `${CONSTANTS.NEXT_LEVEL_CLICK}_${levelNumberString}`);
   };
 
   document.getElementById('bg-popUp-finish-fail').onclick = () => {
@@ -128,7 +129,7 @@ window.onload = () => {
 
     const levelNumberString = window.localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY_LEVEL_NUMBER) || '01';
 
-    gtag('event', CONSTANTS.FAIL_LEVEL_CLICK + '_' + levelNumberString);
+    gtag('event', `${CONSTANTS.FAIL_LEVEL_CLICK}_${levelNumberString}`);
   };
 
   document.getElementById('btn-back-to-home-finish').onclick = () => {
