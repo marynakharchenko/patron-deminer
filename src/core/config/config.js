@@ -24,9 +24,9 @@ class Config {
       tileHeight: size / 5,
       fenceSize: 5, // tiles
       drag: false,
-      pinch: true,
-      decelerate: true,
-      wheel: true,
+      pinch: false,
+      decelerate: false,
+      wheel: false,
     };
   }
 }
