@@ -43,6 +43,12 @@ import Assets from '../assetsManager/AssetManager';
 import CONSTANTS from '../constants/constants';
 import getLevelSettings from '../constants/levels';
 
+const SOUNDS = Assets.sounds;
+const random = (min, max) => {
+  let rand = min - 0.5 + Math.random() * (max - min + 1);
+  return Math.round(rand);
+};
+
 /**
  * Main game stage, manages scenes/levels.
  *
@@ -103,7 +109,12 @@ export default class Game extends Container {
     this._timer.start(() => this._onEnd());
 
     // Start the background loop
-    Assets.sounds.background.play();
+    SOUNDS.background._loop = true;
+    SOUNDS.background._volume = 0.5;
+    SOUNDS.background.play();
+
+    this._addDogBark();
+    if (this.BEAR_SETTINGS.BEAR_AVAILABLE) this._addBearGrowl();
   }
 
   async finish() {
@@ -177,6 +188,20 @@ export default class Game extends Container {
     this._trailers = [];
     this._ruins = [];
     this._city = [];
+  }
+
+  _addDogBark() {
+    const doubleBark = () => {
+      SOUNDS.dogBark.play();
+      setTimeout(() => SOUNDS.dogBark.play(), 300);
+    };
+    doubleBark();
+    setTimeout(() => doubleBark(), random(20000, 25000));
+  }
+
+  _addBearGrowl() {
+    SOUNDS.bear._volume = 0.2;
+    setTimeout(() => SOUNDS.bear.play(), random(30000, 35000));
   }
 
   _createFence() {
@@ -327,6 +352,9 @@ export default class Game extends Container {
           flagDown.initDown(flagCoords, config.game.tileWidth, config.game.tileHeight);
 
           this.addChild(flagDown.anim);
+
+          SOUNDS.mine.play();
+          setTimeout(() => SOUNDS.mine.play(), 300);
 
           setTimeout(() => this.removeChild(flagDown.anim), 2000);
         }
@@ -654,6 +682,9 @@ export default class Game extends Container {
 
     this._dog.position = newPos;
     await this._dog.move(targetPos, direction);
+
+    SOUNDS.dogStep.play();
+
     document.getElementById(`miniMap-${oldPos.row}-${oldPos.col}`).classList.remove(this._map.IDS.DOG);
     document.getElementById(`miniMap-${oldPos.row}-${oldPos.col}`).classList.add(this._map.IDS.EMPTY);
     document.getElementById(`miniMap-${newPos.row}-${newPos.col}`).classList.remove(this._map.IDS.EMPTY);
@@ -679,7 +710,7 @@ export default class Game extends Container {
     document.getElementById('scoreBoardMinesCurrent').innerText
       = String(Number(document.getElementById('scoreBoardMinesCurrent').innerText) - 1);
     // Play the demine sound
-    if (!Assets.sounds.demine.playing()) Assets.sounds.demine.play();
+    SOUNDS.demine.play();
 
     this._dog.demine(() => {
       mine.deminedCount++;
@@ -757,21 +788,25 @@ export default class Game extends Container {
         );
       }
 
-      const { NEXT_LEVEL_NUMBER } = getLevelSettings();
+      const { LEVEL_NUMBER, NEXT_LEVEL_NUMBER } = getLevelSettings();
 
       window.localStorage.setItem(CONSTANTS.LOCAL_STORAGE_KEY_LEVEL_NUMBER, NEXT_LEVEL_NUMBER);
 
-      Assets.sounds.win.play();
+      SOUNDS.win.play();
 
       window.hideGame();
-      document.getElementById('bg-popUp-finish').style.display = 'block';
+      if (LEVEL_NUMBER === NEXT_LEVEL_NUMBER) {
+        document.getElementById('bg-popUp-happy-finish').style.display = 'block';
+      } else {
+        document.getElementById('bg-popUp-finish').style.display = 'block';
+      }
     } else {
-      Assets.sounds.lose.play();
+      SOUNDS.lose.play();
 
       document.getElementById('bg-popUp-finish-fail').style.display = 'block';
       window.hideGame();
     }
     // Fade out the background sound
-    Assets.sounds.background.fade(1, 0, 200);
+    SOUNDS.background.stop();
   }
 }

@@ -4,7 +4,7 @@ import { MINES } from '../constants/mines';
 const { E, D, M, U, G, T } = CONSTANTS.MAP.ENTITIES;
 
 const LEVEL_NUMBER = '05';
-const NEXT_LEVEL_NUMBER = '01';
+const NEXT_LEVEL_NUMBER = '05';
 
 const LEVEL_MAP = [
   [[E], [E], [E], [E], [G], [M], [E], [T], [E], [E], [E], [E], [E], [E], [E], [G], [E], [G], [G], [G], [E], [E], [M]],
