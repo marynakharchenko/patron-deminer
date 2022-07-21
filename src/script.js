@@ -1,4 +1,5 @@
 import CONSTANTS from './core/constants/constants';
+import dogAnimations from './core/animations/dogAnimations';
 import { getMinesList } from './core/constants/mines';
 import { getLevelsPopup } from './core/constants/levelsPopup';
 
@@ -40,22 +41,108 @@ window.onload = () => {
     };
   });
 
-  document.getElementById('upArrowIcon').onclick = () => {
+  const upArrowIconElement = document.getElementById('upArrowIcon');
+  const downArrowIconElement = document.getElementById('downArrowIcon');
+  const leftArrowIconElement = document.getElementById('leftArrowIcon');
+  const rightArrowIconElement = document.getElementById('rightArrowIcon');
+
+  upArrowIconElement.addEventListener('mousedown', () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowUp' }));
     document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowUp' }));
-  };
-  document.getElementById('downArrowIcon').onclick = () => {
+    const id = setInterval(() => {
+      document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowUp' }));
+      document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowUp' }));
+    }, CONSTANTS.ANIMATION_DURATION_DEFAULT * dogAnimations[`${CONSTANTS.ACTIONS.WALK}${CONSTANTS.DIRECTIONS.UP}`]);
+
+    document.body.addEventListener('mouseup', () => {
+      clearInterval(id);
+    }, { once: true });
+  });
+  upArrowIconElement.addEventListener('touchstart', () => {
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowUp' }));
+    document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowUp' }));
+    const id = setInterval(() => {
+      document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowUp' }));
+      document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowUp' }));
+    }, CONSTANTS.ANIMATION_DURATION_DEFAULT * dogAnimations[`${CONSTANTS.ACTIONS.WALK}${CONSTANTS.DIRECTIONS.UP}`]);
+
+    document.body.addEventListener('touchend', () => {
+      clearInterval(id);
+    }, { once: true });
+  });
+  downArrowIconElement.addEventListener('mousedown', () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowDown' }));
     document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowDown' }));
-  };
-  document.getElementById('leftArrowIcon').onclick = () => {
+    const id = setInterval(() => {
+      document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowDown' }));
+      document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowDown' }));
+    }, CONSTANTS.ANIMATION_DURATION_DEFAULT * dogAnimations[`${CONSTANTS.ACTIONS.WALK}${CONSTANTS.DIRECTIONS.DOWN}`]);
+
+    document.body.addEventListener('mouseup', () => {
+      clearInterval(id);
+    }, { once: true });
+  });
+  downArrowIconElement.addEventListener('touchstart', () => {
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowDown' }));
+    document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowDown' }));
+    const id = setInterval(() => {
+      document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowDown' }));
+      document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowDown' }));
+    }, CONSTANTS.ANIMATION_DURATION_DEFAULT * dogAnimations[`${CONSTANTS.ACTIONS.WALK}${CONSTANTS.DIRECTIONS.DOWN}`]);
+
+    document.body.addEventListener('touchend', () => {
+      clearInterval(id);
+    }, { once: true });
+  });
+  leftArrowIconElement.addEventListener('mousedown', () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowLeft' }));
     document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowLeft' }));
-  };
-  document.getElementById('rightArrowIcon').onclick = () => {
+    const id = setInterval(() => {
+      document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowLeft' }));
+      document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowLeft' }));
+    }, CONSTANTS.ANIMATION_DURATION_DEFAULT * dogAnimations[`${CONSTANTS.ACTIONS.WALK}${CONSTANTS.DIRECTIONS.LEFT}`]);
+
+    document.body.addEventListener('mouseup', () => {
+      clearInterval(id);
+    }, { once: true });
+  });
+  leftArrowIconElement.addEventListener('touchstart', () => {
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowLeft' }));
+    document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowLeft' }));
+    const id = setInterval(() => {
+      document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowLeft' }));
+      document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowLeft' }));
+    }, CONSTANTS.ANIMATION_DURATION_DEFAULT * dogAnimations[`${CONSTANTS.ACTIONS.WALK}${CONSTANTS.DIRECTIONS.LEFT}`]);
+
+    document.body.addEventListener('touchend', () => {
+      clearInterval(id);
+    }, { once: true });
+  });
+  rightArrowIconElement.addEventListener('mousedown', () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowRight' }));
     document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowRight' }));
-  };
+    const id = setInterval(() => {
+      document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowRight' }));
+      document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowRight' }));
+    }, CONSTANTS.ANIMATION_DURATION_DEFAULT * dogAnimations[`${CONSTANTS.ACTIONS.WALK}${CONSTANTS.DIRECTIONS.RIGHT}`]);
+
+    document.body.addEventListener('mouseup', () => {
+      clearInterval(id);
+    }, { once: true });
+  });
+  rightArrowIconElement.addEventListener('touchstart', () => {
+    document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowRight' }));
+    document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowRight' }));
+    const id = setInterval(() => {
+      document.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowRight' }));
+      document.dispatchEvent(new KeyboardEvent('keyup', { code: 'ArrowRight' }));
+    }, CONSTANTS.ANIMATION_DURATION_DEFAULT * dogAnimations[`${CONSTANTS.ACTIONS.WALK}${CONSTANTS.DIRECTIONS.RIGHT}`]);
+
+    document.body.addEventListener('touchend', () => {
+      clearInterval(id);
+    }, { once: true });
+  });
+
   document.getElementById('actionIconsFlag').onclick = () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { code: 'Space' }));
     document.dispatchEvent(new KeyboardEvent('keyup', { code: 'Space' }));

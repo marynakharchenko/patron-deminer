@@ -5,6 +5,7 @@ body {
   padding: 0;
   height: 100vh;
   font-family: "Comfortaa", "Tahoma", "Arial Black", sans-serif;
+  touch-action: none;
 }
 
 #game {
@@ -80,7 +81,6 @@ body {
   background-color: #729641;
 }
 
-
 #scoreBoard {
   left: 10px;
   top: 10px;
@@ -91,8 +91,8 @@ body {
   right: 110px;
   bottom: 110px;
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   background-image: url("../src/assets/images/icons/icon-up-ui.png");
   cursor: pointer;
   background-size: contain;
@@ -101,42 +101,42 @@ body {
   right: 210px;
   bottom: 10px;
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   background-image: url("../src/assets/images/icons/icon-left-ui.png");
   cursor: pointer;
-    background-size: contain;
+  background-size: contain;
 }
 #arrowIcons #downArrowIcon {
   right: 110px;
   bottom: 10px;
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   background-image: url("../src/assets/images/icons/icon-down-ui.png");
   cursor: pointer;
-    background-size: contain;
+  background-size: contain;
 }
 #arrowIcons #rightArrowIcon {
   right: 10px;
   bottom: 10px;
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   background-image: url("../src/assets/images/icons/icon-right-ui.png");
   cursor: pointer;
-    background-size: contain;
+  background-size: contain;
 }
 
 #actionIcons #actionIconsFlag {
   left: 10px;
   bottom: 10px;
   position: absolute;
-  width: 60px;
-  height: 60px;
+  width: 100px;
+  height: 100px;
   background-image: url("../src/assets/images/icons/icon-flag-ui.png");
   cursor: pointer;
-    background-size: contain;
+  background-size: contain;
 }
 
 .bg-start-phone {
@@ -482,36 +482,26 @@ body {
     padding: 20% 10%;
   }
   #arrowIcons #upArrowIcon {
+    width: 100px;
+    height: 100px;
+  }
+  #arrowIcons #leftArrowIcon {
+    width: 100px;
+    height: 100px;
+  }
+  #arrowIcons #downArrowIcon {
+    width: 100px;
+    height: 100px;
+  }
+  #arrowIcons #rightArrowIcon {
+    width: 100px;
+    height: 100px;
+  }
 
-  width: 100px;
-  height: 100px;
-
-}
-#arrowIcons #leftArrowIcon {
-
-  width: 100px;
-  height: 100px;
-
-}
-#arrowIcons #downArrowIcon {
-
-  width: 100px;
-  height: 100px;
-
-}
-#arrowIcons #rightArrowIcon {
-
-  width: 100px;
-  height: 100px;
-
-}
-
-#actionIcons #actionIconsFlag {
-
-  width: 100px;
-  height: 100px;
-
-}
+  #actionIcons #actionIconsFlag {
+    width: 100px;
+    height: 100px;
+  }
 }
 .disclaimer-title {
   margin-top: 30px;
@@ -807,7 +797,7 @@ body {
 }
 #bg-popUp-finish,
 #bg-popUp-finish-fail,
-#bg-popUp-happy-finish{
+#bg-popUp-happy-finish {
   background: url(assets/images--landing/footer-about-us-page.svg)
     rgba(35, 13, 9, 0.7) center bottom no-repeat;
   background-size: cover;
@@ -844,7 +834,6 @@ body {
   text-align: center;
 }
 
-
 .boxLoading {
   --color: white;
   --size-mid: 6vmin;
@@ -860,7 +849,7 @@ body {
 
 .boxLoading::before,
 .boxLoading::after {
-  content: '';
+  content: "";
   box-sizing: border-box;
   position: absolute;
 }
@@ -878,7 +867,8 @@ body {
 }
 
 @keyframes boxLoading-6 {
-  0%, 100% {
+  0%,
+  100% {
     transform: none;
   }
 
@@ -918,7 +908,8 @@ body {
 }
 
 @keyframes boxLoading-7 {
-  0%, 100% {
+  0%,
+  100% {
     transform: none;
   }
 

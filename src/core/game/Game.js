@@ -45,7 +45,8 @@ import getLevelSettings from '../constants/levels';
 
 const SOUNDS = Assets.sounds;
 const random = (min, max) => {
-  let rand = min - 0.5 + Math.random() * (max - min + 1);
+  const rand = min - 0.5 + (Math.random() * (max - min + 1));
+
   return Math.round(rand);
 };
 
@@ -195,6 +196,7 @@ export default class Game extends Container {
       SOUNDS.dogBark.play();
       setTimeout(() => SOUNDS.dogBark.play(), 300);
     };
+
     doubleBark();
     setTimeout(() => doubleBark(), random(20000, 25000));
   }
