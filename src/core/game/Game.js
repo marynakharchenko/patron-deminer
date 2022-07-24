@@ -72,6 +72,7 @@ export default class Game extends Container {
     this._timer = new Timer();
     this._dog = null;
     this._bear = null;
+    this._fence = [];
     this._mines = [];
     this._flags = [];
     this._bushes = [];
@@ -130,6 +131,9 @@ export default class Game extends Container {
     this._mines.forEach((mine) => {
       this.removeChild(mine.anim);
     });
+    this._fence.forEach((mine) => {
+      this.removeChild(mine.anim);
+    });
     this._flags.forEach((flag) => {
       this.removeChild(flag.anim);
     });
@@ -175,6 +179,7 @@ export default class Game extends Container {
     this._timer = null;
     this._dog = null;
     this._bear = null;
+    this._fence = [];
     this._mines = [];
     this._flags = [];
     this._bushes = [];
@@ -253,6 +258,7 @@ export default class Game extends Container {
           fence.position = fencePosition;
 
           this.addChild(fence.anim);
+          this._fence.push(fence);
         }
       }
     }
