@@ -143,7 +143,7 @@ window.onload = () => {
     }, { once: true });
   });
 
-  document.getElementById('actionIconsFlag').onclick = () => {
+  document.getElementById('actionIcon').onclick = () => {
     document.dispatchEvent(new KeyboardEvent('keydown', { code: 'Space' }));
     document.dispatchEvent(new KeyboardEvent('keyup', { code: 'Space' }));
   };

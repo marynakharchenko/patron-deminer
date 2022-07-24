@@ -128,15 +128,23 @@ body {
   background-size: contain;
 }
 
-#actionIcons #actionIconsFlag {
+#actionIcons #actionIcon {
   left: 10px;
   bottom: 10px;
   position: absolute;
   width: 100px;
   height: 100px;
-  background-image: url("../src/assets/images/icons/icon-flag-ui.png");
   cursor: pointer;
   background-size: contain;
+}
+#actionIcons .actionIconFlag {
+  background-image: url("../src/assets/images/icons/icon-flag-ui.png");
+}
+#actionIcons .actionIconPortal {
+  background-image: url("../src/assets/images/icons/icon-portal-ui.png");
+}
+#actionIcons .actionIconBite {
+  background-image: url("../src/assets/images/icons/icon-bite-ui.png");
 }
 
 .bg-start-phone {
@@ -498,7 +506,7 @@ body {
     height: 100px;
   }
 
-  #actionIcons #actionIconsFlag {
+  #actionIcons #actionIcon {
     width: 100px;
     height: 100px;
   }

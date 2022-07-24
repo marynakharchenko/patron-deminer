@@ -695,6 +695,17 @@ export default class Game extends Container {
     this._map.removeModelFromTileOnMap(oldPos, this._map.IDS.DOG);
     this._map.addModelToTileOnMap(newPos, this._map.IDS.DOG);
 
+    document.getElementById('actionIcon').className = '';
+    document.getElementById('actionIcon').classList.add('actionIconFlag');
+
+    const teleportPos = this._map.posById(this._map.IDS.TELEPORT);
+    teleportPos.forEach(tp => {
+      if (tp.col === newPos.col && tp.row === newPos.row) {
+        document.getElementById('actionIcon').className = '';
+        document.getElementById('actionIcon').classList.add('actionIconPortal');
+      }
+    });
+
     return this._dogAction();
   }
 
