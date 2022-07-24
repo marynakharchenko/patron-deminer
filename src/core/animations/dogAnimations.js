@@ -76,4 +76,11 @@ export default {
     'demineDown6',
     'demineDown7',
   ],
+  [CONSTANTS.ACTIONS.BITE]: [
+    'dogBite0',
+    'dogBite0_1',
+    'dogBite0_2',
+    'dogBite0_3',
+    'dogBite0_4',
+  ],
 };

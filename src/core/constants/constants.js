@@ -12,6 +12,7 @@ export default {
     WALK: 'walk',
     DEMINE: 'demine',
     MINE: 'mine',
+    BITE: 'bite',
   },
   MAP: {
     ENTITIES: {

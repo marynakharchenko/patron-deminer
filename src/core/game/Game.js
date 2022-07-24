@@ -208,7 +208,9 @@ export default class Game extends Container {
 
   _addBearGrowl() {
     SOUNDS.bear._volume = 0.2;
-    setTimeout(() => SOUNDS.bear.play(), random(30000, 35000));
+    setTimeout(() => {
+      if (this.BEAR_SETTINGS.BEAR_AVAILABLE) SOUNDS.bear.play();
+    }, random(30000, 35000));
   }
 
   _createFence() {
@@ -294,84 +296,6 @@ export default class Game extends Container {
     this.addChild(this._bear.anim);
 
     this._bearMove();
-  }
-
-  _bearMove() {
-    let counter = 0;
-
-    this._bearIntervalId = setInterval(async () => {
-      const oldPos = this._map.posById(this._map.IDS.BEAR)[0];
-
-      const hitMine = this._map.getTileStart(oldPos).includes(this._map.IDS.MINE);
-
-      if (hitMine) {
-        const mine = this._mines.find((s) => s.row === oldPos.row && s.col === oldPos.col);
-
-        if (mine.deminedCount >= 1) {
-          return this._bearMine(mine, oldPos);
-        }
-      }
-
-      if (counter >= this.BEAR_SETTINGS.BEAR_STEPS.length) counter = 0;
-
-      const bearSteps = this.BEAR_SETTINGS.BEAR_STEPS[counter];
-
-      const newPos = { row: bearSteps.row, col: bearSteps.col };
-
-      const targetPos = this._map.coordsFromPos(newPos);
-
-      targetPos.x = targetPos.x - (config.game.tileWidth / 2);
-      targetPos.y = targetPos.y - config.game.tileHeight;
-
-      this._bear.position = newPos;
-      await this._bear.move(targetPos, bearSteps.direction);
-
-      this._map.removeModelFromTileOnMap(oldPos, this._map.IDS.BEAR);
-      this._map.addModelToTileOnMap(newPos, this._map.IDS.BEAR);
-      counter++;
-
-      return counter;
-    }, this.BEAR_SETTINGS.BEAR_SPEED * 1000);
-  }
-
-  _bearMine(mine, bearPos) {
-    mine.deminedCount--;
-    if (mine.deminedCount < 1) {
-      document.getElementById('scoreBoardMinesCurrent').innerText
-        = String(Number(document.getElementById('scoreBoardMinesCurrent').innerText) + 1);
-
-      document.getElementById(`miniMap-${bearPos.row}-${bearPos.col}`).classList.remove(this._map.IDS.FLAG);
-
-      // bear on mine
-      this._map.removeModelFromTileOnMap({ row: mine.row, col: mine.col }, this._map.IDS.FLAG);
-
-      this._flags = this._flags.filter((flag) => {
-        const isCurrentFlag = flag.row === mine.row && flag.col === mine.col;
-
-        if (isCurrentFlag) {
-          this.removeChild(flag.anim);
-
-          const flagCoords = this._map.coordsFromPos({ row: flag.row, col: flag.col });
-          const flagDown = new Flag(flagAnimations);
-
-          flagCoords.x = flagCoords.x - (config.game.tileWidth / 2);
-          flagCoords.y = flagCoords.y - (config.game.tileHeight / 2);
-
-          flagDown.initDown(flagCoords, config.game.tileWidth, config.game.tileHeight);
-
-          this.addChild(flagDown.anim);
-
-          SOUNDS.mine.play();
-          setTimeout(() => SOUNDS.mine.play(), 300);
-
-          setTimeout(() => this.removeChild(flagDown.anim), 2000);
-        }
-
-        return !isCurrentFlag;
-      });
-    }
-
-    return this._bear.mine();
   }
 
   _createMines() {
@@ -662,6 +586,12 @@ export default class Game extends Container {
     if (this._pressedKeys.includes('Space')) {
       const pos = this._map.posById(this._map.IDS.DOG)[0];
 
+      if (this._dog.isPossibleAttack) {
+        this._dogBite();
+
+        return;
+      }
+
       if (this._map.isTeleportPosition(pos)) {
         this._dogTeleport();
 
@@ -712,6 +642,13 @@ export default class Game extends Container {
         document.getElementById('actionIcon').classList.add('actionIconPortal');
       }
     });
+
+    this._dog.isPossibleAttack = this.BEAR_SETTINGS.BEAR_AVAILABLE
+      && this._map.isPossibleAttack(newPos, this._map.posById(this._map.IDS.BEAR)[0]);
+    if (this._dog.isPossibleAttack) {
+      document.getElementById('actionIcon').className = '';
+      document.getElementById('actionIcon').classList.add('actionIconBite');
+    }
 
     return this._dogAction();
   }
@@ -780,6 +717,114 @@ export default class Game extends Container {
     this._map.addModelToTileOnMap(newPos, this._map.IDS.DOG);
 
     return this._dogAction();
+  }
+
+  async _dogBite() {
+    this._bear.anim.visible = false;
+    clearInterval(this._bearIntervalId);
+    this._dog.bite();
+    SOUNDS.growling.play();
+    SOUNDS.bear.play();
+    setTimeout(() => {
+      this._bear.anim.visible = true;
+      const bearPos = this._map.coordsFromPos(this._map.posById(this._map.IDS.BEAR)[0]);
+
+      bearPos.x = bearPos.x - (config.game.tileWidth / 2);
+      bearPos.y = bearPos.y - config.game.tileHeight;
+      this._bear.run(bearPos, config.game.tileWidth);
+      this.removeChild(this._dog.anim);
+      this._createDog();
+      this.BEAR_SETTINGS.BEAR_AVAILABLE = false;
+      this._map.removeModelFromTileOnMap(this._map.posById(this._map.IDS.BEAR)[0], this._map.IDS.BEAR);
+    }, 3000);
+  }
+
+  _bearMove() {
+    let counter = 0;
+
+    this._bearIntervalId = setInterval(async () => {
+      const oldPos = this._map.posById(this._map.IDS.BEAR)[0];
+
+      const hitMine = this._map.getTileStart(oldPos).includes(this._map.IDS.MINE);
+
+      if (hitMine) {
+        const mine = this._mines.find((s) => s.row === oldPos.row && s.col === oldPos.col);
+
+        if (mine.deminedCount >= 1) {
+          return this._bearMine(mine, oldPos);
+        }
+      }
+
+      if (counter >= this.BEAR_SETTINGS.BEAR_STEPS.length) counter = 0;
+
+      const bearSteps = this.BEAR_SETTINGS.BEAR_STEPS[counter];
+
+      const newPos = { row: bearSteps.row, col: bearSteps.col };
+
+      const targetPos = this._map.coordsFromPos(newPos);
+
+      targetPos.x = targetPos.x - (config.game.tileWidth / 2);
+      targetPos.y = targetPos.y - config.game.tileHeight;
+
+      this._bear.position = newPos;
+      await this._bear.move(targetPos, bearSteps.direction);
+
+      this._map.removeModelFromTileOnMap(oldPos, this._map.IDS.BEAR);
+      this._map.addModelToTileOnMap(newPos, this._map.IDS.BEAR);
+      counter++;
+
+      document.getElementById('actionIcon').className = '';
+      document.getElementById('actionIcon').classList.add('actionIconFlag');
+
+      this._dog.isPossibleAttack = this.BEAR_SETTINGS.BEAR_AVAILABLE
+        && this._map.isPossibleAttack(this._map.posById(this._map.IDS.DOG)[0], newPos);
+      if (this._dog.isPossibleAttack) {
+        document.getElementById('actionIcon').className = '';
+        document.getElementById('actionIcon').classList.add('actionIconBite');
+      }
+
+      return counter;
+    }, this.BEAR_SETTINGS.BEAR_SPEED * 1000);
+  }
+
+  _bearMine(mine, bearPos) {
+    mine.deminedCount--;
+    if (mine.deminedCount < 1) {
+      document.getElementById('scoreBoardMinesCurrent').innerText
+        = String(Number(document.getElementById('scoreBoardMinesCurrent').innerText) + 1);
+
+      document.getElementById(`miniMap-${bearPos.row}-${bearPos.col}`).classList.remove(this._map.IDS.FLAG);
+
+      // bear on mine
+      this._map.removeModelFromTileOnMap({ row: mine.row, col: mine.col }, this._map.IDS.FLAG);
+
+      this._flags = this._flags.filter((flag) => {
+        const isCurrentFlag = flag.row === mine.row && flag.col === mine.col;
+
+        if (isCurrentFlag) {
+          this.removeChild(flag.anim);
+
+          const flagCoords = this._map.coordsFromPos({ row: flag.row, col: flag.col });
+          const flagDown = new Flag(flagAnimations);
+
+          flagCoords.x = flagCoords.x - (config.game.tileWidth / 2);
+          flagCoords.y = flagCoords.y - (config.game.tileHeight / 2);
+
+          flagDown.initDown(flagCoords, config.game.tileWidth, config.game.tileHeight);
+
+          this.addChild(flagDown.anim);
+
+          SOUNDS.mine.play();
+          setTimeout(() => SOUNDS.mine.play(), 300);
+
+          setTimeout(() => this.removeChild(flagDown.anim), 2000);
+        }
+
+        return !isCurrentFlag;
+      });
+    }
+
+    return this._bear.mine();
   }
 
   _onEnd() {
