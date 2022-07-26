@@ -679,6 +679,7 @@ body {
   position: relative;
   padding: 0;
   margin: 0;
+  overflow-y: scroll;
   background: rgb(222, 254, 207);
   background: linear-gradient(
     0deg,
@@ -773,7 +774,6 @@ body {
   background-blend-mode: multiply;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 #bg-popUp-start {
   background: url(assets/images--landing/footer-about-us-page.svg)
@@ -782,7 +782,6 @@ body {
   background-blend-mode: multiply;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
 }
 
 .level-description {
@@ -898,6 +897,7 @@ body {
   margin-right: auto;
   display: block;
 }
+
 @media (min-device-width: 320px) and (max-device-width: 767px) and (orientation: portrait) {
   .socialIcon {
     width: 50px;
@@ -1000,7 +1000,7 @@ body {
     padding: 20px;
   }
   .mines-wrap {
-    width: 90%;
+    width: 80%;
   }
   .attention-bg {
     width: 80%;
@@ -1054,9 +1054,16 @@ body {
   .logo-and-btn-wrap {
     width: 60%;
   }
+  #bg-popUp-finish,
+#bg-popUp-finish-fail,
+#bg-popUp-happy-finish,
+  #bg-popUp-start{
+  overflow: hidden;
 }
 
-@media (min-device-width: 320px) and (max-device-width: 767px) and (orientation: landscape) {
+}
+
+@media (min-device-height: 320px) and (max-device-height: 767px) and (orientation: landscape) {
   .collections {
     overflow-y: scroll;
   }
@@ -1064,7 +1071,10 @@ body {
   .mine-name {
     font-size: 18px;
   }
-
+#level-popup {
+    width: inherit;
+  height: 100%;
+}
   .bg-start-phone {
     width: 100%;
     background-color: #008fd0;
@@ -1077,7 +1087,7 @@ body {
   }
 
   .mines-wrap {
-    width: 90%;
+    width: 70%;
   }
 
   .attention-bg {
