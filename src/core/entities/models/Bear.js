@@ -73,4 +73,11 @@ export default class Bear extends Entity {
     this.anim.textures = this.animations[CONSTANTS.ACTIONS.MINE];
     this.anim.gotoAndPlay(0);
   }
+
+  async run(target, width) {
+    setInterval(async () => {
+      target.x = target.x + width;
+      this.move(target, CONSTANTS.DIRECTIONS.RIGHT);
+    }, 100);
+  }
 }

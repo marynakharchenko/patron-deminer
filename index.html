@@ -7,15 +7,39 @@
     <script src="https://cdn.jsdelivr.net/npm/pixi-viewport@4.34.4/dist/viewport.min.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"></script>
-     <link rel="icon" type="image/x-icon" href="src/assets/images--landing/favicon2.png" />
-      <meta property="og:type" content="website" />
-    <meta property="og:url" content="" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="src/assets/images--landing/favicon2.png"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sniffer-dog-quest.web.app/" />
     <meta property="og:site_name" content="Sniffer Dog" />
     <meta property="og:title" content="Sniffer Dog Game" />
-    <meta property="og:description" content="Шукай міни та інші небезпечні предмети, що порозкидував бурий окупант." />
-    <meta property="og:image" content="src/assets/images--landing/sniffer-facebook.jpeg" />
+    <meta
+      property="og:description"
+      content="Шукай міни та інші небезпечні предмети, що розкидав клишоногий рашист."
+    />
+    <meta
+      property="og:image"
+      content="src/assets/images--landing/sniffer-facebook.jpeg"
+    />
 
-
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-9D4GRG1V3K"
+    ></script>
+    <script>
+      const hostname = window.location.hostname;
+      if (hostname !== "localhost") {
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-9D4GRG1V3K");
+      }
+    </script>
   </head>
   <body>
     <div class="start-bg" id="background-start">
@@ -37,6 +61,8 @@
           id="btn-collection"
           class="btn-home btn-collection loading"
         ></button>
+        <div class="boxLoading --7"></div>
+        <div class="boxLoadingText">Завантаження...</div>
       </div>
     </div>
 
@@ -65,7 +91,7 @@
             </div>
           </div>
         </div>
-        <button id="btn-back" class="btn-home btn-back loading"></button>
+        <button id="btn-back" class="btn-home btn-back"></button>
       </div>
     </div>
 
@@ -85,46 +111,53 @@
                   предмет.<br />
                   Донедавна він жив спокійним життям, але звідкіля не візьмись
                   на його територію прийшов клишоногий рашист. Негідник приніс
-                  чимало біди, бо повсюди порозкидав велику кількість предметів,
+                  чимало біди, бо повсюди розкидав велику кількість предметів,
                   що несуть загрозу. <br />Тепер на плечах у Сніффі важлива
                   місія: знайти всі небезпечні об’єкти та прогнати бурого
                   окупанта, щоб той мазав п'яти салом і давав драпака.
                 </p>
               </div>
-            </div>
-          </div>
-          <div class="rulesWrap">
-            <div class="about-game-text-wrap">
-              <p class="about-game-subtitle">Як грати</p>
+              <img
+                src="src/assets/images--landing/about-game-start-min.png"
+                class="about-game-start"
+              />
+               <p class="about-game-subtitle">Як грати</p>
               <p class="about-game-text">
-                Використовуй клавіші ←↓↑→ щоб
-                рухатися по території. Щоб відмітити небезпечний предмет
-                прапорцем, використовуй клавішу “пробіл” або кнопку 🚩.
+                Використовуй клавіші ←↓↑→ щоб рухатися по території. Щоб
+                відмітити небезпечний предмет прапорцем, використовуй клавішу
+                “пробіл” або кнопку 🚩.
               </p>
-            </div>
-          </div>
-          <div class="rulesWrap">
-
-            <div class="about-game-text-wrap">
-                <p class="about-game-subtitle">Сподобалася гра?</p>
+              <p class="about-game-subtitle">Сподобалася гра?</p>
               <p class="about-game-text">
-               Поділись грою та зроби свій вклад в нашу перемогу - задонать на ЗСУ </p>
- <div class="social-wrap">
-            <img class="socialIcon facebookBtn" src="src/assets/images--landing/facebook.png" />
-            <img class="socialIcon telegramBtn" src="src/assets/images--landing/telegram.png" />
-          </div>
+                Поділись грою та зроби свій вклад в нашу перемогу - задонать на
+                ЗСУ
+              </p>
+              <div class="social-wrap">
+                <img
+                  class="socialIcon facebookBtn"
+                  src="src/assets/images--landing/facebook.png"
+                />
+                <img
+                  class="socialIcon telegramBtn"
+                  src="src/assets/images--landing/telegram.png"
+                />
+              </div>
+              <p class="email">
+                Залишилися питання чи виникли пропозиції - пишіть нам на пошту:
+              </p>
+              <a href="mailto:snifferdog.info@gmail.com" class="textMail"
+                >snifferdog.info@gmail.com</a
+              >
             </div>
           </div>
-          <p class="email">  Залишилися питання чи виникли пропозиції - пишіть нам на пошту:</p>
-          <a href="mailto:snifferdog.info@gmail.com" class="textMail">snifferdog.info@gmail.com</a>
-          <p class="disclaimer">
 
+          <p class="disclaimer">
             <b>Дисклеймер</b><br />
             Даний ресурс носить розважальний характер. Всі персонажі та описані
             події є вигаданими, будь-який збіг з реальними особами або подіями,
             є випадковістю.<br />
           </p>
- <button id="btn-back-to-home" class="btn-home btn-back loading"></button>
+          <button id="btn-back-to-home" class="btn-home btn-back"></button>
         </div>
       </div>
     </div>
@@ -139,7 +172,7 @@
         <span id="rightArrowIcon"></span>
       </div>
       <div id="actionIcons">
-        <span id="actionIconsFlag"></span>
+        <span id="actionIcon" class="actionIconFlag"></span>
       </div>
     </div>
 
@@ -156,15 +189,11 @@
           <p class="level-description">
             Місцевість очищена від усіх небезпечних предметів.
           </p>
-          <button
-            id="btn-next-level"
-            class="btn-home btn-next-level loading"
-          ></button>
-
+          <button id="btn-next-level" class="btn-home btn-next-level"></button>
         </div>
       </div>
     </div>
- <div style="display: none" class="popUpStart" id="bg-popUp-happy-finish">
+    <div style="display: none" class="popUpStart" id="bg-popUp-happy-finish">
       <div class="endPopUpBg">
         <div class="finish-popUp-wrap">
           <p class="endTitle">Ура!</p>
@@ -173,15 +202,23 @@
             class="dog-finish-popUp"
           />
           <p class="level-description">
-          Це було не просто, але усі небезпечні предмети знайдено,
-а бурий окупант прогнаний. Не забудь поділитися грою та підтримати ЗСУ.
+            Це було не просто, але усі небезпечні предмети знайдено, а бурий
+            окупант прогнаний. Не забудь поділитися грою та підтримати ЗСУ.
           </p>
-           <div class="social-wrap">
-            <img class="socialIcon facebookBtn" src="src/assets/images--landing/facebook.png" />
-            <img class="socialIcon telegramBtn" src="src/assets/images--landing/telegram.png" />
+          <div class="social-wrap">
+            <img
+              class="socialIcon facebookBtn"
+              src="src/assets/images--landing/facebook.png"
+            />
+            <img
+              class="socialIcon telegramBtn"
+              src="src/assets/images--landing/telegram.png"
+            />
           </div>
-         <button id="btn-back-to-home-finish" class="btn-home btn-back loading"></button>
-
+          <button
+            id="btn-back-to-home-finish"
+            class="btn-home btn-back"
+          ></button>
         </div>
       </div>
     </div>
@@ -189,18 +226,17 @@
       <div class="endPopUpBg">
         <div class="finish-popUp-wrap">
           <p class="endTitle">Спробуй ще раз</p>
-           <img
+          <img
             src="src/assets/images--landing/dog-finish-fail-popUp.svg"
             class="dog-finish-popUp"
           />
           <p class="level-description">
             На території залишилися ще небезпечні предмети. Знайди їх.
           </p>
-          <button
-            id="btn-play-again"
-            class="btn-home btn-play-again loading"
-          ></button>
-          <button class="btn-donate-popup loading">Зробити донат</button>
+          <button id="btn-play-again" class="btn-home btn-play-again"></button>
+          <a href="https://sniffer-dog-quest.web.app/" class="btn-donate-popup"
+            >Головна</a
+          >
         </div>
       </div>
     </div>

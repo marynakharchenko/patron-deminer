@@ -52,6 +52,10 @@ export default class GameApplication extends Application {
   async loadGame() {
     this.initMiniMapAndScoreBoard();
 
+    const { BACKGROUND_COLOR } = getLevelSettings();
+
+    this.renderer.backgroundColor = BACKGROUND_COLOR || 0x729641;
+
     if (!this.game) {
       this.game = new Game();
       this.viewport.addChild(this.game);

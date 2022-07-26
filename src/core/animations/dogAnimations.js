@@ -11,7 +11,7 @@ export default {
     'dogUp',
   ],
   [`${CONSTANTS.ACTIONS.STAND}${CONSTANTS.DIRECTIONS.DOWN}`]: [
-    'dogDown',
+    'walkDown9',
   ],
   [`${CONSTANTS.ACTIONS.WALK}${CONSTANTS.DIRECTIONS.LEFT}`]: [
     'walkLeft1',
@@ -75,5 +75,12 @@ export default {
     'demineDown5',
     'demineDown6',
     'demineDown7',
+  ],
+  [CONSTANTS.ACTIONS.BITE]: [
+    'dogBite0',
+    'dogBite0_1',
+    'dogBite0_2',
+    'dogBite0_3',
+    'dogBite0_4',
   ],
 };

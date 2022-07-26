@@ -63,7 +63,7 @@ module.exports = {
       PROD: JSON.stringify(process.env.NODE_ENV)
     }),
     new HtmlWebpackPlugin({
-      template: "/index.html"
+      template: "./index.html"
     }),
     new CopyPlugin({
       patterns: [

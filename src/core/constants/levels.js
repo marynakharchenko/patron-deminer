@@ -26,6 +26,7 @@ const getLevelSettings = () => {
   const MINE_TYPES = LEVEL.MINE_TYPES;
   const BACKGROUND_COLOR = LEVEL.BACKGROUND_COLOR;
   const FENCE_ENTITY = LEVEL.FENCE_ENTITY;
+  const IS_POSSIBLE_ATTACK = LEVEL.IS_POSSIBLE_ATTACK;
 
   return {
     LEVEL_NUMBER,
@@ -36,6 +37,7 @@ const getLevelSettings = () => {
     MINE_TYPES,
     BACKGROUND_COLOR,
     FENCE_ENTITY,
+    IS_POSSIBLE_ATTACK,
   };
 };
 

@@ -362,7 +362,7 @@ const MINES = {
 };
 
 const availableMinesString = window.localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY_MINES_LIST) || '';
-const mineTypesArray = availableMinesString.split(',');
+const mineTypesArray = availableMinesString ? availableMinesString.split(',') : [];
 
 mineTypesArray.forEach((mineId) => {
   if (MINES[mineId]) MINES[mineId].MINE_AVAILABLE = true;
@@ -374,7 +374,7 @@ const MINES_POPUP = `
     <div class="mine-pop-up-wrap">
         <button id="close-mine-popup" class="close-pop-up"></button>
         <div class="pop-up-content">
-            <img src="{{MINE_PHOTO_SRC}}" alt="{{MINE_NAME}}">
+            <img src="{{MINE_PHOTO_SRC}}" alt="{{MINE_NAME}}" class="mine-photo">
             <p class="mine-full-name">{{MINE_FULL_NAME}}</p>
             <p class="weight-mine">{{WEIGHT_MINE}}</p>
             <p class="distance-mine">{{DISTANCE_MINE}}</p>

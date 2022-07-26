@@ -157,4 +157,10 @@ export default class Map {
   isTeleportPosition({ row, col }) {
     return this._map[row][col].includes(T);
   }
+
+  // dog position, bear position
+  isPossibleAttack({ row: rowDog, col: colDog }, { row: rowBear, col: colBear }) {
+    return (Math.abs(rowDog - rowBear) === 0 && Math.abs(colDog - colBear) === 1)
+      || (Math.abs(rowDog - rowBear) === 1 && Math.abs(colDog - colBear) <= 0);
+  }
 }

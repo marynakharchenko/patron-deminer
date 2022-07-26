@@ -26,7 +26,7 @@ const LEVELS_POPUP = {
     LEVEL_POPUP_PHOTO_SRC:
       '../src/assets/images--landing/levelPopUp/city-popUp.png',
     LEVEL_POPUP_DESCRIPTION:
-      'Слідкуй за бурим окупантом - він може топтати прапорці,якими ти відзначаєш знахідки.',
+      'Слідкуй за бурим окупантом - він може топтати прапорці, якими ти відзначаєш знахідки.',
   },
   '04': {
     LEVEL_POPUP_ID: '04',
@@ -44,7 +44,7 @@ const LEVELS_POPUP = {
     LEVEL_POPUP_PHOTO_SRC:
       '../src/assets/images--landing/levelPopUp/field-popUp.png',
     LEVEL_POPUP_DESCRIPTION:
-      'Щоб прогнати клишавого, кусай його коли він стає до тебе спиною.',
+      'Прийшов час прогнати клишавого, кусай його і він утече та не буде заважати шукати небезпечні предмети.',
   },
 };
 
@@ -57,7 +57,8 @@ const LEVEL_POPUP = `
       class="level-popUp"
     />
     <p class="level-description">{{LEVEL_POPUP_DESCRIPTION}}</p>
-    <button id="btn-start-next-level" class="btn-home btn-start-next-level loading"></button>
+    <button id="btn-start-next-level" class="btn-home btn-start-next-level"></button>
+    <button id="btn-back-to-home-popup" class="btn-home btn-to-home">Головна</button>
   </div>
 </div>
 `;
