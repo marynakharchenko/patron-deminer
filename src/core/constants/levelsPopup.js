@@ -58,7 +58,7 @@ const LEVEL_POPUP = `
     />
     <p class="level-description">{{LEVEL_POPUP_DESCRIPTION}}</p>
     <button id="btn-start-next-level" class="btn-home btn-start-next-level"></button>
-    <a href="https://sniffer-dog-quest.web.app/" class="btn-home btn-to-home">Головна</a>
+    <button id="btn-back-to-home-popup" class="btn-home btn-to-home">Головна</button>
   </div>
 </div>
 `;
