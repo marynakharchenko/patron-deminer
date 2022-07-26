@@ -160,6 +160,8 @@ const BACKGROUND_COLOR = 0x6D6E71;
 
 const FENCE_ENTITY = V;
 
+const IS_POSSIBLE_ATTACK = false;
+
 export default {
   LEVEL_NUMBER,
   NEXT_LEVEL_NUMBER,
@@ -169,4 +171,5 @@ export default {
   MINE_TYPES,
   BACKGROUND_COLOR,
   FENCE_ENTITY,
+  IS_POSSIBLE_ATTACK,
 };

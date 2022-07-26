@@ -643,7 +643,9 @@ export default class Game extends Container {
       }
     });
 
-    this._dog.isPossibleAttack = this.BEAR_SETTINGS.BEAR_AVAILABLE
+    const { IS_POSSIBLE_ATTACK } = getLevelSettings();
+
+    this._dog.isPossibleAttack = this.BEAR_SETTINGS.BEAR_AVAILABLE && IS_POSSIBLE_ATTACK
       && this._map.isPossibleAttack(newPos, this._map.posById(this._map.IDS.BEAR)[0]);
     if (this._dog.isPossibleAttack) {
       document.getElementById('actionIcon').className = '';
@@ -776,7 +778,9 @@ export default class Game extends Container {
       document.getElementById('actionIcon').className = '';
       document.getElementById('actionIcon').classList.add('actionIconFlag');
 
-      this._dog.isPossibleAttack = this.BEAR_SETTINGS.BEAR_AVAILABLE
+      const { IS_POSSIBLE_ATTACK } = getLevelSettings();
+
+      this._dog.isPossibleAttack = this.BEAR_SETTINGS.BEAR_AVAILABLE && IS_POSSIBLE_ATTACK
         && this._map.isPossibleAttack(this._map.posById(this._map.IDS.DOG)[0], newPos);
       if (this._dog.isPossibleAttack) {
         document.getElementById('actionIcon').className = '';
