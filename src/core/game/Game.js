@@ -571,7 +571,7 @@ export default class Game extends Container {
   }
 
   _dogAction() {
-    if (this._dog.moving) return;
+    if (this._dog.moving || this._dog.biting) return;
 
     const directionKey = this._pressedKeys.find((k) => ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(k));
 
@@ -722,6 +722,7 @@ export default class Game extends Container {
   }
 
   async _dogBite() {
+    this._dog.biting = true;
     this._bear.anim.visible = false;
     clearInterval(this._bearIntervalId);
     this._dog.bite();
@@ -736,6 +737,7 @@ export default class Game extends Container {
       this._bear.run(bearPos, config.game.tileWidth);
       this.removeChild(this._dog.anim);
       this._createDog();
+      this._dog.biting = false;
       this.BEAR_SETTINGS.BEAR_AVAILABLE = false;
       this._map.removeModelFromTileOnMap(this._map.posById(this._map.IDS.BEAR)[0], this._map.IDS.BEAR);
     }, 3000);

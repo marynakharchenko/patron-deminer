@@ -6,6 +6,7 @@ export default class Dog extends Entity {
     super(config, animations);
     // this.isDemining = false;
     this.isPossibleAttack = false;
+    this.biting = false;
   }
 
   setZIndex() {
