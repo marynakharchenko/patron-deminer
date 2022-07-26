@@ -191,7 +191,7 @@ body {
   text-align: center;
   -webkit-text-stroke: 1px black;
   text-transform: uppercase;
-  margin-top: 20px;
+  height: 35px;
 }
 .btn-donate-popup:hover {
   text-decoration: underline;
