@@ -44,7 +44,7 @@ const LEVELS_POPUP = {
     LEVEL_POPUP_PHOTO_SRC:
       '../src/assets/images--landing/levelPopUp/field-popUp.png',
     LEVEL_POPUP_DESCRIPTION:
-      'Щоб прогнати клишавого, кусай його коли він стає до тебе спиною.',
+      'Прийшов час прогнати клишавого, кусай його і він утече та не буде заважати шукати небезпечні предмети.',
   },
 };
 
@@ -58,6 +58,7 @@ const LEVEL_POPUP = `
     />
     <p class="level-description">{{LEVEL_POPUP_DESCRIPTION}}</p>
     <button id="btn-start-next-level" class="btn-home btn-start-next-level"></button>
+    <a href="https://sniffer-dog-quest.web.app/" class="btn-home btn-to-home">Головна</a>
   </div>
 </div>
 `;

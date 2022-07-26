@@ -11,7 +11,7 @@ export default {
     'dogUp',
   ],
   [`${CONSTANTS.ACTIONS.STAND}${CONSTANTS.DIRECTIONS.DOWN}`]: [
-    'dogDown',
+    'walkDown9',
   ],
   [`${CONSTANTS.ACTIONS.WALK}${CONSTANTS.DIRECTIONS.LEFT}`]: [
     'walkLeft1',
