@@ -98,10 +98,11 @@ const getLevelsPopup = () => {
   if (popup) popup.remove();
   document.getElementById('bg-popUp-start').appendChild(element);
 
-  const popupNextLevel = document.getElementById('btn-start-next-level');
+  const btnStartNextLevel = document.getElementById('btn-start-next-level');
+  const btnBackHomePopup = document.getElementById('btn-back-to-home-popup');
 
-  if (popupNextLevel) {
-    popupNextLevel.addEventListener('click', () => {
+  if (btnStartNextLevel) {
+    btnStartNextLevel.addEventListener('click', () => {
       document.getElementById('background-start').style.display = 'none';
       document.getElementById('collection').style.display = 'none';
       document.getElementById('about-game').style.display = 'none';
@@ -109,6 +110,24 @@ const getLevelsPopup = () => {
       document.getElementById('bg-popUp-start').style.display = 'none';
       document.getElementById('bg-popUp-finish').style.display = 'none';
       document.getElementById('bg-popUp-finish-fail').style.display = 'none';
+
+      const levelNumberString = window.localStorage.getItem(CONSTANTS.LOCAL_STORAGE_KEY_LEVEL_NUMBER) || '01';
+
+      const gtag = window.gtag ? window.gtag : () => {};
+
+      gtag('event', `${CONSTANTS.NEXT_LEVEL_CLICK}_${levelNumberString}`);
+    });
+  }
+  if (btnBackHomePopup) {
+    btnBackHomePopup.addEventListener('click', () => {
+      document.getElementById('background-start').style.display = 'block';
+      document.getElementById('collection').style.display = 'none';
+      document.getElementById('about-game').style.display = 'none';
+      window.hideGame();
+      document.getElementById('bg-popUp-start').style.display = 'none';
+      document.getElementById('bg-popUp-finish').style.display = 'none';
+      document.getElementById('bg-popUp-finish-fail').style.display = 'none';
+      document.getElementById('bg-popUp-happy-finish').style.display = 'none';
     });
   }
 };
