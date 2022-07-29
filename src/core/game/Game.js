@@ -669,6 +669,7 @@ export default class Game extends Container {
     const mine = this._mines.find((s) => s.row === dogPos.row && s.col === dogPos.col);
 
     if (mine.deminedCount >= 1) return this._dog.standStill();
+    mine.deminedCount++;
 
     document.getElementById('scoreBoardMinesCurrent').innerText
       = String(Number(document.getElementById('scoreBoardMinesCurrent').innerText) - 1);
@@ -676,7 +677,6 @@ export default class Game extends Container {
     SOUNDS.demine.play();
 
     this._dog.demine(() => {
-      mine.deminedCount++;
       if (mine.deminedCount >= 1) {
         document.getElementById(`miniMap-${dogPos.row}-${dogPos.col}`).classList.add(this._map.IDS.FLAG);
 
