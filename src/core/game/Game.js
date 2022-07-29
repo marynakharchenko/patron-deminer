@@ -89,6 +89,8 @@ export default class Game extends Container {
     this._city = [];
 
     this._bearIntervalId = null;
+    this._doubleBarkTimeoutId = null;
+    this._bearTimeoutId = null;
 
     this._attachKeyboardListeners();
 
@@ -121,6 +123,8 @@ export default class Game extends Container {
 
   async finish() {
     clearInterval(this._bearIntervalId);
+    if (this._doubleBarkTimeoutId) clearTimeout(this._doubleBarkTimeoutId);
+    if (this._bearTimeoutId) clearTimeout(this._bearTimeoutId);
     this._bearIntervalId = null;
 
     this._removeKeyboardListeners();
@@ -203,12 +207,12 @@ export default class Game extends Container {
     };
 
     doubleBark();
-    setTimeout(() => doubleBark(), random(20000, 25000));
+    this._doubleBarkTimeoutId = setTimeout(() => doubleBark(), random(20000, 25000));
   }
 
   _addBearGrowl() {
     SOUNDS.bear._volume = 0.2;
-    setTimeout(() => {
+    this._bearTimeoutId = setTimeout(() => {
       if (this.BEAR_SETTINGS.BEAR_AVAILABLE) SOUNDS.bear.play();
     }, random(30000, 35000));
   }
@@ -665,6 +669,7 @@ export default class Game extends Container {
     const mine = this._mines.find((s) => s.row === dogPos.row && s.col === dogPos.col);
 
     if (mine.deminedCount >= 1) return this._dog.standStill();
+    mine.deminedCount++;
 
     document.getElementById('scoreBoardMinesCurrent').innerText
       = String(Number(document.getElementById('scoreBoardMinesCurrent').innerText) - 1);
@@ -672,7 +677,6 @@ export default class Game extends Container {
     SOUNDS.demine.play();
 
     this._dog.demine(() => {
-      mine.deminedCount++;
       if (mine.deminedCount >= 1) {
         document.getElementById(`miniMap-${dogPos.row}-${dogPos.col}`).classList.add(this._map.IDS.FLAG);
 
@@ -837,6 +841,8 @@ export default class Game extends Container {
     const { MINE_TYPES } = getLevelSettings();
 
     clearInterval(this._bearIntervalId);
+    if (this._doubleBarkTimeoutId) clearTimeout(this._doubleBarkTimeoutId);
+    if (this._bearTimeoutId) clearTimeout(this._bearTimeoutId);
 
     const score = this._flags.length;
     const win = score === this._mines.length;

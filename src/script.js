@@ -254,6 +254,17 @@ window.onload = () => {
     document.getElementById('bg-popUp-happy-finish').style.display = 'none';
   };
 
+  document.getElementById('btn-back-to-home-fail').onclick = () => {
+    document.getElementById('background-start').style.display = 'block';
+    document.getElementById('collection').style.display = 'none';
+    document.getElementById('about-game').style.display = 'none';
+    window.hideGame();
+    document.getElementById('bg-popUp-start').style.display = 'none';
+    document.getElementById('bg-popUp-finish').style.display = 'none';
+    document.getElementById('bg-popUp-finish-fail').style.display = 'none';
+    document.getElementById('bg-popUp-happy-finish').style.display = 'none';
+  };
+
   document.getElementById('btn-back').onclick = () => {
     document.getElementById('background-start').style.display = 'block';
     document.getElementById('collection').style.display = 'none';
