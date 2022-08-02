@@ -41,6 +41,7 @@ export default {
   LOCAL_STORAGE_KEY_MINES_LIST: 'sniffer-dog-quest:available-mines-list',
   LOCAL_STORAGE_KEY_LEVEL_NUMBER: 'sniffer-dog-quest:level-number',
   DONATE_URL: 'https://savelife.in.ua/donate/',
+  SUPPORT_UKRAINE_URL: 'https://supportukraine.art/product/patron-the-dog-from-ukraine/',
   SHARE_FACEBOOK_URL: `https://www.facebook.com/sharer/sharer.php?u=${PROJECT_URL}`,
   SHARE_TELEGRAM_URL: `https://t.me/share/url?url=${PROJECT_URL}&text=Sniffer Dog`,
   DONATE_CLICK: 'DONATE_CLICK',

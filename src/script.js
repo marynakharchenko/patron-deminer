@@ -28,6 +28,12 @@ window.onload = () => {
       window.open(CONSTANTS.DONATE_URL, '_blank');
     };
   });
+  document.querySelectorAll('.supportukraineLink').forEach((sl) => {
+    sl.onclick = () => {
+      gtag('event', CONSTANTS.SUPPORT_UKRAINE_URL);
+      window.open(CONSTANTS.SUPPORT_UKRAINE_URL, '_blank');
+    };
+  });
   document.querySelectorAll('.facebookBtn').forEach((fbb) => {
     fbb.onclick = () => {
       gtag('event', CONSTANTS.FACEBOOK_CLICK);

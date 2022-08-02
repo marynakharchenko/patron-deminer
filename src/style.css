@@ -908,39 +908,34 @@ body {
   display: block;
 }
 
-.supportukraine{
+.supportukraine {
   position: relative;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  flex-wrap: 0;
   width: 100%;
   height: 70px;
 }
-.supportukraineAboutPage{
-   position: relative;
+.supportukraineAboutPage {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: 10px;
-  flex-wrap: 0;
   width: 100%;
   height: 70px;
 }
-.supportukraineLink{
+.supportukraineLink {
   padding: 5px;
-  background-image: url(assets/images--landing/supportukraine-img.png);
-  background-repeat: no-repeat;
   display: flex;
-  background-size: contain;
-  width: 100%;
+  cursor: pointer;
 }
-.supportukraineLinkHomePage{
+.supportukraineLinkHomePage {
   background-position: right;
-  }
-.supportukraineLinkAboutPage{
+}
+.supportukraineLinkAboutPage {
   background-position: center;
-  }
+}
 @media (min-device-width: 320px) and (max-device-width: 767px) and (orientation: portrait) {
   .socialIcon {
     width: 50px;
@@ -1103,16 +1098,16 @@ body {
   #bg-popUp-start {
     overflow: hidden;
   }
-.supportukraine{
-  justify-content: center;
-  height: 120px;
-}
-.supportukraineLinkAboutPage{
-  background-position: center;
+  .supportukraine {
+    justify-content: center;
+    height: 120px;
   }
-.supportukraineAboutPage{
-  height: 120px;
-}
+  .supportukraineLinkAboutPage {
+    background-position: center;
+  }
+  .supportukraineAboutPage {
+    height: 120px;
+  }
 }
 
 @media (min-device-height: 320px) and (max-device-height: 767px) and (orientation: landscape) {
@@ -1250,4 +1245,3 @@ body {
     padding: 60px 15%;
   }
 }
-
