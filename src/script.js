@@ -30,7 +30,7 @@ window.onload = () => {
   });
   document.querySelectorAll('.supportukraineLink').forEach((sl) => {
     sl.onclick = () => {
-      gtag('event', CONSTANTS.SUPPORT_UKRAINE_URL);
+      gtag('event', CONSTANTS.SUPPORT_UKRAINE_CLICK);
       window.open(CONSTANTS.SUPPORT_UKRAINE_URL, '_blank');
     };
   });

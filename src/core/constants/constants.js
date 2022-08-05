@@ -45,6 +45,7 @@ export default {
   SHARE_FACEBOOK_URL: `https://www.facebook.com/sharer/sharer.php?u=${PROJECT_URL}`,
   SHARE_TELEGRAM_URL: `https://t.me/share/url?url=${PROJECT_URL}&text=Sniffer Dog`,
   DONATE_CLICK: 'DONATE_CLICK',
+  SUPPORT_UKRAINE_CLICK: 'SUPPORT_UKRAINE_CLICK',
   FACEBOOK_CLICK: 'FACEBOOK_CLICK',
   TELEGRAM_CLICK: 'TELEGRAM_CLICK',
   COLLECTION_CLICK: 'COLLECTION_CLICK',
