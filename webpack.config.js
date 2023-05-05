@@ -73,6 +73,9 @@ module.exports = {
         {
           from: "src/assets/images--landing/levelPopUp/*"
         },
+        {
+          from: "manifest.json"
+        },
       ],
     }),
   ]
